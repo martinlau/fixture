@@ -39,6 +39,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>io.fixture</groupId>
+            <artifactId>fixture-annotation</artifactId>
+            <version>0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <scope>runtime</scope>
@@ -47,12 +53,6 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
             <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.fixture</groupId>
-            <artifactId>fixture-annotation</artifactId>
-            <version>0.1-SNAPSHOT</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
