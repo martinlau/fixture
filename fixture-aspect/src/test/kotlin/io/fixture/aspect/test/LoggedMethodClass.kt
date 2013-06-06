@@ -6,13 +6,13 @@ import org.slf4j.LoggerFactory
 class LoggedMethodClass {
 
     class object {
-        val logger: Logger = LoggerFactory.getLogger(javaClass<LoggedMethodClass>()) as Logger
+        val logger = LoggerFactory.getLogger(javaClass<LoggedMethodClass>()) as Logger
     }
 
     fun doSomething(message: String, `object`: Any): Any {
         logger.info(message)
         if (`object` is Exception) {
-            throw `object` as Exception
+            throw `object`
         }
         return `object`
     }
