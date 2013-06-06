@@ -14,12 +14,10 @@ class ConstructorLoggingAspectTest {
 
     val appender = ListAppender<ILoggingEvent>()
 
-    var oldLevel: Level? = null
+    val oldLevel: Level? = LoggedConstructorClass.logger.getLevel()
 
     [Before]
     fun setUp() {
-        oldLevel = LoggedConstructorClass.logger.getLevel()
-
         appender.setContext(LoggedConstructorClass.logger.getLoggerContext())
         appender.start()
 
