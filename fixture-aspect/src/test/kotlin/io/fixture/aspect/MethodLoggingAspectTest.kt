@@ -13,12 +13,10 @@ class MethodLoggingAspectTest {
 
     val appender = ListAppender<ILoggingEvent>()
 
-    var oldLevel: Level? = null
+    val oldLevel: Level? = LoggedMethodClass.logger.getLevel()
 
     [Before]
     fun setUp() {
-        oldLevel = LoggedMethodClass.logger.getLevel()
-
         appender.setContext(LoggedMethodClass.logger.getLoggerContext())
         appender.start()
 
