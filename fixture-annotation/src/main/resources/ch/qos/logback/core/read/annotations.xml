@@ -1,0 +1,7 @@
+<root>
+    <item name='ch.qos.logback.core.read.ListAppender list'>
+        <annotation name='jet.runtime.typeinfo.KotlinSignature'>
+            <val name="value" val="&quot;var list: MutableList&lt;E&gt;&quot;"/>
+        </annotation>
+    </item>
+</root>
