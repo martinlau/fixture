@@ -9,13 +9,13 @@ class LoggedConstructorClass(
 ) {
 
     class object {
-        val logger: Logger = LoggerFactory.getLogger(javaClass<LoggedConstructorClass>()) as Logger
+        val logger = LoggerFactory.getLogger(javaClass<LoggedConstructorClass>()) as Logger
     }
 
     {
         logger.info(message)
         if (`object` is Exception) {
-            throw `object` as Exception
+            throw `object`
         }
     }
 
