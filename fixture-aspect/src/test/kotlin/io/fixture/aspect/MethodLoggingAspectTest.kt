@@ -4,10 +4,10 @@ import ch.qos.logback.classic.Level
 import ch.qos.logback.classic.spi.ILoggingEvent
 import ch.qos.logback.core.read.ListAppender
 import io.fixture.aspect.test.LoggedMethodClass
+import kotlin.test.assertTrue
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-import kotlin.test.assertTrue
 
 class MethodLoggingAspectTest {
 
