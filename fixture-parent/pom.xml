@@ -60,8 +60,23 @@
                                 <goal>analyze-only</goal>
                             </goals>
                         </execution>
+                        <execution>
+                            <id>analyze-duplicate</id>
+                            <goals>
+                                <goal>analyze-duplicate</goal>
+                            </goals>
+                            <phase>verify</phase>
+                        </execution>
+                        <execution>
+                            <id>analyze-dep-mgt</id>
+                            <goals>
+                                <goal>analyze-dep-mgt</goal>
+                            </goals>
+                            <phase>verify</phase>
+                        </execution>
                     </executions>
                     <configuration>
+                        <failBuild>true</failBuild>
                         <failOnWarning>true</failOnWarning>
                     </configuration>
                 </plugin>
