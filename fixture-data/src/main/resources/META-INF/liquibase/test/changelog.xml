@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet id="test-20130607-01 [USERS]"
+               author="martinlau">
+
+        <comment>Insert 'USERS' test data</comment>
+
+        <loadData tableName="USERS"
+                  file="/META-INF/liquibase/test/data/users.csv"/>
+
+    </changeSet>
+
+    <changeSet id="test-20130607-02 [USER_AUTHORITIES]"
+               author="martinlau">
+
+        <comment>Insert 'USER_AUTHORITIES' test data</comment>
+
+        <loadData tableName="USER_AUTHORITIES"
+                  file="/META-INF/liquibase/test/data/user_authorities.csv"/>
+
+    </changeSet>
+
+    <changeSet id="test-20130607-03 [USER_ACCOUNT_TOKENS]"
+               author="martinlau">
+
+        <comment>Insert 'USER_ACCOUNT_TOKENS' test data</comment>
+
+        <loadData tableName="USER_ACCOUNT_TOKENS"
+                  file="/META-INF/liquibase/test/data/user_account_tokens.csv"/>
+
+    </changeSet>
+
+    <changeSet id="test-20130607-04 [USER_PROFILES]"
+               author="martinlau">
+
+        <comment>Insert 'USER_PROFILES' test data</comment>
+
+        <loadData tableName="USER_PROFILES"
+                  file="/META-INF/liquibase/test/data/user_profiles.csv"/>
+
+    </changeSet>
+
+    <changeSet id="test-20130607-05 [PERSISTENT_LOGINS]"
+               author="martinlau">
+
+        <comment>Insert 'PERSISTENT_LOGINS' test data</comment>
+
+        <loadData tableName="PERSISTENT_LOGINS"
+                  file="/META-INF/liquibase/test/data/persistent_logins.csv"/>
+
+    </changeSet>
+
+    <changeSet id="test-20130607-06 [GROUPS]"
+               author="martinlau">
+
+        <comment>Insert 'GROUPS' test data</comment>
+
+        <loadData tableName="GROUPS"
+                  file="/META-INF/liquibase/test/data/groups.csv"/>
+
+    </changeSet>
+
+    <changeSet id="test-20130607-07 [GROUP_AUTHORITIES]"
+               author="martinlau">
+
+        <comment>Insert 'GROUP_AUTHORITIES' test data</comment>
+
+        <loadData tableName="GROUP_AUTHORITIES"
+                  file="/META-INF/liquibase/test/data/group_authorities.csv"/>
+
+    </changeSet>
+
+    <changeSet id="test-20130607-08 [GROUP_MEMBERS]"
+               author="martinlau">
+
+        <comment>Insert 'GROUP_MEMBERS' test data</comment>
+
+        <loadData tableName="GROUP_MEMBERS"
+                  file="/META-INF/liquibase/test/data/group_members.csv"/>
+
+    </changeSet>
+
+</databaseChangeLog>
