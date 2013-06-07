@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet id="20130607-01 [USERS]"
+               author="martinlau">
+
+        <comment>Create 'USERS' table</comment>
+
+        <createTable tableName="USERS">
+            <column name="UUID"
+                    type="VARCHAR">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="ACCOUNT_NON_EXPIRED"
+                    type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ACCOUNT_NON_LOCKED"
+                    type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREDENTIALS_NON_EXPIRED"
+                    type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ENABLED"
+                    type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PASSWORD"
+                    type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="USERNAME"
+                    type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VERSION"
+                    type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createIndex tableName="USERS"
+                     indexName="IDX_USERS_USERNAME"
+                     unique="true">
+            <column name="USERNAME"/>
+        </createIndex>
+
+    </changeSet>
+
+    <changeSet id="20130607-02 [USER_AUTHORITIES]"
+               author="martinlau">
+
+        <comment>Create 'USER_AUTHORITIES' table</comment>
+
+        <createTable tableName="USER_AUTHORITIES">
+            <column name="USER_UUID"
+                    type="VARCHAR">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="AUTHORITY"
+                    type="VARCHAR">
+                <constraints primaryKey="true"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="USER_AUTHORITIES"
+                                 baseColumnNames="USER_UUID"
+                                 constraintName="FK_USER_AUTHORITIES_USER_UUID"
+                                 referencedTableName="USERS"
+                                 referencedColumnNames="UUID"
+                                 onDelete="CASCADE"/>
+
+    </changeSet>
+
+    <changeSet id="20130607-08 [USER_ACCOUNT_TOKENS]"
+               author="martinlau">
+
+        <comment>Create 'USER_ACCOUNT_TOKENS' table</comment>
+
+        <createTable tableName="USER_ACCOUNT_TOKENS">
+            <column name="USER_UUID"
+                    type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TOKEN_TYPE"
+                    type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TOKEN"
+                    type="VARCHAR">
+                <constraints nullable="false"
+                             unique="true"/>
+            </column>
+        </createTable>
+
+        <addUniqueConstraint tableName="USER_ACCOUNT_TOKENS"
+                             columnNames="USER_UUID, TOKEN_TYPE"/>
+
+    </changeSet>
+
+    <changeSet id="20130607-04 [PERSISTENT_LOGINS]"
+               author="martinlau">
+
+        <comment>Create 'PERSISTENT_LOGINS' table</comment>
+
+        <createTable tableName="PERSISTENT_LOGINS">
+            <column name="UUID"
+                    type="VARCHAR">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="LAST_USED"
+                    type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="SERIES"
+                    type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TOKEN"
+                    type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VERSION"
+                    type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="USER_UUID"
+                    type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createIndex tableName="PERSISTENT_LOGINS"
+                     indexName="IDX_PERSISTENT_LOGINS_SERIES"
+                     unique="true">
+            <column name="SERIES"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseTableName="PERSISTENT_LOGINS"
+                                 baseColumnNames="USER_UUID"
+                                 constraintName="FK_PERSISTENT_LOGINS_USER_UUID"
+                                 referencedTableName="USERS"
+                                 referencedColumnNames="UUID"
+                                 onDelete="CASCADE"/>
+
+    </changeSet>
+
+    <changeSet id="20130607-05 [GROUPS]"
+               author="martinlau">
+
+        <comment>Create 'GROUPS' table</comment>
+
+        <createTable tableName="GROUPS">
+            <column name="UUID"
+                    type="VARCHAR">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="NAME"
+                    type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VERSION"
+                    type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createIndex tableName="GROUPS"
+                     indexName="IDX_GROUPS_NAME"
+                     unique="true">
+            <column name="NAME"/>
+        </createIndex>
+
+    </changeSet>
+
+    <changeSet id="20130607-06 [GROUP_AUTHORITIES]"
+               author="martinlau">
+
+        <comment>Create 'GROUP_AUTHORITIES' table</comment>
+
+        <createTable tableName="GROUP_AUTHORITIES">
+            <column name="GROUP_UUID"
+                    type="VARCHAR">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="AUTHORITY"
+                    type="VARCHAR">
+                <constraints primaryKey="true"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="GROUP_AUTHORITIES"
+                                 baseColumnNames="GROUP_UUID"
+                                 constraintName="FK_GROUP_AUTHORITIES_GROUP_UUID"
+                                 referencedTableName="GROUPS"
+                                 referencedColumnNames="UUID"
+                                 onDelete="CASCADE"/>
+
+    </changeSet>
+
+    <changeSet id="20130607-07 [GROUP_MEMBERS]"
+               author="martinlau">
+
+        <comment>Create 'GROUP_MEMBERS' table</comment>
+
+        <createTable tableName="GROUP_MEMBERS">
+            <column name="GROUP_UUID"
+                    type="VARCHAR">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="USER_UUID"
+                    type="VARCHAR">
+                <constraints primaryKey="true"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="GROUP_MEMBERS"
+                                 baseColumnNames="GROUP_UUID"
+                                 constraintName="FK_GROUP_MEMBERS_GROUP_UUID"
+                                 referencedTableName="GROUPS"
+                                 referencedColumnNames="UUID"
+                                 onDelete="CASCADE"/>
+
+        <addForeignKeyConstraint baseTableName="GROUP_MEMBERS"
+                                 baseColumnNames="USER_UUID"
+                                 constraintName="FK_GROUP_MEMBERS_USER_UUID"
+                                 referencedTableName="USERS"
+                                 referencedColumnNames="UUID"
+                                 onDelete="CASCADE"/>
+
+    </changeSet>
+
+    <changeSet id="20130607-08 [USER_PROFILES]"
+               author="martinlau">
+
+        <comment>Create 'USER_PROFILES' table</comment>
+
+        <createTable tableName="USER_PROFILES">
+            <column name="UUID"
+                    type="VARCHAR">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="USER_UUID"
+                    type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="GIVEN_NAME"
+                    type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FAMILY_NAME"
+                    type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EMAIL"
+                    type="VARCHAR">
+                <constraints nullable="false"
+                             unique="true"/>
+            </column>
+            <column name="VERSION"
+                    type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="USER_PROFILES"
+                                 baseColumnNames="USER_UUID"
+                                 constraintName="FK_USER_PROFILES_USER_UUID"
+                                 referencedTableName="USERS"
+                                 referencedColumnNames="UUID"
+                                 onDelete="CASCADE"/>
+
+    </changeSet>
+
+ </databaseChangeLog>
