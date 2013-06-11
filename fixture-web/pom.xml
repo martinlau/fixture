@@ -24,7 +24,6 @@
                 <configuration>
                     <usedDependencies>
                         <usedDependency>io.fixture:fixture-annotation</usedDependency>
-                        <usedDependency>io.fixture:fixture-data-test</usedDependency>
                         <usedDependency>io.fixture:fixture-security</usedDependency>
                         <usedDependency>javax.servlet:jstl</usedDependency>
                         <usedDependency>org.apache.tiles:tiles-jsp</usedDependency>
@@ -34,10 +33,6 @@
                         <usedDependency>org.webjars:jquery</usedDependency>
                     </usedDependencies>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -69,12 +64,6 @@
             <groupId>io.fixture</groupId>
             <artifactId>fixture-aspect</artifactId>
             <version>0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>io.fixture</groupId>
-            <artifactId>fixture-data-test</artifactId>
-            <version>0.1-SNAPSHOT</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.fixture</groupId>
