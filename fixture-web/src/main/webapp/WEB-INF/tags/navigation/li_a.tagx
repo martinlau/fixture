@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:tags="urn:jsptagdir:/WEB-INF/tags"
+          version="2.0">
+
+    <jsp:directive.tag description="renders a &lt;li&gt;&lt;a&gt;... combination for use in the navigation toolbar"
+                       dynamic-attributes="attrs"
+                       example="&lt;navigation:li_a href=&quot;/static/js/my.js&quot;/&gt;" />
+
+    <jsp:directive.attribute name="href" type="java.lang.String" />
+
+    <c:set var="path" value="${requestScope['javax.servlet.forward.servlet_path']}" />
+
+    <jsp:text>&lt;li</jsp:text>
+    <c:if test="${href eq path}">
+        <jsp:text> class="active"</jsp:text>
+    </c:if>
+    <jsp:text>&gt;</jsp:text>
+    <tags:a href="${href}">
+        <jsp:doBody />
+    </tags:a>
+    <jsp:text>&lt;/li&gt;</jsp:text>
+
+</jsp:root>

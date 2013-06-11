@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:navigation="urn:jsptagdir:/WEB-INF/tags/navigation"
+          xmlns:tags="urn:jsptagdir:/WEB-INF/tags"
+          version="2.0">
+
+    <nav class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <tags:a class="brand" href="/home">fixture.io</tags:a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <navigation:li_a href="/about">About</navigation:li_a>
+                        <navigation:li_a href="/contact">Contact</navigation:li_a>
+                    </ul>
+                    <ul class="nav pull-right">
+                        <navigation:li_a href="/join">Join</navigation:li_a>
+                        <navigation:li_a href="/login">Log in</navigation:li_a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+</jsp:root>

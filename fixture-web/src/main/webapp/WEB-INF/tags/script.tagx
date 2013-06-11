@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          version="2.0">
+
+    <jsp:directive.tag description="renders a HTML &lt;script&gt; element using a context relative src=&quot;...&quot; path"
+                       body-content="empty"
+                       dynamic-attributes="attrs"
+                       example="&lt;tags:script src=&quot;/static/js/my.js&quot;/&gt;" />
+
+    <jsp:text>&lt;script </jsp:text>
+    <c:forEach var="attr" items="${attrs}">
+        <c:choose>
+            <c:when test="${fn:toLowerCase(attr.key) eq 'src'}">
+                <c:url value="${attr.value}" var="path" />
+                <jsp:text>${attr.key}="${path}"</jsp:text>
+            </c:when>
+            <c:otherwise>
+                <jsp:text>${attr.key}="${attr.value}"</jsp:text>
+            </c:otherwise>
+        </c:choose>
+    </c:forEach>
+    <jsp:text>&gt;</jsp:text>
+    <jsp:text>&lt;/script&gt;</jsp:text>
+
+</jsp:root>

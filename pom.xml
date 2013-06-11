@@ -14,11 +14,11 @@
         <module>fixture-parent</module>
         <module>fixture-annotation</module>
         <module>fixture-aspect</module>
+        <!--<module>fixture-data-test</module>-->
         <module>fixture-data</module>
         <module>fixture-security</module>
-        <!--<module>fixture-service</module>-->
-        <!--<module>fixture-admin</module>-->
-        <!--<module>fixture-web</module>-->
+        <module>fixture-web</module>
+        <!--<module>fixture-feature</module>-->
     </modules>
 
 </project>
