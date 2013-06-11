@@ -101,7 +101,6 @@ public class User : BasePersistable() {
     [OneToOne(
             cascade = array(CascadeType.ALL),
             mappedBy = "user",
-            optional = false,
             targetEntity = javaClass<UserProfile>()
     )]
     var profile: UserProfile? = null
