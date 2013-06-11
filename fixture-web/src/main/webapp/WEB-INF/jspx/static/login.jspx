@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          version="2.0" xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <!-- TODO Message bundles -->
+
+    <c:url var="url" value="/login/authenticate" />
+
+    <form class="form-horizontal" action="${url}" method="post">
+        <fieldset>
+            <legend>Log in</legend>
+
+            <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
+                <div class="alert alert-error">
+                    <strong>Log in failed</strong>
+                    <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION.message}">
+                        <jsp:text> - </jsp:text>
+                        <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}" />
+                    </c:if>
+                </div>
+            </c:if>
+
+            <div class="control-group">
+                <label class="control-label" for="username">Username</label>
+
+                <div class="controls">
+                    <input type="text" id="username" name="j_username" value="" placeholder="Username" />
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="password">Password</label>
+
+                <div class="controls">
+                    <input type="password" id="password" name="j_password" value="" placeholder="Password" />
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="controls">
+                    <label class="checkbox">
+                        <input type="checkbox" id="remember_me" name="_spring_security_remember_me" />
+                        <jsp:text>Remember me?</jsp:text>
+                    </label>
+                    <button class="btn" type="submit">Log in</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+
+</jsp:root>

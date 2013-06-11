@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          version="2.0">
+
+    <jsp:directive.tag description="renders a HTML &lt;a&gt; element using a context relative href=&quot;...&quot; path"
+                       dynamic-attributes="attrs"
+                       example="&gt;tags:a id=&quot;link&quot; href=&quot;/static/page/my.html&quot;&lt;a link&gt;/a&lt;" />
+
+    <jsp:text>&lt;a </jsp:text>
+    <c:forEach var="attr" items="${attrs}">
+        <c:choose>
+            <c:when test="${fn:toLowerCase(attr.key) == 'href'}">
+                <c:url value="${attr.value}" var="path" />
+                <jsp:text>${attr.key}="${path}"</jsp:text>
+            </c:when>
+            <c:otherwise>
+                <jsp:text>${attr.key}="${attr.value}"</jsp:text>
+            </c:otherwise>
+        </c:choose>
+    </c:forEach>
+    <jsp:text>&gt;</jsp:text>
+    <jsp:doBody/>
+    <jsp:text>&lt;/a&gt;</jsp:text>
+
+</jsp:root>
