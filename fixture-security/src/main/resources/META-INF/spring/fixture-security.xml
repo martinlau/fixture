@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="io.fixture.security"/>
+
+    <security:authentication-manager id="authenticationManager">
+        <security:authentication-provider user-service-ref="userDetailsManagerImpl">
+            <security:password-encoder base64="true"
+                                       hash="sha-256">
+                <security:salt-source user-property="username"/>
+            </security:password-encoder>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+    <security:global-method-security authentication-manager-ref="authenticationManager"
+                                     secured-annotations="enabled"/>
+
+    <security:http authentication-manager-ref="authenticationManager"
+                   use-expressions="true">
+        <security:intercept-url pattern="/secure/**"
+                                access="isAuthenticated()"/>
+        <security:intercept-url pattern="/administration/**"
+                                access="hasAuthority('administrator')"/>
+        <security:anonymous/>
+        <security:form-login login-page="/login"
+                             login-processing-url="/login/authenticate"/>
+        <security:remember-me user-service-ref="userDetailsManagerImpl"
+                              key="fixture-dot-io"
+                              token-repository-ref="persistentTokenRepositoryImpl"/>
+        <security:logout/>
+        <security:session-management>
+            <security:concurrency-control error-if-maximum-exceeded="true"
+                                          max-sessions="1"/>
+        </security:session-management>
+    </security:http>
+
+</beans>
