@@ -23,7 +23,6 @@
                 <configuration>
                     <usedDependencies>
                         <usedDependency>com.h2database:h2</usedDependency>
-                        <usedDependency>org.liquibase:liquibase-core</usedDependency>
                     </usedDependencies>
                 </configuration>
             </plugin>
@@ -34,10 +33,6 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
         </dependency>
     </dependencies>
 
