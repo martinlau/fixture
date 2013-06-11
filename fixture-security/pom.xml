@@ -43,7 +43,7 @@
                 <configuration>
                     <usedDependencies>
                         <usedDependency>io.fixture:fixture-annotation</usedDependency>
-                        <usedDependency>com.h2database:h2</usedDependency>
+                        <usedDependency>io.fixture:fixture-data-test</usedDependency>
                         <usedDependency>javax.servlet:servlet-api</usedDependency>
                         <usedDependency>org.springframework.security:spring-security-config</usedDependency>
                     </usedDependencies>
@@ -70,8 +70,9 @@
             <version>0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
+            <groupId>io.fixture</groupId>
+            <artifactId>fixture-data-test</artifactId>
+            <version>0.1-SNAPSHOT</version>
             <scope>test</scope>
         </dependency>
         <dependency>

@@ -22,9 +22,9 @@
                 <artifactId>maven-dependency-plugin</artifactId>
                 <configuration>
                     <usedDependencies>
-                        <usedDependency>com.h2database:h2</usedDependency>
                         <usedDependency>com.mchange:c3p0</usedDependency>
                         <usedDependency>io.fixture:fixture-annotation</usedDependency>
+                        <usedDependency>io.fixture:fixture-data-test</usedDependency>
                         <usedDependency>org.hibernate:hibernate-entitymanager</usedDependency>
                         <usedDependency>org.liquibase:liquibase-core</usedDependency>
                     </usedDependencies>
@@ -66,8 +66,9 @@
             <version>0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
+            <groupId>io.fixture</groupId>
+            <artifactId>fixture-data-test</artifactId>
+            <version>0.1-SNAPSHOT</version>
             <scope>test</scope>
         </dependency>
         <dependency>
