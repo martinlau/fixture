@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <item name="org.springframework.security.authentication.AuthenticationManager org.springframework.security.core.Authentication authenticate(org.springframework.security.core.Authentication)">
+    <annotation name="org.jetbrains.annotations.NotNull" />
+  </item>
+  <item name="org.springframework.security.authentication.AuthenticationManager org.springframework.security.core.Authentication authenticate(org.springframework.security.core.Authentication) 0">
+    <annotation name="org.jetbrains.annotations.NotNull" />
+  </item>
+</root>
+

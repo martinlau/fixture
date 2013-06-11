@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <item name="org.springframework.security.core.userdetails.UserDetails java.lang.String getPassword()">
+    <annotation name="org.jetbrains.annotations.NotNull" />
+  </item>
+  <item name="org.springframework.security.core.userdetails.UserDetails java.lang.String getUsername()">
+    <annotation name="org.jetbrains.annotations.NotNull" />
+  </item>
+  <item name="org.springframework.security.core.userdetails.UserDetails java.util.Collection&lt;? extends org.springframework.security.core.GrantedAuthority&gt; getAuthorities()">
+    <annotation name="jet.runtime.typeinfo.KotlinSignature">
+      <val name="value" val="&quot;fun getAuthorities(): Collection&lt;out GrantedAuthority&gt;&quot;" />
+    </annotation>
+  </item>
+    <item name='org.springframework.security.core.userdetails.UserDetailsService org.springframework.security.core.userdetails.UserDetails loadUserByUsername(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>
+

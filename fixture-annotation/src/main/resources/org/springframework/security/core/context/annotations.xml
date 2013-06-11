@@ -1,0 +1,5 @@
+<root>
+    <item name='org.springframework.security.core.context.SecurityContextHolder org.springframework.security.core.context.SecurityContext getContext()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>
