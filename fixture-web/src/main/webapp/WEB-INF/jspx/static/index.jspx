@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jsp:root xmlns="http://www.w3.org/1999/xhtml"
           xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:spring="http://www.springframework.org/tags"
           version="2.0">
 
-    <h2>fixture.io</h2>
+    <h2>
+        <spring:message code="static.index.title" />
+    </h2>
 
     <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit.

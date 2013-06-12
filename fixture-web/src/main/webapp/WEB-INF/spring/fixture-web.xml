@@ -7,13 +7,23 @@
                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
                            http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <bean id="themeResolver" class="org.springframework.web.servlet.theme.CookieThemeResolver">
-        <property name="defaultThemeName" value="united"/>
-        <property name="cookieName" value="theme"/>
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="META-INF.spring.messages.messages"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
+
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+        <property name="defaultLocale" value="en"/>
+        <property name="cookieName" value="locale"/>
     </bean>
 
     <bean id="themeSource" class="org.springframework.ui.context.support.ResourceBundleThemeSource">
         <property name="basenamePrefix" value="META-INF.spring.theme."/>
+    </bean>
+
+    <bean id="themeResolver" class="org.springframework.web.servlet.theme.CookieThemeResolver">
+        <property name="defaultThemeName" value="united"/>
+        <property name="cookieName" value="theme"/>
     </bean>
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver"/>
@@ -27,6 +37,7 @@
     <mvc:annotation-driven/>
 
     <mvc:interceptors>
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"/>
         <bean class="org.springframework.web.servlet.theme.ThemeChangeInterceptor"/>
         <bean class="io.fixture.web.interceptor.NextThemeInterceptor"/>
     </mvc:interceptors>

@@ -2,21 +2,32 @@
 <jsp:root xmlns="http://www.w3.org/1999/xhtml"
           xmlns:jsp="http://java.sun.com/JSP/Page"
           xmlns:navigation="urn:jsptagdir:/WEB-INF/tags/navigation"
+          xmlns:spring="http://www.springframework.org/tags"
           xmlns:tags="urn:jsptagdir:/WEB-INF/tags"
           version="2.0">
 
     <nav class="navbar navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
-                <tags:a class="brand" href="/">fixture.io</tags:a>
+                <tags:a class="brand" href="/">
+                    <spring:message code="common.navigation.index"/>
+                </tags:a>
                 <div class="nav-collapse collapse">
                     <ul class="nav">
-                        <navigation:li_a href="/about">About</navigation:li_a>
-                        <navigation:li_a href="/contact">Contact</navigation:li_a>
+                        <navigation:li_a href="/about">
+                            <spring:message code="common.navigation.about"/>
+                        </navigation:li_a>
+                        <navigation:li_a href="/contact">
+                            <spring:message code="common.navigation.contact"/>
+                        </navigation:li_a>
                     </ul>
                     <ul class="nav pull-right">
-                        <navigation:li_a href="/join">Join</navigation:li_a>
-                        <navigation:li_a href="/login">Log in</navigation:li_a>
+                        <navigation:li_a href="/join">
+                            <spring:message code="common.navigation.join"/>
+                        </navigation:li_a>
+                        <navigation:li_a href="/login">
+                            <spring:message code="common.navigation.login"/>
+                        </navigation:li_a>
                     </ul>
                 </div>
             </div>
