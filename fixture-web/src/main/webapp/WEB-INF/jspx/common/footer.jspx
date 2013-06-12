@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jsp:root xmlns="http://www.w3.org/1999/xhtml"
           xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:spring="http://www.springframework.org/tags"
           xmlns:tags="urn:jsptagdir:/WEB-INF/tags"
           version="2.0">
 
@@ -9,13 +10,21 @@
     <footer class="footer">
         <div class="container">
             <div class="pull-right">
-                <tags:a href="?theme=${nextTheme}">Change theme</tags:a>
+                <tags:a href="?theme=${nextTheme}">
+                    <spring:message code="common.footer.change-theme"/>
+                </tags:a>
                 &amp;nbsp;
-                <a href="#top">Back to top</a>
+                <a href="#top">
+                    <spring:message code="common.footer.back-to-top"/>
+                </a>
             </div>
             <div class="links">
-                <tags:a href="/privacy">Privacy</tags:a>
-                <tags:a href="/terms">Terms of use</tags:a>
+                <tags:a href="/privacy">
+                    <spring:message code="common.footer.privacy"/>
+                </tags:a>
+                <tags:a href="/terms">
+                    <spring:message code="common.footer.terms-of-use"/>
+                </tags:a>
             </div>
         </div>
     </footer>
