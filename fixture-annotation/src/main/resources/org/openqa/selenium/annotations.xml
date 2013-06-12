@@ -1,0 +1,11 @@
+<root>
+    <item name='org.openqa.selenium.WebDriver java.lang.String getPageSource()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.openqa.selenium.WebDriver org.openqa.selenium.WebDriver.Options manage()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.openqa.selenium.WebDriver.Options org.openqa.selenium.WebDriver.Window window()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>
