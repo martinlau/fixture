@@ -567,6 +567,10 @@
     </dependencyManagement>
 
     <properties>
+        <!-- Project properties -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
         <!-- Plugin versions -->
         <aspectj-maven-plugin.version>1.4</aspectj-maven-plugin.version>
         <kotlin-maven-plugin.version>0.5.748</kotlin-maven-plugin.version>
