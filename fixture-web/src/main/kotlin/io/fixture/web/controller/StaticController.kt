@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping
 [Controller]
 public class StaticController {
 
-    [RequestMapping(array("/home"))]
-    fun home() = ".static.home"
+    [RequestMapping(array("/"))]
+    fun index() = ".static.index"
 
     [RequestMapping(array("/about"))]
     fun about() = ".static.about"
