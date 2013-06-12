@@ -15,7 +15,7 @@ class StepDefs [Autowired] (
 
     [Given("I open any page")]
     fun I_open_any_page() {
-        driver.get("http://localhost:8080/fixture-web/home")
+        driver.get("http://localhost:8080/fixture-web/")
     }
 
     [Given("I select the \"([^\"]*)\" theme")]

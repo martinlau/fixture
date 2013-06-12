@@ -8,9 +8,9 @@ class StaticControllerTest {
     val subject = StaticController()
 
     [Test]
-    fun testHome() {
+    fun testIndex() {
 
-        assertEquals(".static.home", subject.home())
+        assertEquals(".static.index", subject.index())
     }
 
     [Test]

@@ -8,7 +8,7 @@
     <nav class="navbar navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
-                <tags:a class="brand" href="/home">fixture.io</tags:a>
+                <tags:a class="brand" href="/">fixture.io</tags:a>
                 <div class="nav-collapse collapse">
                     <ul class="nav">
                         <navigation:li_a href="/about">About</navigation:li_a>

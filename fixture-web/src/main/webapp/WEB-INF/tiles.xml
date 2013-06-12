@@ -20,8 +20,8 @@
         <put-attribute name="title" type="string" value="fixture.io - Contact"/>
     </definition>
 
-    <definition name=".static.home" extends=".base.template">
-        <put-attribute name="body" type="template" value="/WEB-INF/jspx/static/home.jspx"/>
+    <definition name=".static.index" extends=".base.template">
+        <put-attribute name="body" type="template" value="/WEB-INF/jspx/static/index.jspx"/>
         <put-attribute name="title" type="string" value="fixture.io"/>
     </definition>
 
