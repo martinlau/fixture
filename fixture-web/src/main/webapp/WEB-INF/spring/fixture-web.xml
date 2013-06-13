@@ -8,7 +8,7 @@
                            http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-        <property name="basename" value="META-INF.spring.messages.messages"/>
+        <property name="basename" value="META-INF.spring.messages.fixture"/>
         <property name="defaultEncoding" value="UTF-8"/>
     </bean>
 
