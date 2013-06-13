@@ -6,10 +6,10 @@ import org.junit.runner.RunWith
 [RunWith(javaClass<Cucumber>())]
 [Cucumber.Options(
         format = array(
-                // TODO Reenable when cukes > 1.1.3
-                // "pretty",
-                "junit:target/failsafe-reports/cucumber-junit.xml",
+                "junit:target/failsafe-reports/TEST-io.fixture.feature.FixtureFeatureIT-Cucumber.xml",
                 "html:target/cucumber"
+                // TODO Reenable when cukes > 1.1.3
+                // "pretty"
         ),
         glue = array(
                 "io.fixture.feature.hook",
