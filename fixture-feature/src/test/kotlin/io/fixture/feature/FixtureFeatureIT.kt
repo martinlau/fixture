@@ -8,7 +8,7 @@ import org.junit.runner.RunWith
         format = array(
                 "junit:target/failsafe-reports/TEST-io.fixture.feature.FixtureFeatureIT-Cucumber.xml",
                 "html:target/cucumber"
-                // TODO Reenable when cukes > 1.1.3
+                // TODO Reenable when cucumber > 1.1.3
                 // "pretty"
         ),
         glue = array(
