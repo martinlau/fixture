@@ -10,12 +10,11 @@
 
     <context:component-scan base-package="io.fixture.security"/>
 
+    <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+
     <security:authentication-manager id="authenticationManager">
         <security:authentication-provider user-service-ref="userDetailsManagerImpl">
-            <security:password-encoder base64="true"
-                                       hash="sha-256">
-                <security:salt-source user-property="username"/>
-            </security:password-encoder>
+            <security:password-encoder ref="passwordEncoder"/>
         </security:authentication-provider>
     </security:authentication-manager>
 
@@ -27,17 +26,17 @@
         <security:intercept-url pattern="/secure/**"
                                 access="isAuthenticated()"/>
         <security:intercept-url pattern="/administration/**"
-                                access="hasAuthority('administrator')"/>
+                                access="hasRole('administrator')"/>
+        <security:access-denied-handler error-page="/access-denied" />
         <security:anonymous/>
         <security:form-login login-page="/login"
                              login-processing-url="/login/authenticate"/>
         <security:remember-me user-service-ref="userDetailsManagerImpl"
                               key="fixture-dot-io"
                               token-repository-ref="persistentTokenRepositoryImpl"/>
-        <security:logout/>
+        <security:logout logout-url="/logout"/>
         <security:session-management>
-            <security:concurrency-control error-if-maximum-exceeded="true"
-                                          max-sessions="1"/>
+            <security:concurrency-control max-sessions="1"/>
         </security:session-management>
     </security:http>
 
