@@ -276,4 +276,24 @@
 
     </changeSet>
 
- </databaseChangeLog>
+    <changeSet id="20130614-01 [USERS]"
+               author="martinlau">
+
+        <comment>Insert 'USERS' data</comment>
+
+        <loadData tableName="USERS"
+                  file="/META-INF/liquibase/data/users.csv"/>
+
+    </changeSet>
+
+    <changeSet id="20130614-02 [USER_AUTHORITIES]"
+               author="martinlau">
+
+        <comment>Insert 'USER_AUTHORITIES' data</comment>
+
+        <loadData tableName="USER_AUTHORITIES"
+                  file="/META-INF/liquibase/data/user_authorities.csv"/>
+
+    </changeSet>
+
+</databaseChangeLog>

@@ -30,7 +30,7 @@ class GroupRepositoryTest {
         subject!!.delete("name-0")
 
         assertEquals(3.toLong(), subject!!.count())
-        assertEquals(4.toLong(), userRepository!!.count())
+        assertEquals(6.toLong(), userRepository!!.count())
     }
 
     [Test]
@@ -38,7 +38,7 @@ class GroupRepositoryTest {
         subject!!.delete("invalid")
 
         assertEquals(4.toLong(), subject!!.count())
-        assertEquals(4.toLong(), userRepository!!.count())
+        assertEquals(6.toLong(), userRepository!!.count())
     }
 
     [Test]
@@ -46,7 +46,7 @@ class GroupRepositoryTest {
         subject!!.delete("name-1")
 
         assertEquals(3.toLong(), subject!!.count())
-        assertEquals(4.toLong(), userRepository!!.count())
+        assertEquals(6.toLong(), userRepository!!.count())
     }
 
     [Test]
