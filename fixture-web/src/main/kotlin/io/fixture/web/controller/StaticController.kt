@@ -12,6 +12,9 @@ public class StaticController {
     [RequestMapping(array("/about"))]
     fun about() = ".static.about"
 
+    [RequestMapping(array("/access-denied"))]
+    fun accessDenied() = ".static.access-denied"
+
     [RequestMapping(array("/contact"))]
     fun contact() = ".static.contact"
 

@@ -13,29 +13,46 @@ class StepDefs [Autowired] (
         val driver: WebDriver
 ) {
 
-    [Given("I open any page")]
+    [Given("""^I open any page""")]
     fun I_open_any_page() {
         driver.get("http://localhost:8080/fixture-web/")
     }
 
-    [Given("I select the \"([^\"]*)\" theme")]
+    [Given("""^I select the theme "([^"]*)"$""")]
     fun I_select_the_theme(theme: String) {
         driver.get(driver.getCurrentUrl() + "?theme=${theme}")
     }
 
-    [When("I click on the \"([^\"]*)\" link")]
+    [When("""^I go to the page "([^"]*)"$""")]
+    fun I_go_to_the_page(page: String) {
+        driver.get("http://localhost:8080/fixture-web/${page}")
+    }
+
+    [When("""^I click on the link "([^"]*)"$""")]
     fun I_click_on_the_link(link: String) {
         driver.findElement(By.linkText(link))!!.click()
     }
 
-    [Then("the theme should change to \"([^\"]*)\"")]
+    [When("""^I log in with the credentials "([^"]*)" and "([^"]*)"$""")]
+    fun I_log_in_with_the_credentials(username: String, password: String) {
+        driver.findElement(By.id("username"))!!.sendKeys(username)
+        driver.findElement(By.id("password"))!!.sendKeys(password)
+        driver.findElement(By.id("submit"))!!.click()
+    }
+
+    [Then("""^the theme should change to "([^"]*)"$""")]
     fun the_theme_should_change_to(theme: String) {
         assertTrue(driver.getPageSource().contains("href=\"/fixture-web/static/bootswatch/2.3.1/${theme}/bootstrap.min.css\""))
     }
 
-    [Then("I should see the \"([^\"]*)\" page")]
+    [Then("""^I should see the page "([^"]*)"$""")]
     fun I_should_see_the_page(title: String) {
         assertEquals(title, driver.getTitle())
+    }
+
+    [Then("""^I should see the alert "([^"]*)"$""")]
+    fun I_should_see_the_alert(message: String) {
+        assertTrue(driver.findElement(By.className("alert"))!!.getText()!!.contains(message))
     }
 
 }

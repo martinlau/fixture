@@ -2,8 +2,8 @@ Feature: Static Content
 
     Scenario Outline: Site information
         Given I open any page
-        When I click on the "<link>" link
-        Then I should see the "<title>" page
+        When I click on the link "<link>"
+        Then I should see the page "<title>"
 
     Examples:
         | link         | title                     |

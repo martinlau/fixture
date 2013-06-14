@@ -2,8 +2,8 @@ Feature: Personalisation
 
     Scenario Outline: Theme Selection
         Given I open any page
-        And I select the "<theme>" theme
-        When I click on the "Change theme" link
+        And I select the theme "<theme>"
+        When I click on the link "Change theme"
         Then the theme should change to "<next>"
 
     Examples: Themes
