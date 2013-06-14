@@ -20,6 +20,12 @@ class StaticControllerTest {
     }
 
     [Test]
+    fun testAccessDenied() {
+
+        assertEquals(".static.access-denied", subject.accessDenied())
+    }
+
+    [Test]
     fun testContact() {
 
         assertEquals(".static.contact", subject.contact())

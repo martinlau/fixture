@@ -8,11 +8,26 @@
         <put-attribute name="body" type="template"/>
     </definition>
 
+    <definition name=".administration.index" extends=".base.template">
+        <put-attribute name="body" type="template" value="/WEB-INF/jspx/administration/index.jspx"/>
+        <put-attribute name="title" type="string" value="fixture.io - Administration"/>
+    </definition>
+
     <definition name=".common.*" template="/WEB-INF/jspx/common/{1}.jspx"/>
+
+    <definition name=".secure.index" extends=".base.template">
+        <put-attribute name="body" type="template" value="/WEB-INF/jspx/secure/index.jspx"/>
+        <put-attribute name="title" type="string" value="fixture.io - Secure"/>
+    </definition>
 
     <definition name=".static.about" extends=".base.template">
         <put-attribute name="body" type="template" value="/WEB-INF/jspx/static/about.jspx"/>
         <put-attribute name="title" type="string" value="fixture.io - About"/>
+    </definition>
+
+    <definition name=".static.access-denied" extends=".base.template">
+        <put-attribute name="body" type="template" value="/WEB-INF/jspx/static/access-denied.jspx"/>
+        <put-attribute name="title" type="string" value="fixture.io - Access denied"/>
     </definition>
 
     <definition name=".static.contact" extends=".base.template">
