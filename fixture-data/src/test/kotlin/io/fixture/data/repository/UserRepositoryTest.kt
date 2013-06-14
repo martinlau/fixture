@@ -35,7 +35,7 @@ class UserRepositoryTest {
     fun testDelete() {
         subject!!.delete("username-0")
 
-        assertEquals(3.toLong(), subject!!.count())
+        assertEquals(5.toLong(), subject!!.count())
         assertEquals(4.toLong(), groupRepository!!.count())
         assertEquals(6.toLong(), persistentLoginRepository!!.count())
     }
@@ -44,7 +44,7 @@ class UserRepositoryTest {
     fun testDeleteWithGroupsAndPersistentLogins() {
         subject!!.delete("username-1")
 
-        assertEquals(3.toLong(), subject!!.count())
+        assertEquals(5.toLong(), subject!!.count())
         assertEquals(4.toLong(), groupRepository!!.count())
         assertEquals(5.toLong(), persistentLoginRepository!!.count())
     }
@@ -53,7 +53,7 @@ class UserRepositoryTest {
     fun testDeleteWithInvalidUsername() {
         subject!!.delete("invalid")
 
-        assertEquals(4.toLong(), subject!!.count())
+        assertEquals(6.toLong(), subject!!.count())
         assertEquals(4.toLong(), groupRepository!!.count())
         assertEquals(6.toLong(), persistentLoginRepository!!.count())
     }
