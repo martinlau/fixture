@@ -29,8 +29,10 @@
                         <usedDependency>org.apache.tiles:tiles-jsp</usedDependency>
                         <usedDependency>org.webjars:bootswatch</usedDependency>
                         <usedDependency>org.webjars:font-awesome</usedDependency>
+                        <usedDependency>org.webjars:fuelux</usedDependency>
                         <usedDependency>org.webjars:html5shiv</usedDependency>
                         <usedDependency>org.webjars:jquery</usedDependency>
+                        <usedDependency>org.webjars:x-editable-bootstrap</usedDependency>
                     </usedDependencies>
                 </configuration>
             </plugin>
@@ -49,6 +51,44 @@
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>shutdown</id>
+                        <phase>none</phase>
+                    </execution>
+                    <execution>
+                        <id>run</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>io.fixture</groupId>
+                        <artifactId>fixture-data-test</artifactId>
+                        <version>0.1-SNAPSHOT</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <!-- TODO Pull up to -parent -->
+                <groupId>org.jasig.maven</groupId>
+                <artifactId>sass-maven-plugin</artifactId>
+                <version>1.1.1</version>
+                <executions>
+                    <execution>
+                        <id>update-stylesheets</id>
+                        <goals>
+                            <goal>update-stylesheets</goal>
+                        </goals>
+                        <configuration>
+                            <useCompass>true</useCompass>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
@@ -127,11 +167,19 @@
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
+            <artifactId>fuelux</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
             <artifactId>html5shiv</artifactId>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>x-editable-bootstrap</artifactId>
         </dependency>
     </dependencies>
 
