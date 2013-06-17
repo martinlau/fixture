@@ -4,7 +4,7 @@
           xmlns:spring="http://www.springframework.org/tags"
           xmlns:tags="urn:jsptagdir:/WEB-INF/tags"
           xmlns:tiles="http://tiles.apache.org/tags-tiles"
-          version="2.0">
+          version="2.0" xmlns:c="http://java.sun.com/jsp/jstl/core">
 
     <jsp:output omit-xml-declaration="true" />
     <jsp:output doctype-root-element="html" doctype-system="about:legacy-compat" />
@@ -18,22 +18,34 @@
             <title>
                 <tiles:getAsString name="title" />
             </title>
-            <tags:script type="text/javascript" src="/static/html5shiv/3.6.2/html5shiv.min.js" />
-            <spring:theme var="themePath" code="bootstrap.min.css" />
-            <tags:link rel="stylesheet" href="${themePath}" />
-            <tags:link rel="stylesheet" href="/static/font-awesome/3.1.1/css/font-awesome.min.css" />
-            <tags:link rel="stylesheet" href="/static/bootswatch/2.3.1/css/bootswatch.css" />
-            <tags:link rel="stylesheet" href="/resources/css/fixture.css" />
+
+            <tiles:importAttribute name="headScripts" />
+            <c:forEach var="headScript" items="${headScripts}">
+                <tags:script type="text/javascript" src="${headScript}" />
+            </c:forEach>
+
+            <tiles:importAttribute name="headLinks" />
+            <c:forEach var="headLink" items="${headLinks}">
+                <tags:link rel="stylesheet" href="${headLink}" />
+            </c:forEach>
+
+            <spring:theme var="themePath" code="bootswatch.path" />
+            <tags:link rel="stylesheet" href="/static/bootswatch/2.3.1/${themePath}/bootstrap.min.css" />
+
         </head>
         <body id="top">
             <tiles:insertDefinition name=".common.navigation" />
+
             <div class="container">
                 <tiles:insertAttribute name="body" />
             </div>
+
             <tiles:insertDefinition name=".common.footer" />
-            <tags:script type="text/javascript" src="/static/jquery/2.0.0/jquery.min.js" />
-            <tags:script type="text/javascript" src="/static/bootswatch/2.3.1/js/bootstrap.min.js" />
-            <tags:script type="text/javascript" src="/static/bootswatch/2.3.1/js/bootswatch.js" />
+
+            <tiles:importAttribute name="bodyScripts" />
+            <c:forEach var="bodyScript" items="${bodyScripts}">
+                <tags:script type="text/javascript" src="${bodyScript}" />
+            </c:forEach>
         </body>
     </html>
 
