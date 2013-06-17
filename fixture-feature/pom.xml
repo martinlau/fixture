@@ -26,7 +26,6 @@
                         <usedDependency>info.cukes:cucumber-html</usedDependency>
                         <usedDependency>info.cukes:cucumber-spring</usedDependency>
                         <usedDependency>io.fixture:fixture-annotation</usedDependency>
-                        <usedDependency>io.fixture:fixture-data-test</usedDependency>
                         <usedDependency>org.slf4j:jcl-over-slf4j</usedDependency>
                         <usedDependency>org.seleniumhq.selenium:selenium-firefox-driver</usedDependency>
                         <usedDependency>org.springframework:spring-context</usedDependency>
@@ -47,6 +46,13 @@
                         </webapp>
                     </webapps>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>io.fixture</groupId>
+                        <artifactId>fixture-data-test</artifactId>
+                        <version>0.1-SNAPSHOT</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
@@ -61,11 +67,6 @@
             <artifactId>fixture-annotation</artifactId>
             <version>0.1-SNAPSHOT</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.fixture</groupId>
-            <artifactId>fixture-data-test</artifactId>
-            <version>0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
