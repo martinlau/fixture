@@ -5,8 +5,6 @@
           xmlns:tags="urn:jsptagdir:/WEB-INF/tags"
           version="2.0">
 
-    <hr />
-
     <footer class="footer">
         <div class="container">
             <div class="pull-right">
