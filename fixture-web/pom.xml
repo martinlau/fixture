@@ -29,7 +29,6 @@
                         <usedDependency>org.apache.tiles:tiles-jsp</usedDependency>
                         <usedDependency>org.webjars:bootswatch</usedDependency>
                         <usedDependency>org.webjars:font-awesome</usedDependency>
-                        <usedDependency>org.webjars:fuelux</usedDependency>
                         <usedDependency>org.webjars:html5shiv</usedDependency>
                         <usedDependency>org.webjars:jquery</usedDependency>
                         <usedDependency>org.webjars:x-editable-bootstrap</usedDependency>
@@ -151,10 +150,6 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>font-awesome</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>fuelux</artifactId>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
