@@ -35,8 +35,17 @@
           depends-on="liquibase"
           p:dataSource-ref="dataSource"
           p:jpaVendorAdapter-ref="jpaVendorAdapter"
-          p:packagesToScan="io.fixture.data.model"
-          p:jpaProperties="hibernate.hbm2ddl.auto=validate"/>
+          p:packagesToScan="io.fixture.data.model">
+        <property name="jpaProperties">
+            <props>
+                <prop key="net.sf.ehcache.configurationResourceName">/META-INF/ehcache/ehcache.xml</prop>
+                <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory</prop>
+                <prop key="hibernate.cache.use_query_cache">true</prop>
+                <prop key="hibernate.cache.use_second_level_cache">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">validate</prop>
+            </props>
+        </property>
+    </bean>
 
     <bean id="transactionManager"
           class="org.springframework.orm.jpa.JpaTransactionManager"

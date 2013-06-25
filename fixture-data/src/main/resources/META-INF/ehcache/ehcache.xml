@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache dynamicConfig="true"
+         monitoring="autodetect"
+         updateCheck="true"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
+
+    <diskStore path="java.io.tmpdir"/>
+
+    <defaultCache diskExpiryThreadIntervalSeconds="120"
+                  diskPersistent="false"
+                  eternal="false"
+                  maxElementsInMemory="16384"
+                  maxElementsOnDisk="1048576"
+                  memoryStoreEvictionPolicy="LRU"
+                  overflowToDisk="true"
+                  timeToIdleSeconds="120"
+                  timeToLiveSeconds="120"/>
+
+    <cache name="io.fixture.data.model.Group"
+           diskPersistent="false"
+           eternal="false"
+           maxElementsInMemory="16384"
+           memoryStoreEvictionPolicy="LRU"
+           overflowToDisk="false"
+           timeToIdleSeconds="240"
+           timeToLiveSeconds="480"/>
+
+    <cache name="io.fixture.data.model.PersistentLogin"
+           diskPersistent="false"
+           eternal="false"
+           maxElementsInMemory="16384"
+           memoryStoreEvictionPolicy="LRU"
+           overflowToDisk="false"
+           statistics="true"
+           timeToIdleSeconds="240"
+           timeToLiveSeconds="480"/>
+
+    <cache name="org.hibernate.cache.internal.StandardQueryCache"
+           diskPersistent="false"
+           eternal="false"
+           maxElementsInMemory="16384"
+           memoryStoreEvictionPolicy="LRU"
+           overflowToDisk="false"
+           statistics="true"
+           timeToIdleSeconds="240"
+           timeToLiveSeconds="480"/>
+
+    <cache name="org.hibernate.cache.spi.UpdateTimestampsCache"
+           diskPersistent="false"
+           eternal="false"
+           maxElementsInMemory="16384"
+           memoryStoreEvictionPolicy="LRU"
+           overflowToDisk="false"
+           statistics="true"
+           timeToIdleSeconds="240"
+           timeToLiveSeconds="480"/>
+
+    <cache name="io.fixture.data.model.User"
+           diskPersistent="false"
+           eternal="false"
+           maxElementsInMemory="16384"
+           memoryStoreEvictionPolicy="LRU"
+           overflowToDisk="false"
+           timeToIdleSeconds="240"
+           timeToLiveSeconds="480"/>
+
+    <cache name="io.fixture.data.model.UserProfile"
+           diskPersistent="false"
+           eternal="false"
+           maxElementsInMemory="16384"
+           memoryStoreEvictionPolicy="LRU"
+           overflowToDisk="false"
+           statistics="true"
+           timeToIdleSeconds="240"
+           timeToLiveSeconds="480"/>
+
+</ehcache>
