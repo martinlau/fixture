@@ -1,6 +1,7 @@
 package io.fixture.data.model
 
 import java.util.UUID
+import javax.persistence.Cacheable
 import javax.persistence.Column
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
@@ -10,6 +11,7 @@ import org.hibernate.annotations.GenericGenerator
 import org.hibernate.annotations.Type
 import org.springframework.data.domain.Persistable
 
+[Cacheable]
 [MappedSuperclass]
 open class BasePersistable: Persistable<UUID> {
 
