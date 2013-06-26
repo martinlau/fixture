@@ -625,7 +625,7 @@
         <jstl.version>1.2</jstl.version>
         <junit.version>4.11</junit.version>
         <kotlin.version>0.5.748</kotlin.version>
-        <liquibase.version>3.0.0</liquibase.version>
+        <liquibase.version>3.0.1</liquibase.version>
         <logback.version>1.0.13</logback.version>
         <selenium.version>2.33.0</selenium.version>
         <servlet-api.version>2.5</servlet-api.version>
