@@ -1,6 +1,6 @@
 package io.fixture.security
 
-import io.fixture.data.repository.GroupRepository
+import io.fixture.repository.GroupRepository
 import java.util.Arrays
 import java.util.UUID
 import kotlin.test.assertEquals
@@ -17,8 +17,9 @@ import org.springframework.transaction.annotation.Transactional
 import org.springframework.test.context.ContextHierarchy
 
 [ContextHierarchy(
-        ContextConfiguration(array("classpath:/META-INF/spring/fixture-data.xml")),
-        ContextConfiguration(array("classpath:/META-INF/spring/test/fixture-data.xml")),
+        ContextConfiguration(array("classpath:/META-INF/spring/fixture-domain.xml")),
+        ContextConfiguration(array("classpath:/META-INF/spring/fixture-repository.xml")),
+        ContextConfiguration(array("classpath:/META-INF/spring/fixture-domain-test.xml")),
         ContextConfiguration(array("classpath:/META-INF/spring/fixture-security.xml"))
 )]
 [RunWith(javaClass<SpringJUnit4ClassRunner>())]

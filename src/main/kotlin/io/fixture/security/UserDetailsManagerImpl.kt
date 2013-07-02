@@ -1,7 +1,7 @@
 package io.fixture.security
 
-import io.fixture.data.model.User
-import io.fixture.data.repository.UserRepository
+import io.fixture.domain.User
+import io.fixture.repository.UserRepository
 import java.util.HashSet
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.access.AccessDeniedException

@@ -17,7 +17,7 @@
                   timeToIdleSeconds="120"
                   timeToLiveSeconds="120"/>
 
-    <cache name="io.fixture.data.model.Group"
+    <cache name="io.fixture.domain.Group"
            diskPersistent="false"
            eternal="false"
            maxElementsInMemory="16384"
@@ -26,7 +26,26 @@
            timeToIdleSeconds="240"
            timeToLiveSeconds="480"/>
 
-    <cache name="io.fixture.data.model.PersistentLogin"
+    <cache name="io.fixture.domain.PersistentLogin"
+           diskPersistent="false"
+           eternal="false"
+           maxElementsInMemory="16384"
+           memoryStoreEvictionPolicy="LRU"
+           overflowToDisk="false"
+           statistics="true"
+           timeToIdleSeconds="240"
+           timeToLiveSeconds="480"/>
+
+    <cache name="io.fixture.domain.User"
+           diskPersistent="false"
+           eternal="false"
+           maxElementsInMemory="16384"
+           memoryStoreEvictionPolicy="LRU"
+           overflowToDisk="false"
+           timeToIdleSeconds="240"
+           timeToLiveSeconds="480"/>
+
+    <cache name="io.fixture.domain.UserProfile"
            diskPersistent="false"
            eternal="false"
            maxElementsInMemory="16384"
@@ -47,25 +66,6 @@
            timeToLiveSeconds="480"/>
 
     <cache name="org.hibernate.cache.spi.UpdateTimestampsCache"
-           diskPersistent="false"
-           eternal="false"
-           maxElementsInMemory="16384"
-           memoryStoreEvictionPolicy="LRU"
-           overflowToDisk="false"
-           statistics="true"
-           timeToIdleSeconds="240"
-           timeToLiveSeconds="480"/>
-
-    <cache name="io.fixture.data.model.User"
-           diskPersistent="false"
-           eternal="false"
-           maxElementsInMemory="16384"
-           memoryStoreEvictionPolicy="LRU"
-           overflowToDisk="false"
-           timeToIdleSeconds="240"
-           timeToLiveSeconds="480"/>
-
-    <cache name="io.fixture.data.model.UserProfile"
            diskPersistent="false"
            eternal="false"
            maxElementsInMemory="16384"

@@ -32,14 +32,14 @@
         <property name="checkRefresh" value="true"/>
     </bean>
 
-    <context:component-scan base-package="io.fixture.web.controller"/>
+    <context:component-scan base-package="io.fixture.controller"/>
 
     <mvc:annotation-driven/>
 
     <mvc:interceptors>
         <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"/>
         <bean class="org.springframework.web.servlet.theme.ThemeChangeInterceptor"/>
-        <bean class="io.fixture.web.interceptor.NextThemeInterceptor"/>
+        <bean class="io.fixture.interceptor.NextThemeInterceptor"/>
     </mvc:interceptors>
 
     <mvc:resources mapping="/static/**"

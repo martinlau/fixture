@@ -1,8 +1,8 @@
 package io.fixture.security
 
-import io.fixture.data.model.PersistentLogin
-import io.fixture.data.repository.PersistentLoginRepository
-import io.fixture.data.repository.UserRepository
+import io.fixture.domain.PersistentLogin
+import io.fixture.repository.PersistentLoginRepository
+import io.fixture.repository.UserRepository
 import java.util.Date
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.web.authentication.rememberme.PersistentRememberMeToken
