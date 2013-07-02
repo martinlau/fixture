@@ -18,8 +18,6 @@
         <module>fixture-parent</module>
         <module>fixture-annotation</module>
         <module>fixture-aspect</module>
-        <module>fixture-data-test</module>
-        <module>fixture-data</module>
         <module>fixture-web</module>
     </modules>
 

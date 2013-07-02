@@ -24,12 +24,16 @@
                 <configuration>
                     <usedDependencies>
                         <usedDependency>ch.qos.logback:logback-classic</usedDependency>
+                        <usedDependency>com.h2database:h2</usedDependency>
+                        <usedDependency>com.mchange:c3p0</usedDependency>
                         <usedDependency>info.cukes:cucumber-html</usedDependency>
                         <usedDependency>info.cukes:cucumber-spring</usedDependency>
                         <usedDependency>io.fixture:fixture-annotation</usedDependency>
-                        <usedDependency>io.fixture:fixture-data-test</usedDependency>
                         <usedDependency>javax.servlet:jstl</usedDependency>
                         <usedDependency>org.apache.tiles:tiles-jsp</usedDependency>
+                        <usedDependency>org.hibernate:hibernate-ehcache</usedDependency>
+                        <usedDependency>org.hibernate:hibernate-entitymanager</usedDependency>
+                        <usedDependency>org.liquibase:liquibase-core</usedDependency>
                         <usedDependency>org.slf4j:jcl-over-slf4j</usedDependency>
                         <usedDependency>org.seleniumhq.selenium:selenium-firefox-driver</usedDependency>
                         <usedDependency>org.springframework.data:spring-data-rest-webmvc</usedDependency>
@@ -64,13 +68,6 @@
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
-                <dependencies>
-                    <dependency>
-                        <groupId>io.fixture</groupId>
-                        <artifactId>fixture-data-test</artifactId>
-                        <version>0.1-SNAPSHOT</version>
-                    </dependency>
-                </dependencies>
             </plugin>
            <plugin>
                 <groupId>org.jasig.maven</groupId>
@@ -92,20 +89,19 @@
             <version>0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>io.fixture</groupId>
-            <artifactId>fixture-data</artifactId>
-            <version>0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>io.fixture</groupId>
-            <artifactId>fixture-data-test</artifactId>
-            <version>0.1-SNAPSHOT</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.mchange</groupId>
+            <artifactId>c3p0</artifactId>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>info.cukes</groupId>
@@ -151,6 +147,24 @@
             <artifactId>aspectjrt</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-ehcache</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.0-api</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-runtime</artifactId>
         </dependency>
@@ -162,6 +176,11 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-api</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -205,6 +224,14 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
