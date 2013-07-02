@@ -1,8 +1,8 @@
 package io.fixture.security
 
-import io.fixture.data.model.Group
-import io.fixture.data.repository.GroupRepository
-import io.fixture.data.repository.UserRepository
+import io.fixture.domain.Group
+import io.fixture.repository.GroupRepository
+import io.fixture.repository.UserRepository
 import java.util.LinkedList
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.core.authority.SimpleGrantedAuthority

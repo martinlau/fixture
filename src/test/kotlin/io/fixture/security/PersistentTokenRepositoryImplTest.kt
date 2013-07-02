@@ -1,7 +1,7 @@
 package io.fixture.security
 
-import io.fixture.data.repository.PersistentLoginRepository
-import io.fixture.data.repository.UserRepository
+import io.fixture.repository.PersistentLoginRepository
+import io.fixture.repository.UserRepository
 import java.util.Date
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
@@ -15,8 +15,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 import org.springframework.transaction.annotation.Transactional
 
 [ContextHierarchy(
-        ContextConfiguration(array("classpath:/META-INF/spring/fixture-data.xml")),
-        ContextConfiguration(array("classpath:/META-INF/spring/test/fixture-data.xml")),
+        ContextConfiguration(array("classpath:/META-INF/spring/fixture-domain.xml")),
+        ContextConfiguration(array("classpath:/META-INF/spring/fixture-repository.xml")),
+        ContextConfiguration(array("classpath:/META-INF/spring/fixture-domain-test.xml")),
         ContextConfiguration(array("classpath:/META-INF/spring/fixture-security.xml"))
 )]
 [RunWith(javaClass<SpringJUnit4ClassRunner>())]
