@@ -15,7 +15,6 @@
     </prerequisites>
 
     <modules>
-        <module>fixture-parent</module>
         <module>fixture-web</module>
     </modules>
 
