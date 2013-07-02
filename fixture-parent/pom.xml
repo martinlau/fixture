@@ -280,6 +280,9 @@
                                 <goal>compile</goal>
                             </goals>
                             <configuration>
+                                <annotationPaths>
+                                    <annotationPath>${project.basedir}/src/main/annotation</annotationPath>
+                                </annotationPaths>
                                 <sourceDirs>
                                     <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
                                 </sourceDirs>
@@ -292,6 +295,10 @@
                                 <goal>test-compile</goal>
                             </goals>
                             <configuration>
+                                <annotationPaths>
+                                    <annotationPath>${project.basedir}/src/main/annotation</annotationPath>
+                                    <annotationPath>${project.basedir}/src/test/annotation</annotationPath>
+                                </annotationPaths>
                                 <sourceDirs>
                                     <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>
                                 </sourceDirs>

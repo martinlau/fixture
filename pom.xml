@@ -16,7 +16,6 @@
 
     <modules>
         <module>fixture-parent</module>
-        <module>fixture-annotation</module>
         <module>fixture-web</module>
     </modules>
 

@@ -27,7 +27,6 @@
                         <usedDependency>com.mchange:c3p0</usedDependency>
                         <usedDependency>info.cukes:cucumber-html</usedDependency>
                         <usedDependency>info.cukes:cucumber-spring</usedDependency>
-                        <usedDependency>io.fixture:fixture-annotation</usedDependency>
                         <usedDependency>javax.servlet:jstl</usedDependency>
                         <usedDependency>org.apache.tiles:tiles-jsp</usedDependency>
                         <usedDependency>org.hibernate:hibernate-ehcache</usedDependency>
@@ -72,12 +71,6 @@
     </build>
 
     <dependencies>
-        <dependency>
-            <groupId>io.fixture</groupId>
-            <artifactId>fixture-annotation</artifactId>
-            <version>0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
