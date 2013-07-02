@@ -24,10 +24,11 @@
                 <configuration>
                     <usedDependencies>
                         <usedDependency>io.fixture:fixture-annotation</usedDependency>
-                        <usedDependency>io.fixture:fixture-security</usedDependency>
+                        <usedDependency>io.fixture:fixture-data-test</usedDependency>
                         <usedDependency>javax.servlet:jstl</usedDependency>
                         <usedDependency>org.apache.tiles:tiles-jsp</usedDependency>
                         <usedDependency>org.springframework.data:spring-data-rest-webmvc</usedDependency>
+                        <usedDependency>org.springframework.security:spring-security-config</usedDependency>
                         <usedDependency>org.webjars:bootswatch</usedDependency>
                         <usedDependency>org.webjars:font-awesome</usedDependency>
                         <usedDependency>org.webjars:html5shiv</usedDependency>
@@ -43,6 +44,10 @@
                         <aspectLibrary>
                             <groupId>io.fixture</groupId>
                             <artifactId>fixture-aspect</artifactId>
+                        </aspectLibrary>
+                        <aspectLibrary>
+                            <groupId>org.springframework</groupId>
+                            <artifactId>spring-aspects</artifactId>
                         </aspectLibrary>
                     </aspectLibraries>
                 </configuration>
@@ -93,8 +98,14 @@
         </dependency>
         <dependency>
             <groupId>io.fixture</groupId>
-            <artifactId>fixture-security</artifactId>
+            <artifactId>fixture-data</artifactId>
             <version>0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>io.fixture</groupId>
+            <artifactId>fixture-data-test</artifactId>
+            <version>0.1-SNAPSHOT</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -108,6 +119,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
@@ -120,6 +132,14 @@
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -136,6 +156,10 @@
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
         </dependency>
         <dependency>
@@ -146,6 +170,19 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-rest-webmvc</artifactId>
             <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.tiles</groupId>

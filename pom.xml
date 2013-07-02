@@ -20,7 +20,6 @@
         <module>fixture-aspect</module>
         <module>fixture-data-test</module>
         <module>fixture-data</module>
-        <module>fixture-security</module>
         <module>fixture-web</module>
         <module>fixture-feature</module>
     </modules>
