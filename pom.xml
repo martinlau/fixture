@@ -59,6 +59,28 @@
                             <goals>
                                 <goal>analyze-only</goal>
                             </goals>
+                            <configuration>
+                                <failOnWarning>true</failOnWarning>
+                                <usedDependencies>
+                                    <usedDependency>com.h2database:h2</usedDependency>
+                                    <usedDependency>com.mchange:c3p0</usedDependency>
+                                    <usedDependency>info.cukes:cucumber-html</usedDependency>
+                                    <usedDependency>info.cukes:cucumber-spring</usedDependency>
+                                    <usedDependency>javax.servlet:jstl</usedDependency>
+                                    <usedDependency>org.apache.tiles:tiles-jsp</usedDependency>
+                                    <usedDependency>org.hibernate:hibernate-ehcache</usedDependency>
+                                    <usedDependency>org.hibernate:hibernate-entitymanager</usedDependency>
+                                    <usedDependency>org.liquibase:liquibase-core</usedDependency>
+                                    <usedDependency>org.seleniumhq.selenium:selenium-firefox-driver</usedDependency>
+                                    <usedDependency>org.slf4j:jcl-over-slf4j</usedDependency>
+                                    <usedDependency>org.springframework.data:spring-data-rest-webmvc</usedDependency>
+                                    <usedDependency>org.springframework.security:spring-security-config</usedDependency>
+                                    <usedDependency>org.webjars:bootswatch</usedDependency>
+                                    <usedDependency>org.webjars:font-awesome</usedDependency>
+                                    <usedDependency>org.webjars:html5shiv</usedDependency>
+                                    <usedDependency>org.webjars:jquery</usedDependency>
+                                </usedDependencies>
+                            </configuration>
                         </execution>
                         <execution>
                             <id>analyze-duplicate</id>
@@ -73,31 +95,11 @@
                                 <goal>analyze-dep-mgt</goal>
                             </goals>
                             <phase>verify</phase>
+                            <configuration>
+                                <failBuild>true</failBuild>
+                            </configuration>
                         </execution>
                     </executions>
-                    <configuration>
-                        <failBuild>true</failBuild>
-                        <failOnWarning>true</failOnWarning>
-                        <usedDependencies>
-                            <usedDependency>com.h2database:h2</usedDependency>
-                            <usedDependency>com.mchange:c3p0</usedDependency>
-                            <usedDependency>info.cukes:cucumber-html</usedDependency>
-                            <usedDependency>info.cukes:cucumber-spring</usedDependency>
-                            <usedDependency>javax.servlet:jstl</usedDependency>
-                            <usedDependency>org.apache.tiles:tiles-jsp</usedDependency>
-                            <usedDependency>org.hibernate:hibernate-ehcache</usedDependency>
-                            <usedDependency>org.hibernate:hibernate-entitymanager</usedDependency>
-                            <usedDependency>org.liquibase:liquibase-core</usedDependency>
-                            <usedDependency>org.slf4j:jcl-over-slf4j</usedDependency>
-                            <usedDependency>org.seleniumhq.selenium:selenium-firefox-driver</usedDependency>
-                            <usedDependency>org.springframework.data:spring-data-rest-webmvc</usedDependency>
-                            <usedDependency>org.springframework.security:spring-security-config</usedDependency>
-                            <usedDependency>org.webjars:bootswatch</usedDependency>
-                            <usedDependency>org.webjars:font-awesome</usedDependency>
-                            <usedDependency>org.webjars:html5shiv</usedDependency>
-                            <usedDependency>org.webjars:jquery</usedDependency>
-                        </usedDependencies>
-                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -114,39 +116,39 @@
                             <goals>
                                 <goal>enforce</goal>
                             </goals>
+                            <configuration>
+                                <rules>
+                                    <bannedDependencies>
+                                        <excludes>
+                                            <exclude>commons-logging:commons-logging</exclude>
+                                            <exclude>log4j:log4j</exclude>
+                                        </excludes>
+                                        <message>Use slf4j and jcl-over-slf4j and log4j-over-slf4j instead</message>
+                                    </bannedDependencies>
+                                    <dependencyConvergence/>
+                                    <requireJavaVersion>
+                                        <version>[1.7.0-06,)</version>
+                                        <message>Use JDK 1.7.0-06 or above to build</message>
+                                    </requireJavaVersion>
+                                    <requireMavenVersion>
+                                        <version>[3.0.5,)</version>
+                                        <message>Use Maven 3.0.5 or above to build</message>
+                                    </requireMavenVersion>
+                                    <requirePluginVersions>
+                                        <message>Define plugin versions via &lt;pluginManagement&gt; to explicitly define versions</message>
+                                        <phases>clean,compile,test,install,site,deploy</phases>
+                                    </requirePluginVersions>
+                                    <requireReleaseDeps>
+                                        <message>Update all dependencies to release versions when releasing</message>
+                                        <onlyWhenRelease>true</onlyWhenRelease>
+                                    </requireReleaseDeps>
+                                    <requireUpperBoundDeps>
+                                        <message>Define non-up-to-date dependencies via &lt;dependencyManagement&gt; to ensure (atleast) the upper bound is used</message>
+                                    </requireUpperBoundDeps>
+                                </rules>
+                            </configuration>
                         </execution>
                     </executions>
-                    <configuration>
-                        <rules>
-                            <bannedDependencies>
-                                <excludes>
-                                    <exclude>commons-logging:commons-logging</exclude>
-                                    <exclude>log4j:log4j</exclude>
-                                </excludes>
-                                <message>Use slf4j and jcl-over-slf4j and log4j-over-slf4j instead</message>
-                            </bannedDependencies>
-                            <dependencyConvergence/>
-                            <requireJavaVersion>
-                                <version>[1.7.0-06,)</version>
-                                <message>Use JDK 1.7.0-06 or above to build</message>
-                            </requireJavaVersion>
-                            <requireMavenVersion>
-                                <version>[3.0.5,)</version>
-                                <message>Use Maven 3.0.5 or above to build</message>
-                            </requireMavenVersion>
-                            <requirePluginVersions>
-                                <message>Define plugin versions via &lt;pluginManagement&gt; to explicitly define versions</message>
-                                <phases>clean,compile,test,install,site,deploy</phases>
-                            </requirePluginVersions>
-                            <requireReleaseDeps>
-                                <message>Update all dependencies to release versions when releasing</message>
-                                <onlyWhenRelease>true</onlyWhenRelease>
-                            </requireReleaseDeps>
-                            <requireUpperBoundDeps>
-                                <message>Define non-up-to-date dependencies via &lt;dependencyManagement&gt; to ensure (atleast) the upper bound is used</message>
-                            </requireUpperBoundDeps>
-                        </rules>
-                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -250,6 +252,16 @@
                                 <goal>compile</goal>
                             </goals>
                             <configuration>
+                                <aspectLibraries>
+                                    <aspectLibrary>
+                                        <groupId>org.springframework</groupId>
+                                        <artifactId>spring-aspects</artifactId>
+                                    </aspectLibrary>
+                                </aspectLibraries>
+                                <complianceLevel>1.7</complianceLevel>
+                                <forceAjcCompile>true</forceAjcCompile>
+                                <source>1.7</source>
+                                <target>1.7</target>
                                 <weaveDirectories>
                                     <weaveDirectory>${project.basedir}/target/classes</weaveDirectory>
                                 </weaveDirectories>
@@ -261,24 +273,22 @@
                                 <goal>test-compile</goal>
                             </goals>
                             <configuration>
+                                <aspectLibraries>
+                                    <aspectLibrary>
+                                        <groupId>org.springframework</groupId>
+                                        <artifactId>spring-aspects</artifactId>
+                                    </aspectLibrary>
+                                </aspectLibraries>
+                                <complianceLevel>1.7</complianceLevel>
+                                <forceAjcCompile>true</forceAjcCompile>
+                                <source>1.7</source>
+                                <target>1.7</target>
                                 <weaveDirectories>
                                     <weaveDirectory>${project.basedir}/target/test-classes</weaveDirectory>
                                 </weaveDirectories>
                             </configuration>
                         </execution>
                     </executions>
-                    <configuration>
-                        <complianceLevel>1.7</complianceLevel>
-                        <forceAjcCompile>true</forceAjcCompile>
-                        <source>1.7</source>
-                        <target>1.7</target>
-                        <aspectLibraries>
-                            <aspectLibrary>
-                                <groupId>org.springframework</groupId>
-                                <artifactId>spring-aspects</artifactId>
-                            </aspectLibrary>
-                        </aspectLibraries>
-                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.jasig.maven</groupId>
@@ -376,6 +386,7 @@
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
                 <version>${logback.version}</version>
+                <scope>runtime</scope>
             </dependency>
             <dependency>
                 <groupId>ch.qos.logback</groupId>
@@ -391,36 +402,43 @@
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>
                 <version>${h2.version}</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>com.mchange</groupId>
                 <artifactId>c3p0</artifactId>
                 <version>${c3p0.version}</version>
+                <scope>runtime</scope>
             </dependency>
             <dependency>
                 <groupId>info.cukes</groupId>
                 <artifactId>cucumber-core</artifactId>
                 <version>${cucumber.version}</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>info.cukes</groupId>
                 <artifactId>cucumber-html</artifactId>
                 <version>${cucumber-html.version}</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>info.cukes</groupId>
                 <artifactId>cucumber-java</artifactId>
                 <version>${cucumber.version}</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>info.cukes</groupId>
                 <artifactId>cucumber-junit</artifactId>
                 <version>${cucumber.version}</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>info.cukes</groupId>
                 <artifactId>cucumber-spring</artifactId>
                 <version>${cucumber.version}</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>javax.servlet</groupId>
@@ -431,16 +449,19 @@
                 <groupId>javax.servlet</groupId>
                 <artifactId>servlet-api</artifactId>
                 <version>${servlet-api.version}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>${junit.version}</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.apache.tiles</groupId>
                 <artifactId>tiles-jsp</artifactId>
                 <version>${tiles.version}</version>
+                <scope>runtime</scope>
             </dependency>
             <dependency>
                 <groupId>org.aspectj</groupId>
@@ -456,11 +477,13 @@
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-ehcache</artifactId>
                 <version>${hibernate.version}</version>
+                <scope>runtime</scope>
             </dependency>
             <dependency>
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-entitymanager</artifactId>
                 <version>${hibernate.version}</version>
+                <scope>runtime</scope>
             </dependency>
             <dependency>
                 <groupId>org.hibernate.javax.persistence</groupId>
@@ -486,16 +509,19 @@
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-core</artifactId>
                 <version>${liquibase.version}</version>
+                <scope>runtime</scope>
             </dependency>
             <dependency>
                 <groupId>org.seleniumhq.selenium</groupId>
                 <artifactId>selenium-api</artifactId>
                 <version>${selenium.version}</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.seleniumhq.selenium</groupId>
                 <artifactId>selenium-firefox-driver</artifactId>
                 <version>${selenium.version}</version>
+                <scope>test</scope>
                 <exclusions>
                     <exclusion>
                         <groupId>commons-logging</groupId>
@@ -512,6 +538,7 @@
                 <groupId>org.slf4j</groupId>
                 <artifactId>jcl-over-slf4j</artifactId>
                 <version>${slf4j-api.version}</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -574,6 +601,7 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-test</artifactId>
                 <version>${spring.version}</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -604,6 +632,7 @@
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-rest-webmvc</artifactId>
                 <version>${spring-data-rest.version}</version>
+                <scope>runtime</scope>
                 <exclusions>
                     <exclusion>
                         <!-- spring-data-commons provides the necessary dependencies -->
@@ -620,6 +649,7 @@
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-config</artifactId>
                 <version>${spring-security.version}</version>
+                <scope>runtime</scope>
             </dependency>
             <dependency>
                 <groupId>org.springframework.security</groupId>
@@ -635,11 +665,13 @@
                 <groupId>org.webjars</groupId>
                 <artifactId>bootswatch</artifactId>
                 <version>${bootswatch.version}</version>
+                <scope>runtime</scope>
             </dependency>
             <dependency>
                 <groupId>org.webjars</groupId>
                 <artifactId>font-awesome</artifactId>
                 <version>${font-awesome.version}</version>
+                <scope>runtime</scope>
                 <exclusions>
                     <exclusion>
                         <groupId>org.webjars</groupId>
@@ -651,11 +683,13 @@
                 <groupId>org.webjars</groupId>
                 <artifactId>html5shiv</artifactId>
                 <version>${html5shiv.version}</version>
+                <scope>runtime</scope>
             </dependency>
             <dependency>
                 <groupId>org.webjars</groupId>
                 <artifactId>jquery</artifactId>
                 <version>${jquery.version}</version>
+                <scope>runtime</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -664,7 +698,6 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
@@ -673,42 +706,34 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.mchange</groupId>
             <artifactId>c3p0</artifactId>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-html</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-core</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-java</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-spring</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -717,7 +742,6 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
@@ -730,12 +754,10 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-ehcache</artifactId>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
@@ -750,19 +772,16 @@
             <artifactId>kotlin-stdlib</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-api</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
-            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-firefox-driver</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -771,7 +790,6 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -792,7 +810,6 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -817,12 +834,10 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-rest-webmvc</artifactId>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
@@ -835,27 +850,22 @@
         <dependency>
             <groupId>org.apache.tiles</groupId>
             <artifactId>tiles-jsp</artifactId>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootswatch</artifactId>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>font-awesome</artifactId>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>html5shiv</artifactId>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
-            <scope>runtime</scope>
         </dependency>
     </dependencies>
 
