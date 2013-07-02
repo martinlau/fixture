@@ -6,6 +6,6 @@
     <bean id="liquibase-test"
           class="liquibase.integration.spring.SpringLiquibase"
           p:dataSource-ref="dataSource"
-          p:changeLog="classpath:/META-INF/liquibase/test/changelog.xml"/>
+          p:changeLog="classpath:/META-INF/liquibase/changelog-test.xml"/>
 
 </beans>

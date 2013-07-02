@@ -292,7 +292,7 @@
         <comment>Insert 'USER_AUTHORITIES' data</comment>
 
         <loadData tableName="USER_AUTHORITIES"
-                  file="/META-INF/liquibase/data/user_authorities.csv"/>
+                  file="/META-INF/liquibase/data/user-authorities.csv"/>
 
     </changeSet>
 
