@@ -23,10 +23,15 @@
                 <artifactId>maven-dependency-plugin</artifactId>
                 <configuration>
                     <usedDependencies>
+                        <usedDependency>ch.qos.logback:logback-classic</usedDependency>
+                        <usedDependency>info.cukes:cucumber-html</usedDependency>
+                        <usedDependency>info.cukes:cucumber-spring</usedDependency>
                         <usedDependency>io.fixture:fixture-annotation</usedDependency>
                         <usedDependency>io.fixture:fixture-data-test</usedDependency>
                         <usedDependency>javax.servlet:jstl</usedDependency>
                         <usedDependency>org.apache.tiles:tiles-jsp</usedDependency>
+                        <usedDependency>org.slf4j:jcl-over-slf4j</usedDependency>
+                        <usedDependency>org.seleniumhq.selenium:selenium-firefox-driver</usedDependency>
                         <usedDependency>org.springframework.data:spring-data-rest-webmvc</usedDependency>
                         <usedDependency>org.springframework.security:spring-security-config</usedDependency>
                         <usedDependency>org.webjars:bootswatch</usedDependency>
@@ -59,16 +64,6 @@
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>shutdown</id>
-                        <phase>none</phase>
-                    </execution>
-                    <execution>
-                        <id>run</id>
-                        <phase>none</phase>
-                    </execution>
-                </executions>
                 <dependencies>
                     <dependency>
                         <groupId>io.fixture</groupId>
@@ -108,6 +103,36 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-html</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-spring</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
             <scope>provided</scope>
@@ -132,6 +157,21 @@
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-firefox-driver</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
