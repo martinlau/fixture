@@ -21,7 +21,6 @@
         <module>fixture-data-test</module>
         <module>fixture-data</module>
         <module>fixture-web</module>
-        <module>fixture-feature</module>
     </modules>
 
     <properties>

@@ -1,1 +1,0 @@
-This file exists to ensure src/main/webapp exists as a folder for the tomcat7-maven-plugin to expose as fixture-feature and not complain during startup.
