@@ -23,7 +23,6 @@
                 <artifactId>maven-dependency-plugin</artifactId>
                 <configuration>
                     <usedDependencies>
-                        <usedDependency>ch.qos.logback:logback-classic</usedDependency>
                         <usedDependency>com.h2database:h2</usedDependency>
                         <usedDependency>com.mchange:c3p0</usedDependency>
                         <usedDependency>info.cukes:cucumber-html</usedDependency>
@@ -50,10 +49,6 @@
                 <artifactId>aspectj-maven-plugin</artifactId>
                 <configuration>
                     <aspectLibraries>
-                        <aspectLibrary>
-                            <groupId>io.fixture</groupId>
-                            <artifactId>fixture-aspect</artifactId>
-                        </aspectLibrary>
                         <aspectLibrary>
                             <groupId>org.springframework</groupId>
                             <artifactId>spring-aspects</artifactId>
@@ -84,14 +79,13 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>io.fixture</groupId>
-            <artifactId>fixture-aspect</artifactId>
-            <version>0.1-SNAPSHOT</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <scope>test</scope>
+            <artifactId>logback-core</artifactId>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
@@ -186,6 +180,10 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-firefox-driver</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
