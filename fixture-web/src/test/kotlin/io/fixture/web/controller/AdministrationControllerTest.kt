@@ -13,4 +13,10 @@ class AdministrationControllerTest {
         assertEquals(".administration.index", subject.index())
     }
 
+    [Test]
+    fun testUsers() {
+
+        assertEquals(".administration.users", subject.users())
+    }
+
 }
