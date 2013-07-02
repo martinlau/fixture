@@ -71,4 +71,15 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>repositoryRestExporterServlet</servlet-name>
+        <servlet-class>org.springframework.data.rest.webmvc.RepositoryRestExporterServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>repositoryRestExporterServlet</servlet-name>
+        <url-pattern>/api/*</url-pattern>
+    </servlet-mapping>
+
 </web-app>
