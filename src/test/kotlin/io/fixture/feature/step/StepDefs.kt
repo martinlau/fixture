@@ -15,7 +15,7 @@ class StepDefs [Autowired] (
 
     [Given("""^I open any page""")]
     fun I_open_any_page() {
-        driver.get("http://localhost:8080/fixture-web/")
+        driver.get("http://localhost:8080/fixture/")
     }
 
     [Given("""^I select the theme "([^"]*)"$""")]
@@ -25,7 +25,7 @@ class StepDefs [Autowired] (
 
     [When("""^I go to the page "([^"]*)"$""")]
     fun I_go_to_the_page(page: String) {
-        driver.get("http://localhost:8080/fixture-web/${page}")
+        driver.get("http://localhost:8080/fixture/${page}")
     }
 
     [When("""^I click on the link "([^"]*)"$""")]
@@ -42,7 +42,7 @@ class StepDefs [Autowired] (
 
     [Then("""^the theme should change to "([^"]*)"$""")]
     fun the_theme_should_change_to(theme: String) {
-        assertTrue(driver.getPageSource().contains("href=\"/fixture-web/static/bootswatch/2.3.1/${theme}/bootstrap.min.css\""))
+        assertTrue(driver.getPageSource().contains("href=\"/fixture/static/bootswatch/2.3.1/${theme}/bootstrap.min.css\""))
     }
 
     [Then("""^I should see the page "([^"]*)"$""")]
