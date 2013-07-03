@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+                           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="customizableTraceInterceptor"
+          class="org.springframework.aop.interceptor.CustomizableTraceInterceptor"
+          p:hideProxyClassNames="true"
+          p:useDynamicLogger="true"/>
+
+    <bean id="jamonPerformanceMonitorInterceptor"
+          class="org.springframework.aop.interceptor.JamonPerformanceMonitorInterceptor"
+          p:hideProxyClassNames="true"
+          p:useDynamicLogger="false"/>
+
+    <aop:config>
+        <aop:pointcut id="fixture" expression="execution(* io.fixture..*(..))"/>
+        <aop:advisor advice-ref="customizableTraceInterceptor" pointcut-ref="fixture" />
+        <aop:advisor advice-ref="jamonPerformanceMonitorInterceptor" pointcut-ref="fixture" />
+    </aop:config>
+
+</beans>

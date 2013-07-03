@@ -7,6 +7,14 @@
         </encoder>
     </appender>
 
+    <logger name="io.fixture">
+        <level value="all"/>
+    </logger>
+
+    <logger name="org.springframework.aop.interceptor.JamonPerformanceMonitorInterceptor">
+        <level value="trace"/>
+    </logger>
+
     <root level="warn">
         <appender-ref ref="console"/>
     </root>
