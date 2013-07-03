@@ -30,7 +30,7 @@
 
     <scm>
         <connection>scm:git:git@github.com:martinlau/fixture.git</connection>
-        <url>scm:git:git@github.com:martinlau/fixture.git</url>
+        <url>https://github.com/martinlau/fixture</url>
         <developerConnection>scm:git:git@github.com:martinlau/fixture.git</developerConnection>
     </scm>
 
@@ -44,9 +44,113 @@
         </developer>
     </developers>
 
+    <issueManagement>
+        <url>https://github.com/martinlau/fixture/issues</url>
+        <system>github</system>
+    </issueManagement>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-changelog-plugin</artifactId>
+                <version>${maven-changelog-plugin.version}</version>
+                <configuration>
+                    <displayChangeSetDetailUrl>${project.scm.url}/commit/%REV%</displayChangeSetDetailUrl>
+                    <displayFileDetailUrl>${project.scm.url}/blob/master/%FILE%</displayFileDetailUrl>
+                    <displayFileRevDetailUrl>${project.scm.url}/blob/%REV%/%FILE%</displayFileRevDetailUrl>
+                    <!-- TODO this regex is probably a little generic, but there's not much we can do without http://jira.codehaus.org/browse/MCHANGELOG-125 -->
+                    <issueIDRegexPattern>\d+</issueIDRegexPattern>
+                    <issueLinkUrl>${project.issueManagement.url}/%ISSUE%</issueLinkUrl>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven-dependency-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>${maven-jxr-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-linkcheck-plugin</artifactId>
+                <version>${maven-linkcheck-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>${maven-project-info-reports-plugin.version}</version>
+            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-surefire-report-plugin</artifactId>-->
+                <!--<version>${maven-surefire-report-plugin.version}</version>-->
+            <!--</plugin>-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jdepend-maven-plugin</artifactId>
+                <version>${jdepend-maven-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>${license-maven-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>taglist-maven-plugin</artifactId>
+                <version>${taglist-maven-plugin.version}</version>
+                <configuration>
+                    <tagListOptions>
+                        <tagClasses>
+                            <tagClass>
+                                <displayName>To-Do</displayName>
+                                <tags>
+                                    <tag>
+                                        <matchString>TODO</matchString>
+                                        <matchType>ignoreCase</matchType>
+                                    </tag>
+                                    <tag>
+                                        <matchString>XXX</matchString>
+                                        <matchType>ignoreCase</matchType>
+                                    </tag>
+                                </tags>
+                            </tagClass>
+                        </tagClasses>
+                    </tagListOptions>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>${versions-maven-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </reporting>
+
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>com.github.github</groupId>
+                    <artifactId>site-maven-plugin</artifactId>
+                    <version>${site-maven-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>site</id>
+                            <goals>
+                                <goal>site</goal>
+                            </goals>
+                            <phase>site</phase>
+                            <configuration>
+                                <message>Creating site for ${project.version}</message>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-clean-plugin</artifactId>
@@ -212,6 +316,11 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire-plugin.version}</version>
+                    <configuration>
+                        <!--<parallel>both</parallel>-->
+                        <runOrder>random</runOrder>
+                        <!--<threadCount>3</threadCount>-->
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -352,6 +461,10 @@
             </plugins>
         </pluginManagement>
         <plugins>
+            <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -932,12 +1045,26 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
+        <!-- Github settings -->
+        <github.global.server>github</github.global.server>
+
+        <!-- Reporting versions -->
+        <maven-changelog-plugin.version>2.2</maven-changelog-plugin.version>
+        <maven-dependency-plugin.version>2.8</maven-dependency-plugin.version>
+        <maven-jxr-plugin.version>2.3</maven-jxr-plugin.version>
+        <maven-linkcheck-plugin.version>1.1</maven-linkcheck-plugin.version>
+        <maven-project-info-reports-plugin.version>2.7</maven-project-info-reports-plugin.version>
+        <maven-surefire-report-plugin.version>2.14.1</maven-surefire-report-plugin.version>
+        <jdepend-maven-plugin.version>2.0-beta-2</jdepend-maven-plugin.version>
+        <license-maven-plugin.version>1.5</license-maven-plugin.version>
+        <taglist-maven-plugin.version>2.4</taglist-maven-plugin.version>
+        <versions-maven-plugin.version>2.1</versions-maven-plugin.version>
+
         <!-- Plugin versions -->
         <aspectj-maven-plugin.version>1.4</aspectj-maven-plugin.version>
         <kotlin-maven-plugin.version>0.5.748</kotlin-maven-plugin.version>
         <maven-clean-plugin.version>2.5</maven-clean-plugin.version>
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
-        <maven-dependency-plugin.version>2.8</maven-dependency-plugin.version>
         <maven-deploy-plugin.version>2.7</maven-deploy-plugin.version>
         <maven-enforcer-plugin.version>1.2</maven-enforcer-plugin.version>
         <maven-failsafe-plugin.version>2.14.1</maven-failsafe-plugin.version>
@@ -947,6 +1074,7 @@
         <maven-site-plugin.version>3.2</maven-site-plugin.version>
         <maven-surefire-plugin.version>2.14.1</maven-surefire-plugin.version>
         <maven-war-plugin.version>2.3</maven-war-plugin.version>
+        <site-maven-plugin.version>0.8</site-maven-plugin.version>
         <tomcat7-maven-plugin.version>2.1</tomcat7-maven-plugin.version>
 
         <!-- Dependency versions -->
