@@ -27,8 +27,8 @@
                    location="classpath:/META-INF/resources/webjars/"
                    cache-period="#{T(java.lang.Integer).MAX_VALUE}"/>
 
-    <mvc:resources mapping="/resources/**"
-                   location="resources"
+    <mvc:resources mapping="/css/**"
+                   location="css"
                    cache-period="#{T(java.lang.Integer).MAX_VALUE}"/>
 
 </beans>

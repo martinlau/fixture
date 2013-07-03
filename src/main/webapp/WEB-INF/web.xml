@@ -19,6 +19,24 @@
     </listener>
 
     <filter>
+        <filter-name>wroFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <init-param>
+            <param-name>targetBeanName</param-name>
+            <param-value>wroFilter</param-value>
+        </init-param>
+        <init-param>
+            <param-name>targetFilterLifecycle</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>wroFilterChain</filter-name>
+        <url-pattern>/resources/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
         <filter-name>characterEncodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
         <init-param>

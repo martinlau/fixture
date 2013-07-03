@@ -12,7 +12,7 @@
         <put-list-attribute name="headLinks" cascade="true" inherit="true">
             <add-attribute value="/static/font-awesome/3.2.1/css/font-awesome.min.css"/>
             <add-attribute value="/static/bootswatch/2.3.1/css/bootswatch.css"/>
-            <add-attribute value="/resources/css/fixture.css"/>
+            <add-attribute value="/resources/fixture.css"/>
         </put-list-attribute>
         <put-list-attribute name="bodyScripts" cascade="true" inherit="true">
             <add-attribute value="/static/jquery/2.0.2/jquery.min.js"/>
