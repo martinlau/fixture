@@ -254,8 +254,8 @@
                                         <message>Use JDK 1.7.0-06 or above to build</message>
                                     </requireJavaVersion>
                                     <requireMavenVersion>
-                                        <version>[3.0.5,)</version>
-                                        <message>Use Maven 3.0.5 or above to build</message>
+                                        <version>[3.0.4,)</version>
+                                        <message>Use Maven 3.0.4 or above to build</message>
                                     </requireMavenVersion>
                                     <requirePluginVersions>
                                         <message>Define plugin versions via &lt;pluginManagement&gt; to explicitly define versions</message>
