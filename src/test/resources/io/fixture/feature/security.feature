@@ -45,4 +45,3 @@ Feature: Site Security
         And I log in with the credentials "invalid" and "invalid"
         Then I should see the page "fixture.io - Login"
         And I should see the alert "Log in failed"
-
