@@ -7,11 +7,13 @@
                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
                            http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
+    <context:property-placeholder location="classpath:fixture.properties"/>
+
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.tiles3.TilesViewResolver"/>
 
     <bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer"
-          p:checkRefresh="true"/>
+          p:checkRefresh="${fixture.mvc.tiles.checkRefresh}"/>
 
     <context:component-scan base-package="io.fixture.controller"/>
 
@@ -25,10 +27,10 @@
 
     <mvc:resources mapping="/static/**"
                    location="classpath:/META-INF/resources/webjars/"
-                   cache-period="#{T(java.lang.Integer).MAX_VALUE}"/>
+                   cache-period="${fixture.mvc.resources.cachePeriod}"/>
 
     <mvc:resources mapping="/css/**"
                    location="css"
-                   cache-period="#{T(java.lang.Integer).MAX_VALUE}"/>
+                   cache-period="${fixture.mvc.resources.cachePeriod}"/>
 
 </beans>
