@@ -73,12 +73,14 @@
                                     <usedDependency>org.liquibase:liquibase-core</usedDependency>
                                     <usedDependency>org.seleniumhq.selenium:selenium-firefox-driver</usedDependency>
                                     <usedDependency>org.slf4j:jcl-over-slf4j</usedDependency>
+                                    <usedDependency>org.slf4j:log4j-over-slf4j</usedDependency>
                                     <usedDependency>org.springframework.data:spring-data-rest-webmvc</usedDependency>
                                     <usedDependency>org.springframework.security:spring-security-config</usedDependency>
                                     <usedDependency>org.webjars:bootswatch</usedDependency>
                                     <usedDependency>org.webjars:font-awesome</usedDependency>
                                     <usedDependency>org.webjars:html5shiv</usedDependency>
                                     <usedDependency>org.webjars:jquery</usedDependency>
+                                    <usedDependency>ro.isdc.wro4j:wro4j-extensions</usedDependency>
                                 </usedDependencies>
                             </configuration>
                         </execution>
@@ -122,6 +124,7 @@
                                         <excludes>
                                             <exclude>commons-logging:commons-logging</exclude>
                                             <exclude>log4j:log4j</exclude>
+                                            <exclude>org.slf4j:slf4j-log4j12</exclude>
                                         </excludes>
                                         <message>Use slf4j and jcl-over-slf4j and log4j-over-slf4j instead</message>
                                     </bannedDependencies>
@@ -211,7 +214,6 @@
                             </goals>
                             <phase>pre-integration-test</phase>
                             <configuration>
-                                <useTestClasspath>true</useTestClasspath>
                                 <fork>true</fork>
                             </configuration>
                         </execution>
@@ -223,6 +225,9 @@
                             <phase>post-integration-test</phase>
                         </execution>
                     </executions>
+                    <configuration>
+                        <useTestClasspath>true</useTestClasspath>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
@@ -291,19 +296,6 @@
                     </executions>
                 </plugin>
                 <plugin>
-                    <groupId>org.jasig.maven</groupId>
-                    <artifactId>sass-maven-plugin</artifactId>
-                    <version>${sass-maven-plugin.version}</version>
-                    <executions>
-                        <execution>
-                            <id>update-stylesheets</id>
-                            <goals>
-                                <goal>update-stylesheets</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-                <plugin>
                     <groupId>org.jetbrains.kotlin</groupId>
                     <artifactId>kotlin-maven-plugin</artifactId>
                     <version>${kotlin-maven-plugin.version}</version>
@@ -368,10 +360,6 @@
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
             </plugin>
-            <plugin>
-                <groupId>org.jasig.maven</groupId>
-                <artifactId>sass-maven-plugin</artifactId>
-            </plugin>
         </plugins>
     </build>
 
@@ -392,6 +380,16 @@
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-core</artifactId>
                 <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>${commons-beanutils.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.google.guava</groupId>
@@ -456,6 +454,16 @@
                 <artifactId>junit</artifactId>
                 <version>${junit.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.antlr</groupId>
+                <artifactId>antlr-runtime</artifactId>
+                <version>${antlr-runtime.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.ant</groupId>
+                <artifactId>ant</artifactId>
+                <version>${ant.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.tiles</groupId>
@@ -531,14 +539,18 @@
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
+                <artifactId>jcl-over-slf4j</artifactId>
                 <version>${slf4j-api.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
-                <artifactId>jcl-over-slf4j</artifactId>
+                <artifactId>log4j-over-slf4j</artifactId>
                 <version>${slf4j-api.version}</version>
-                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j-api.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -691,6 +703,26 @@
                 <version>${jquery.version}</version>
                 <scope>runtime</scope>
             </dependency>
+            <dependency>
+                <groupId>ro.isdc.wro4j</groupId>
+                <artifactId>wro4j-extensions</artifactId>
+                <version>${wro4j.version}</version>
+                <scope>runtime</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>log4j</groupId>
+                        <artifactId>log4j</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -785,11 +817,15 @@
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
+            <artifactId>jcl-over-slf4j</artifactId>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
+            <artifactId>log4j-over-slf4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -867,6 +903,11 @@
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
         </dependency>
+        <dependency>
+            <groupId>ro.isdc.wro4j</groupId>
+            <artifactId>wro4j-extensions</artifactId>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -889,7 +930,6 @@
         <maven-site-plugin.version>3.2</maven-site-plugin.version>
         <maven-surefire-plugin.version>2.14.1</maven-surefire-plugin.version>
         <maven-war-plugin.version>2.3</maven-war-plugin.version>
-        <sass-maven-plugin.version>1.1.1</sass-maven-plugin.version>
         <tomcat7-maven-plugin.version>2.1</tomcat7-maven-plugin.version>
 
         <!-- Dependency versions -->
@@ -924,6 +964,11 @@
         <spring-data-rest.version>1.0.0.RELEASE</spring-data-rest.version>
         <spring-security.version>3.1.4.RELEASE</spring-security.version>
         <tiles.version>3.0.1</tiles.version>
+        <wro4j.version>1.6.3</wro4j.version>
+        <commons-io.version>2.4</commons-io.version>
+        <commons-beanutils.version>1.8.3</commons-beanutils.version>
+        <ant.version>1.9.1</ant.version>
+        <antlr-runtime.version>3.4</antlr-runtime.version>
     </properties>
 
 </project>
