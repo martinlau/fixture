@@ -21,6 +21,7 @@
 
     <bean id="wroFilter"
           class="ro.isdc.wro.http.ConfigurableWroFilter"
+          destroy-method="destroy"
           p:properties-ref="properties"/>
 
 </beans>

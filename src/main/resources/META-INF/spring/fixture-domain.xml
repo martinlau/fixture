@@ -10,10 +10,11 @@
 
     <context:property-placeholder location="classpath:fixture.properties"/>
 
-    <tx:annotation-driven mode="aspectj"/>
+    <tx:annotation-driven mode="proxy" />
 
     <bean id="dataSource"
           class="com.mchange.v2.c3p0.ComboPooledDataSource"
+          destroy-method="close"
           p:jdbcUrl="${fixture.domain.jdbcUrl}"
           p:maxPoolSize="${fixture.domain.maxPoolSize}"
           p:initialPoolSize="${fixture.domain.initialPoolSize}"/>
