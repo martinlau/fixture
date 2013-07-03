@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:util="http://www.springframework.org/schema/util"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd ">
+
+    <context:property-placeholder location="classpath:fixture.properties"/>
 
     <util:properties id="properties">
-        <prop key="debug">true</prop>
-        <prop key="disableCache">true</prop>
-        <prop key="parallelPreprocessing">true</prop>
-        <prop key="ignoreMissingResources">false</prop>
+        <prop key="debug">${fixture.wro4j.debug}</prop>
+        <prop key="disableCache">${fixture.wro4j.disableCache}</prop>
+        <prop key="parallelPreprocessing">${fixture.wro4j.parallelPreprocessing}</prop>
+        <prop key="ignoreMissingResources">${fixture.wro4j.ignoreMissingResources}</prop>
         <prop key="managerFactoryClassName">ro.isdc.wro.manager.factory.ConfigurableWroManagerFactory</prop>
         <prop key="preProcessors">rubySassCss</prop>
         <prop key="uriLocators">servletContext.SERVLET_CONTEXT_FIRST,uri,classpath</prop>
