@@ -8,14 +8,19 @@ import kotlin.test.assertTrue
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Value
+import java.net.URI
 
 class StepDefs [Autowired] (
         val driver: WebDriver
 ) {
 
+    [Value("#{systemProperties['fixture.base.url']}")]
+    var baseUri: String? = null
+
     [Given("""^I open any page""")]
     fun I_open_any_page() {
-        driver.get("http://localhost:8080/fixture/")
+        driver.get("${baseUri}")
     }
 
     [Given("""^I select the theme "([^"]*)"$""")]
@@ -25,7 +30,7 @@ class StepDefs [Autowired] (
 
     [When("""^I go to the page "([^"]*)"$""")]
     fun I_go_to_the_page(page: String) {
-        driver.get("http://localhost:8080/fixture/${page}")
+        driver.get("${baseUri}${page}")
     }
 
     [When("""^I click on the link "([^"]*)"$""")]
