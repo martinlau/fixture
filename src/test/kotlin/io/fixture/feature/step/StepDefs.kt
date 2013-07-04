@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import java.net.URI
+import java.util.concurrent.TimeUnit
 
 class StepDefs [Autowired] (
         val driver: WebDriver
@@ -47,12 +48,16 @@ class StepDefs [Autowired] (
 
     [Then("""^the theme should change to "([^"]*)"$""")]
     fun the_theme_should_change_to(theme: String) {
+        // HACK: drone.io seems to need some time to load the page - this allows that
+        driver.getCurrentUrl()
+
         assertTrue(driver.getPageSource().contains("href=\"/fixture/static/bootswatch/2.3.1/${theme}/bootstrap.min.css\""))
     }
 
     [Then("""^I should see the page "([^"]*)"$""")]
     fun I_should_see_the_page(title: String) {
-        System.out.println("2: >>>>> ${driver.getCurrentUrl()} <<<<<")
+        // HACK: drone.io seems to need some time to load the page - this allows that
+        driver.getCurrentUrl()
 
         assertEquals(title, driver.getTitle())
     }
