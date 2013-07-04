@@ -110,6 +110,10 @@
                                 <displayName>To-Do</displayName>
                                 <tags>
                                     <tag>
+                                        <matchString>HACK</matchString>
+                                        <matchType>ignoreCase</matchType>
+                                    </tag>
+                                    <tag>
                                         <matchString>TODO</matchString>
                                         <matchType>ignoreCase</matchType>
                                     </tag>
@@ -326,9 +330,9 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire-plugin.version}</version>
                     <configuration>
-                        <!--<parallel>both</parallel>-->
+                        <parallel>classes</parallel>
                         <runOrder>random</runOrder>
-                        <!--<threadCount>3</threadCount>-->
+                        <threadCount>4</threadCount>
                     </configuration>
                 </plugin>
                 <plugin>
