@@ -100,4 +100,8 @@
         <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
 
+    <session-config>
+        <tracking-mode>COOKIE</tracking-mode>
+    </session-config>
+
 </web-app>
