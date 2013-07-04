@@ -17,5 +17,4 @@ import org.junit.Ignore
                 "io.fixture.feature.step"
         )
 )]
-[Ignore("ML 20130704 - Ignoring while I figure out what drone.io is doing")]
 class FixtureFeatureIT
