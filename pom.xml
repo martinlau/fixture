@@ -286,6 +286,11 @@
                             <goals>
                                 <goal>integration-test</goal>
                             </goals>
+                            <configuration>
+                                <systemProperties>
+                                    <fixture.base.url>http://localhost:${tomcat.http.port}/fixture</fixture.base.url>
+                                </systemProperties>
+                            </configuration>
                         </execution>
                         <execution>
                             <id>verify</id>
@@ -343,6 +348,7 @@
                             <phase>pre-integration-test</phase>
                             <configuration>
                                 <fork>true</fork>
+                                <port>${tomcat.http.port}</port>
                             </configuration>
                         </execution>
                         <execution>
@@ -356,6 +362,24 @@
                     <configuration>
                         <useTestClasspath>true</useTestClasspath>
                     </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>${build-helper-maven-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>reserve-network-port</id>
+                            <goals>
+                                <goal>reserve-network-port</goal>
+                            </goals>
+                            <configuration>
+                                <portNames>
+                                    <portName>tomcat.http.port</portName>
+                                </portNames>
+                            </configuration>
+                        </execution>
+                    </executions>
                 </plugin>
                 <plugin>
                     <groupId>org.jetbrains.kotlin</groupId>
@@ -421,6 +445,10 @@
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
@@ -977,6 +1005,7 @@
         <versions-maven-plugin.version>2.1</versions-maven-plugin.version>
 
         <!-- Plugin versions -->
+        <build-helper-maven-plugin.version>1.8</build-helper-maven-plugin.version>
         <kotlin-maven-plugin.version>0.5.748</kotlin-maven-plugin.version>
         <maven-clean-plugin.version>2.5</maven-clean-plugin.version>
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
