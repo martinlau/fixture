@@ -47,8 +47,6 @@ class StepDefs [Autowired] (
 
     [Then("""^the theme should change to "([^"]*)"$""")]
     fun the_theme_should_change_to(theme: String) {
-        System.out.println("1: >>>>> ${driver.getCurrentUrl()} <<<<<")
-
         assertTrue(driver.getPageSource().contains("href=\"/fixture/static/bootswatch/2.3.1/${theme}/bootstrap.min.css\""))
     }
 
