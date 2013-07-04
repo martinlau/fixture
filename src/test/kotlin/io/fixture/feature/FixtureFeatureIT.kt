@@ -13,6 +13,7 @@ import org.junit.Ignore
                 // "pretty"
         ),
         glue = array(
+                "cucumber.api.spring",
                 "io.fixture.feature.hook",
                 "io.fixture.feature.step"
         )
