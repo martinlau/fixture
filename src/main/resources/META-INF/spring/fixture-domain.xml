@@ -10,7 +10,7 @@
 
     <context:property-placeholder location="classpath:fixture.properties"/>
 
-    <tx:annotation-driven mode="proxy" />
+    <tx:annotation-driven mode="proxy"/>
 
     <bean id="dataSource"
           class="com.mchange.v2.c3p0.ComboPooledDataSource"
@@ -18,14 +18,6 @@
           p:jdbcUrl="${fixture.domain.jdbcUrl}"
           p:maxPoolSize="${fixture.domain.maxPoolSize}"
           p:initialPoolSize="${fixture.domain.initialPoolSize}"/>
-
-    <!--
-    <bean id="dataSource"
-          class="com.mchange.v2.c3p0.ComboPooledDataSource"
-          p:jdbcUrl="jdbc:h2:file:#{systemProperties['java.io.tmpdir']}/fixture;MVCC=TRUE"
-          p:maxPoolSize="200"
-          p:initialPoolSize="100"/>
-    -->
 
     <bean id="jpaVendorAdapter"
           class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
