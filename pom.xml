@@ -536,7 +536,7 @@
             </dependency>
             <dependency>
                 <groupId>javax.servlet</groupId>
-                <artifactId>servlet-api</artifactId>
+                <artifactId>javax.servlet-api</artifactId>
                 <version>${servlet-api.version}</version>
                 <scope>provided</scope>
             </dependency>
@@ -847,7 +847,7 @@
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
+            <artifactId>javax.servlet-api</artifactId>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -1047,7 +1047,7 @@
         <liquibase.version>3.0.1</liquibase.version>
         <logback.version>1.0.13</logback.version>
         <selenium.version>2.33.0</selenium.version>
-        <servlet-api.version>2.5</servlet-api.version>
+        <servlet-api.version>3.0.1</servlet-api.version>
         <slf4j.version>1.7.5</slf4j.version>
         <spring.version>3.2.3.RELEASE</spring.version>
         <!-- TODO Find out if this is necessary, and why it's out of sync -->
