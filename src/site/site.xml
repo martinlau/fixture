@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/DECORATION/1.3.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/DECORATION/1.3.0 http://maven.apache.org/xsd/decoration-1.3.0.xsd"
+         name="fixture">
+
+    <bannerLeft>
+        <name>fixture</name>
+        <href>http://martinlau.github.io/fixture</href>
+    </bannerLeft>
+
+    <body>
+
+        <links>
+            <item name="GitHub project" href="http://github.com/martinlau/fixture"/>
+        </links>
+
+        <breadcrumbs>
+            <item name="fixture" href="/" />
+        </breadcrumbs>
+
+        <menu name="Project reports" ref="reports"/>
+
+        <menu name="In the box" inherit="top">
+            <item href="http://kotlin.jetbrains.org" name="Kotlin"/>
+            <item href="http://springsource.org/spring-framework" name="Spring Framework"/>
+            <item href="http://springsource.org/spring-data/jpa" name="Spring Data JPA"/>
+            <item href="http://springsource.org/spring-data/rest" name="Spring Data REST"/>
+            <item href="http://springsource.org/spring-security" name="Spring Security"/>
+            <item href="http://hibernate.org" name="Hibernate"/>
+            <item href="http://liquibase.org" name="Liquibase"/>
+            <item href="http://ehcache.org" name="Ehcache"/>
+            <item href="http://tiles.apache.org" name="Tiles"/>
+            <item href="http://wro4j.googlecode.com" name="Wro4j"/>
+            <item href="http://sass-lang.com" name="SASS"/>
+            <item href="http://coffeescript.org" name="CoffeeScript"/>
+            <item href="http://webjars.org" name="WebJARs"/>
+            <item href="http://twitter.github.io/bootstrap" name="Bootstrap"/>
+            <item href="http://bootswatch.com" name="Bootswatch"/>
+            <item href="http://cukes.info" name="Cucumber"/>
+            <item href="https://code.google.com/p/selenium" name="Selenium WebDriver"/>
+        </menu>
+
+    </body>
+
+    <custom>
+        <reflowSkin>
+            <breadcrumbs>false</breadcrumbs>
+            <highlightJs>true</highlightJs>
+            <protocolRelativeURLs>true</protocolRelativeURLs>
+            <shortTitle>generate</shortTitle>
+            <skinAttribution>false</skinAttribution>
+            <toc>no</toc>
+
+            <bottomNav>
+                <column>none</column>
+            </bottomNav>
+
+        </reflowSkin>
+    </custom>
+
+    <skin>
+        <groupId>lt.velykis.maven.skins</groupId>
+        <artifactId>reflow-maven-skin</artifactId>
+        <version>1.0.0</version>
+    </skin>
+
+</project>

@@ -10,6 +10,10 @@
     <version>0.1-SNAPSHOT</version>
     <packaging>war</packaging>
 
+    <name>fixture</name>
+    <description>A non-java JVM application (using Spring, Hibernate, SLF4J, EhCache, Kotlin) for the non-CSS and non-Javascript web (using SASS and CoffeeScript).</description>
+    <url>http://martinlau.github.io/fixture</url>
+
     <repositories>
         <repository>
             <id>jetbrains-all</id>
@@ -324,6 +328,18 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
                     <version>${maven-site-plugin.version}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>lt.velykis.maven.skins</groupId>
+                            <artifactId>reflow-velocity-tools</artifactId>
+                            <version>${reflow-velocity-tools.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.apache.velocity</groupId>
+                            <artifactId>velocity</artifactId>
+                            <version>${velocity.version}</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -1035,6 +1051,10 @@
         <maven-war-plugin.version>2.3</maven-war-plugin.version>
         <site-maven-plugin.version>0.8</site-maven-plugin.version>
         <tomcat7-maven-plugin.version>2.1</tomcat7-maven-plugin.version>
+
+        <!-- Site dependency versions -->
+        <reflow-velocity-tools.version>1.0.0</reflow-velocity-tools.version>
+        <velocity.version>1.7</velocity.version>
 
         <!-- Dependency versions -->
         <ant.version>1.9.1</ant.version>
