@@ -7,7 +7,7 @@ import org.junit.Ignore
 [RunWith(javaClass<Cucumber>())]
 [Cucumber.Options(
         format = array(
-                "junit:target/failsafe-reports/TEST-io.fixture.feature.FixtureFeatureIT-Cucumber.xml",
+                // "junit:target/failsafe-reports/TEST-io.fixture.feature.FixtureFeatureIT-Cucumber.xml",
                 "html:target/cucumber"
                 // TODO Reenable when cucumber > 1.1.3
                 // "pretty"
