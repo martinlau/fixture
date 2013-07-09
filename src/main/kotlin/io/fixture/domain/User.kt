@@ -18,6 +18,8 @@ import javax.persistence.OneToOne
 import javax.persistence.Table
 import javax.persistence.CascadeType
 import org.hibernate.annotations.Type
+import javax.validation.constraints.NotNull
+import org.hibernate.validator.constraints.Length
 
 [Entity]
 [Table(name = "users")]
@@ -88,6 +90,7 @@ public class User : BasePersistable() {
             name = "password",
             nullable = false
     )]
+    [NotNull]
     var password: String = ""
 
     [OneToMany(
@@ -110,6 +113,11 @@ public class User : BasePersistable() {
             nullable = false,
             unique = true
     )]
+    [Length(
+            min = 3,
+            max = 64
+    )]
+    [NotNull]
     var username: String = ""
 
 }
