@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn
 import javax.persistence.JoinTable
 import javax.persistence.ManyToMany
 import javax.persistence.Table
+import org.hibernate.validator.constraints.NotEmpty
+import org.hibernate.validator.constraints.Length
 
 [Entity]
 [Table(name = "groups")]
@@ -31,6 +33,11 @@ public class Group: BasePersistable() {
             nullable = false,
             unique = true
     )]
+    [Length(
+            min = 3,
+            max = 64
+    )]
+    [NotEmpty]
     var name: String = ""
 
     [JoinTable(

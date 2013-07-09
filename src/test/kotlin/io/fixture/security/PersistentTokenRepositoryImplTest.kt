@@ -40,22 +40,22 @@ public class PersistentTokenRepositoryImplTest {
         subject!!.createNewToken(
                 PersistentRememberMeToken(
                         "username-0",
-                        "test-series",
-                        "test-token",
+                        "--test--series--",
+                        "---test-token---",
                         date
                 )
         )
 
         val result = userRepository!!.findOne("username-0")
-        assertTrue { result!!.persistentLogins["test-series"] != null }
-        assertEquals(date, result!!.persistentLogins["test-series"]!!.lastUsed)
+        assertTrue { result!!.persistentLogins["--test--series--"] != null }
+        assertEquals(date, result!!.persistentLogins["--test--series--"]!!.lastUsed)
     }
 
     [Test]
     fun testGetTokenForSeries() {
-        val result = subject!!.getTokenForSeries("series-1")
+        val result = subject!!.getTokenForSeries("----series-1----")
 
-        assertEquals("series-1", result!!.getSeries())
+        assertEquals("----series-1----", result!!.getSeries())
     }
 
     [Test]
@@ -68,10 +68,10 @@ public class PersistentTokenRepositoryImplTest {
 
     [Test]
     fun testUpdateToken() {
-        subject!!.updateToken("series-1", "test-token", date)
+        subject!!.updateToken("----series-1----", "---test-token---", date)
 
-        val result = persistentLoginRepository!!.findOne("series-1")
-        assertEquals("test-token", result!!.token)
+        val result = persistentLoginRepository!!.findOne("----series-1----")
+        assertEquals("---test-token---", result!!.token)
         assertEquals(date, result.lastUsed)
     }
 

@@ -53,9 +53,9 @@ class PersistentLoginRepositoryTest {
 
     [Test]
     fun testFindOne() {
-        val result = subject!!.findOne("series-1")
+        val result = subject!!.findOne("----series-1----")
 
-        assertEquals("series-1", result!!.series)
+        assertEquals("----series-1----", result!!.series)
     }
 
     [Test]
