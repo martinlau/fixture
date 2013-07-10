@@ -45,17 +45,16 @@
 
     <custom>
         <reflowSkin>
+            <bottomNav>
+                <column>none</column>
+            </bottomNav>
             <breadcrumbs>false</breadcrumbs>
             <highlightJs>true</highlightJs>
             <protocolRelativeURLs>true</protocolRelativeURLs>
             <shortTitle>generate</shortTitle>
             <skinAttribution>false</skinAttribution>
+            <theme>bootswatch-superhero</theme>
             <toc>no</toc>
-
-            <bottomNav>
-                <column>none</column>
-            </bottomNav>
-
         </reflowSkin>
     </custom>
 
