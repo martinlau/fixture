@@ -53,7 +53,7 @@
             <protocolRelativeURLs>true</protocolRelativeURLs>
             <shortTitle>generate</shortTitle>
             <skinAttribution>false</skinAttribution>
-            <theme>bootswatch-superhero</theme>
+            <theme>bootswatch-flatly</theme>
             <toc>no</toc>
         </reflowSkin>
     </custom>
