@@ -8,7 +8,7 @@ import org.junit.Ignore
 [Cucumber.Options(
         format = array(
                 // "junit:target/failsafe-reports/TEST-io.fixture.feature.FixtureFeatureIT-Cucumber.xml",
-                "html:target/cucumber"
+                "json:target/cucumber.json"
                 // TODO Reenable when cucumber > 1.1.3
                 // "pretty"
         ),
