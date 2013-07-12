@@ -173,9 +173,10 @@
                                 <goal>generate</goal>
                             </goals>
                             <configuration>
-                                <outputDirectory>${project.build.directory}/cucumber-html-reports</outputDirectory>
                                 <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
-                                <enableFlashCharts>false</enableFlashCharts>
+                                <enableFlashCharts>true</enableFlashCharts>
+                                <outputDirectory>${project.build.directory}/site/cucumber</outputDirectory>
+                                <projectName>${project.name}</projectName>
                             </configuration>
                         </execution>
                     </executions>

@@ -12,16 +12,20 @@
     <body>
 
         <links>
-            <item name="GitHub project" href="http://github.com/martinlau/fixture"/>
+            <item href="http://github.com/martinlau/fixture" name="GitHub project"/>
         </links>
 
         <breadcrumbs>
-            <item name="fixture" href="/" />
+            <item href="/" name="fixture"/>
         </breadcrumbs>
 
-        <menu name="Project reports" ref="reports"/>
+        <menu ref="reports" name="Project reports"/>
 
-        <menu name="In the box" inherit="top">
+        <menu name="Other information">
+            <item href="cucumber/feature-overview.html" name="Cucumber reports"/>
+        </menu>
+
+        <menu inherit="top" name="In the box">
             <item href="http://kotlin.jetbrains.org" name="Kotlin"/>
             <item href="http://springsource.org/spring-framework" name="Spring Framework"/>
             <item href="http://springsource.org/spring-data/jpa" name="Spring Data JPA"/>
