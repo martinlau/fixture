@@ -226,6 +226,7 @@
                                     <usedDependency>com.google.code.maven-play-plugin.com.jamonapi:jamon</usedDependency>
                                     <usedDependency>com.h2database:h2</usedDependency>
                                     <usedDependency>com.mattbertolini:liquibase-slf4j</usedDependency>
+                                    <usedDependency>com.mchange:c3p0</usedDependency>
                                     <usedDependency>info.cukes:gherkin</usedDependency>
                                     <usedDependency>info.cukes:cucumber-html</usedDependency>
                                     <usedDependency>info.cukes:cucumber-spring</usedDependency>
@@ -233,6 +234,7 @@
                                     <usedDependency>org.apache.tiles:tiles-jsp</usedDependency>
                                     <usedDependency>org.hibernate:hibernate-ehcache</usedDependency>
                                     <usedDependency>org.hibernate:hibernate-entitymanager</usedDependency>
+                                    <usedDependency>org.liquibase:liquibase-core</usedDependency>
                                     <usedDependency>org.seleniumhq.selenium:selenium-firefox-driver</usedDependency>
                                     <usedDependency>org.slf4j:jcl-over-slf4j</usedDependency>
                                     <usedDependency>org.slf4j:log4j-over-slf4j</usedDependency>
@@ -243,6 +245,7 @@
                                     <usedDependency>org.webjars:font-awesome</usedDependency>
                                     <usedDependency>org.webjars:html5shiv</usedDependency>
                                     <usedDependency>org.webjars:jquery</usedDependency>
+                                    <usedDependency>ro.isdc.wro4j:wro4j-extensions</usedDependency>
                                 </usedDependencies>
                             </configuration>
                         </execution>
@@ -390,9 +393,6 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
                     <version>${maven-war-plugin.version}</version>
-                    <configuration>
-                        <failOnMissingWebXml>false</failOnMissingWebXml>
-                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.tomcat.maven</groupId>
@@ -566,6 +566,7 @@
                 <groupId>com.mchange</groupId>
                 <artifactId>c3p0</artifactId>
                 <version>${c3p0.version}</version>
+                <scope>runtime</scope>
             </dependency>
             <dependency>
                 <groupId>info.cukes</groupId>
@@ -687,6 +688,7 @@
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-core</artifactId>
                 <version>${liquibase.version}</version>
+                <scope>runtime</scope>
             </dependency>
             <dependency>
                 <groupId>org.seleniumhq.selenium</groupId>
@@ -871,6 +873,7 @@
                 <groupId>ro.isdc.wro4j</groupId>
                 <artifactId>wro4j-extensions</artifactId>
                 <version>${wro4j.version}</version>
+                <scope>runtime</scope>
                 <exclusions>
                     <!-- TODO Update exclusions for resources we don't use (eg less) -->
                     <exclusion>
@@ -1078,6 +1081,7 @@
         <dependency>
             <groupId>ro.isdc.wro4j</groupId>
             <artifactId>wro4j-extensions</artifactId>
+            <scope>runtime</scope>
         </dependency>
     </dependencies>
 
