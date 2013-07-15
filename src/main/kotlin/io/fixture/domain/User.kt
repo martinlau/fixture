@@ -48,12 +48,12 @@ public class User : BasePersistable() {
     )]
     [Column(name = "token")]
     [ElementCollection(targetClass = javaClass<UUID>())]
-    [MapKeyClass(javaClass<User.TokenType>())]
+    [MapKeyClass(value = javaClass<User.TokenType>())]
     [MapKeyColumn(
             name = "token_type",
             unique = true
     )]
-    [MapKeyEnumerated(EnumType.STRING)]
+    [MapKeyEnumerated(value = EnumType.STRING)]
     [Type(`type` = "uuid-char")]
     var accountTokens: MutableMap<User.TokenType, UUID> = HashMap()
 
@@ -97,7 +97,7 @@ public class User : BasePersistable() {
             mappedBy = "user",
             targetEntity = javaClass<PersistentLogin>()
     )]
-    [MapKeyClass(javaClass<String>())]
+    [MapKeyClass(value = javaClass<String>())]
     [MapKeyColumn(name = "series")]
     var persistentLogins: MutableMap<String, PersistentLogin> = HashMap()
 

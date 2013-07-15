@@ -4,7 +4,7 @@ import cucumber.api.junit.Cucumber
 import org.junit.runner.RunWith
 import org.junit.Ignore
 
-[RunWith(javaClass<Cucumber>())]
+[RunWith(value = javaClass<Cucumber>())]
 [Cucumber.Options(
         format = array(
                 // "junit:target/failsafe-reports/TEST-io.fixture.feature.FixtureFeatureIT-Cucumber.xml",

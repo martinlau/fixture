@@ -12,16 +12,16 @@ import org.springframework.data.jpa.repository.QueryHints
 public trait PersistentLoginRepository: JpaRepository<PersistentLogin, UUID> {
 
     [Modifying]
-    [Query("DELETE FROM PersistentLogin pl WHERE pl.user = (SELECT u FROM User u WHERE u.username = :username)")]
-    [QueryHints(array(
+    [Query(value = "DELETE FROM PersistentLogin pl WHERE pl.user = (SELECT u FROM User u WHERE u.username = :username)")]
+    [QueryHints(value = array(
             QueryHint(name = "org.hibernate.cacheable", value = "true")
     ))]
-    fun deleteAllForUsername([Param("username")] username: String)
+    fun deleteAllForUsername([Param(value = "username")] username: String)
 
-    [Query("SELECT pl FROM PersistentLogin pl WHERE pl.series = :series")]
-    [QueryHints(array(
+    [Query(value = "SELECT pl FROM PersistentLogin pl WHERE pl.series = :series")]
+    [QueryHints(value = array(
             QueryHint(name = "org.hibernate.cacheable", value = "true")
     ))]
-    fun findOne([Param("series")] series: String): PersistentLogin?
+    fun findOne([Param(value = "series")] series: String): PersistentLogin?
 
 }

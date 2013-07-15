@@ -23,7 +23,7 @@ public class PersistentLogin: BasePersistable() {
     )]
     [NotNull]
     [Past]
-    [Temporal(TemporalType.TIMESTAMP)]
+    [Temporal(value = TemporalType.TIMESTAMP)]
     var lastUsed: Date = Date(0)
 
     [Column(

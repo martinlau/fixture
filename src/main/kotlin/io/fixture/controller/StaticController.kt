@@ -6,28 +6,28 @@ import org.springframework.web.bind.annotation.RequestMapping
 [Controller]
 public class StaticController {
 
-    [RequestMapping(array("/"))]
+    [RequestMapping(value = array("/"))]
     fun index() = ".static.index"
 
-    [RequestMapping(array("/about"))]
+    [RequestMapping(value = array("/about"))]
     fun about() = ".static.about"
 
-    [RequestMapping(array("/access-denied"))]
+    [RequestMapping(value = array("/access-denied"))]
     fun accessDenied() = ".static.access-denied"
 
-    [RequestMapping(array("/contact"))]
+    [RequestMapping(value = array("/contact"))]
     fun contact() = ".static.contact"
 
-    [RequestMapping(array("/join"))]
+    [RequestMapping(value = array("/join"))]
     fun join() = ".static.join"
 
-    [RequestMapping(array("/login"))]
+    [RequestMapping(value = array("/login"))]
     fun login() = ".static.login"
 
-    [RequestMapping(array("/terms"))]
+    [RequestMapping(value = array("/terms"))]
     fun terms() = ".static.terms"
 
-    [RequestMapping(array("/privacy"))]
+    [RequestMapping(value = array("/privacy"))]
     fun privacy() = ".static.privacy"
 
 }

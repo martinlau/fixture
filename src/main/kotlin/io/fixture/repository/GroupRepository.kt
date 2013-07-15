@@ -12,28 +12,28 @@ import org.springframework.data.jpa.repository.QueryHints
 public trait GroupRepository: JpaRepository<Group, UUID> {
 
     [Modifying]
-    [Query("DELETE FROM Group g WHERE g.name = :name")]
-    [QueryHints(array(
+    [Query(value = "DELETE FROM Group g WHERE g.name = :name")]
+    [QueryHints(value = array(
             QueryHint(name = "org.hibernate.cacheable", value = "true")
     ))]
-    fun delete([Param("name")] name: String)
+    fun delete([Param(value = "name")] name: String)
 
-    [Query("SELECT g.name FROM Group g")]
-    [QueryHints(array(
+    [Query(value = "SELECT g.name FROM Group g")]
+    [QueryHints(value = array(
             QueryHint(name = "org.hibernate.cacheable", value = "true")
     ))]
     fun findAllNames(): List<String>
 
-    [Query("SELECT u.username FROM User u INNER JOIN u.groups g WHERE g.name = :name")]
-    [QueryHints(array(
+    [Query(value = "SELECT u.username FROM User u INNER JOIN u.groups g WHERE g.name = :name")]
+    [QueryHints(value = array(
             QueryHint(name = "org.hibernate.cacheable", value = "true")
     ))]
-    fun findAllUsernames([Param("name")] name: String): List<String>
+    fun findAllUsernames([Param(value = "name")] name: String): List<String>
 
-    [Query("SELECT g FROM Group g WHERE g.name = :name")]
-    [QueryHints(array(
+    [Query(value = "SELECT g FROM Group g WHERE g.name = :name")]
+    [QueryHints(value = array(
             QueryHint(name = "org.hibernate.cacheable", value = "true")
     ))]
-    fun findOne([Param("name")] name: String): Group?
+    fun findOne([Param(value = "name")] name: String): Group?
 
 }

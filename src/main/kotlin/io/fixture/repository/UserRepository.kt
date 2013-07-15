@@ -12,22 +12,22 @@ import org.springframework.data.jpa.repository.QueryHints
 public trait UserRepository : JpaRepository<User, UUID> {
 
     [Modifying]
-    [Query("DELETE FROM User u WHERE u.username = :username")]
-    [QueryHints(array(
+    [Query(value = "DELETE FROM User u WHERE u.username = :username")]
+    [QueryHints(value = array(
             QueryHint(name = "org.hibernate.cacheable", value = "true")
     ))]
-    fun delete([Param("username")] username: String)
+    fun delete([Param(value = "username")] username: String)
 
-    [Query("SELECT CASE WHEN (count(u) > 0) THEN true ELSE false END FROM User u WHERE u.username = :username")]
-    [QueryHints(array(
+    [Query(value = "SELECT CASE WHEN (count(u) > 0) THEN true ELSE false END FROM User u WHERE u.username = :username")]
+    [QueryHints(value = array(
             QueryHint(name = "org.hibernate.cacheable", value = "true")
     ))]
-    fun exists([Param("username")] username: String): Boolean
+    fun exists([Param(value = "username")] username: String): Boolean
 
-    [Query("SELECT u FROM User u WHERE u.username = :username")]
-    [QueryHints(array(
+    [Query(value = "SELECT u FROM User u WHERE u.username = :username")]
+    [QueryHints(value = array(
             QueryHint(name = "org.hibernate.cacheable", value = "true")
     ))]
-    fun findOne([Param("username")] username: String): User?
+    fun findOne([Param(value = "username")] username: String): User?
 
 }

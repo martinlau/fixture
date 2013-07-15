@@ -14,13 +14,14 @@ import org.springframework.test.context.ContextHierarchy
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 import org.springframework.transaction.annotation.Transactional
 
-[ContextHierarchy(
-        ContextConfiguration(array("classpath:/META-INF/spring/fixture-domain.xml")),
-        ContextConfiguration(array("classpath:/META-INF/spring/fixture-repository.xml")),
-        ContextConfiguration(array("classpath:/META-INF/spring/fixture-domain-test.xml")),
-        ContextConfiguration(array("classpath:/META-INF/spring/fixture-security.xml"))
-)]
-[RunWith(javaClass<SpringJUnit4ClassRunner>())]
+// TODO Reinstantiate when kotlin > 0.5.748
+[ContextHierarchy(/*value = array(*/
+        ContextConfiguration(value = array("classpath:/META-INF/spring/fixture-domain.xml")),
+        ContextConfiguration(value = array("classpath:/META-INF/spring/fixture-repository.xml")),
+        ContextConfiguration(value = array("classpath:/META-INF/spring/fixture-domain-test.xml")),
+        ContextConfiguration(value = array("classpath:/META-INF/spring/fixture-security.xml"))
+/*)*/)]
+[RunWith(value = javaClass<SpringJUnit4ClassRunner>())]
 [Transactional]
 public class PersistentTokenRepositoryImplTest {
 

@@ -4,13 +4,13 @@ import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.RequestMapping
 
 [Controller]
-[RequestMapping(array("/administration"))]
+[RequestMapping(value = array("/administration"))]
 public class AdministrationController {
 
     [RequestMapping]
     fun index() = ".administration.index"
 
-    [RequestMapping(array("/users"))]
+    [RequestMapping(value = array("/users"))]
     fun users() = ".administration.users"
 
 }
