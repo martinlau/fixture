@@ -31,6 +31,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import java.net.URI
 import java.util.concurrent.TimeUnit
+import kotlin.test.assertNotNull
 
 class StepDefs [Autowired] (
         val driver: WebDriver
@@ -74,6 +75,14 @@ class StepDefs [Autowired] (
         assertTrue(driver.getPageSource().contains("href=\"/fixture/static/bootswatch/2.3.1/${theme}/bootstrap.min.css\""))
     }
 
+    [Then("""^I should see the "([^"]*)" link$""")]
+    fun I_should_see_the_link(link: String) {
+        // HACK: drone.io seems to need some time to load the page - this allows that
+        driver.getCurrentUrl()
+
+        assertNotNull(driver.findElement(By.linkText(link)))
+    }
+
     [Then(value = """^I should see the page "([^"]*)"$""")]
     fun I_should_see_the_page(title: String) {
         // HACK: drone.io seems to need some time to load the page - this allows that
@@ -84,6 +93,9 @@ class StepDefs [Autowired] (
 
     [Then(value = """^I should see the alert "([^"]*)"$""")]
     fun I_should_see_the_alert(message: String) {
+        // HACK: drone.io seems to need some time to load the page - this allows that
+        driver.getCurrentUrl()
+
         assertTrue(driver.findElement(By.className("alert"))!!.getText()!!.contains(message))
     }
 

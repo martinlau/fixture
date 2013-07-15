@@ -65,3 +65,16 @@ Feature: Site Security
         And I log in with the credentials "invalid" and "invalid"
         Then I should see the page "fixture.io - Login"
         And I should see the alert "Log in failed"
+
+    Scenario: Logged in navigation
+        Given I open any page
+        When I click on the link "Log in"
+        And I log in with the credentials "administrator" and "password"
+        Then I should see the "Log out" link
+
+    Scenario: Logged out navigation
+        Given I open any page
+        And I click on the link "Log in"
+        And I log in with the credentials "administrator" and "password"
+        When I click on the link "Log out"
+        Then I should see the "Log in" link

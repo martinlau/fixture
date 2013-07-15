@@ -266,6 +266,7 @@
                                     <usedDependency>org.springframework:spring-aspects</usedDependency>
                                     <usedDependency>org.springframework.data:spring-data-rest-webmvc</usedDependency>
                                     <usedDependency>org.springframework.security:spring-security-config</usedDependency>
+                                    <usedDependency>org.springframework.security:spring-security-taglibs</usedDependency>
                                     <usedDependency>org.webjars:bootswatch</usedDependency>
                                     <usedDependency>org.webjars:font-awesome</usedDependency>
                                     <usedDependency>org.webjars:html5shiv</usedDependency>
@@ -408,11 +409,6 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire-plugin.version}</version>
-                    <configuration>
-                        <parallel>classes</parallel>
-                        <runOrder>random</runOrder>
-                        <threadCount>4</threadCount>
-                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -468,7 +464,6 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>license-maven-plugin</artifactId>
-                    <version>1.5</version>
                     <executions>
                         <execution>
                             <id>check-file-header</id>
@@ -893,6 +888,12 @@
             </dependency>
             <dependency>
                 <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-taglibs</artifactId>
+                <version>${spring-security.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-web</artifactId>
                 <version>${spring-security.version}</version>
             </dependency>
@@ -1110,6 +1111,10 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>

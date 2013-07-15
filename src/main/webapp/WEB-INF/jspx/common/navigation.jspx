@@ -22,6 +22,7 @@
 <jsp:root xmlns="http://www.w3.org/1999/xhtml"
           xmlns:jsp="http://java.sun.com/JSP/Page"
           xmlns:navigation="urn:jsptagdir:/WEB-INF/tags/navigation"
+          xmlns:security="http://www.springframework.org/security/tags"
           xmlns:spring="http://www.springframework.org/tags"
           xmlns:tags="urn:jsptagdir:/WEB-INF/tags"
           version="2.0">
@@ -42,12 +43,19 @@
                         </navigation:li_a>
                     </ul>
                     <ul class="nav pull-right">
-                        <navigation:li_a href="/join">
-                            <spring:message code="common.navigation.join"/>
-                        </navigation:li_a>
-                        <navigation:li_a href="/login">
-                            <spring:message code="common.navigation.login"/>
-                        </navigation:li_a>
+                        <security:authorize access="isAuthenticated()">
+                            <navigation:li_a href="/logout">
+                                <spring:message code="common.navigation.logout" />
+                            </navigation:li_a>
+                        </security:authorize>
+                        <security:authorize access="isAnonymous()">
+                            <navigation:li_a href="/join">
+                                <spring:message code="common.navigation.join" />
+                            </navigation:li_a>
+                            <navigation:li_a href="/login">
+                                <spring:message code="common.navigation.login" />
+                            </navigation:li_a>
+                        </security:authorize>
                     </ul>
                 </div>
             </div>
