@@ -1,16 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  - Copyright 2013 Martin Lau
+  -
+  - Licensed under the Apache License, Version 2.0 (the "License");
+  - you may not use this file except in compliance with the License.
+  - You may obtain a copy of the License at
+  -
+  -    http://www.apache.org/licenses/LICENSE-2.0
+  -
+  - Unless required by applicable law or agreed to in writing, software
+  - distributed under the License is distributed on an "AS IS" BASIS,
+  - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  - See the License for the specific language governing permissions and
+  - limitations under the License.
+  -->
 <root>
-  <item name="org.springframework.security.core.userdetails.UserDetails java.lang.String getPassword()">
-    <annotation name="org.jetbrains.annotations.NotNull" />
-  </item>
-  <item name="org.springframework.security.core.userdetails.UserDetails java.lang.String getUsername()">
-    <annotation name="org.jetbrains.annotations.NotNull" />
-  </item>
-  <item name="org.springframework.security.core.userdetails.UserDetails java.util.Collection&lt;? extends org.springframework.security.core.GrantedAuthority&gt; getAuthorities()">
-    <annotation name="jet.runtime.typeinfo.KotlinSignature">
-      <val name="value" val="&quot;fun getAuthorities(): Collection&lt;out GrantedAuthority&gt;&quot;" />
-    </annotation>
-  </item>
+    <item name="org.springframework.security.core.userdetails.UserDetails java.lang.String getPassword()">
+        <annotation name="org.jetbrains.annotations.NotNull"/>
+    </item>
+    <item name="org.springframework.security.core.userdetails.UserDetails java.lang.String getUsername()">
+        <annotation name="org.jetbrains.annotations.NotNull"/>
+    </item>
+    <item name="org.springframework.security.core.userdetails.UserDetails java.util.Collection&lt;? extends org.springframework.security.core.GrantedAuthority&gt; getAuthorities()">
+        <annotation name="jet.runtime.typeinfo.KotlinSignature">
+            <val name="value" val="&quot;fun getAuthorities(): Collection&lt;out GrantedAuthority&gt;&quot;"/>
+        </annotation>
+    </item>
     <item name='org.springframework.security.core.userdetails.UserDetailsService org.springframework.security.core.userdetails.UserDetails loadUserByUsername(java.lang.String)'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
