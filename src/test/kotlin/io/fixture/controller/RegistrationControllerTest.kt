@@ -20,14 +20,17 @@
 
 package io.fixture.controller
 
-import org.springframework.stereotype.Controller
-import org.springframework.web.bind.annotation.RequestMapping
+import kotlin.test.assertEquals
+import org.junit.Test
 
-[Controller]
-[RequestMapping(value = array("/secure"))]
-public class SecureController {
+class RegistrationControllerTest {
 
-    [RequestMapping]
-    fun index() = ".secure.index"
+    val subject = RegistrationController()
+
+    [Test]
+    fun testIndex() {
+
+        assertEquals(".registration.index", subject.index())
+    }
 
 }

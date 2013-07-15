@@ -24,10 +24,10 @@ import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.RequestMapping
 
 [Controller]
-[RequestMapping(value = array("/secure"))]
-public class SecureController {
+[RequestMapping(value = array("join"))]
+public class RegistrationController {
 
     [RequestMapping]
-    fun index() = ".secure.index"
+    fun index() = ".registration.index"
 
 }

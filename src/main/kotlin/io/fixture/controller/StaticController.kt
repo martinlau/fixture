@@ -38,9 +38,6 @@ public class StaticController {
     [RequestMapping(value = array("/contact"))]
     fun contact() = ".static.contact"
 
-    [RequestMapping(value = array("/join"))]
-    fun join() = ".static.join"
-
     [RequestMapping(value = array("/login"))]
     fun login() = ".static.login"
 

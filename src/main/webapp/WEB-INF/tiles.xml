@@ -53,6 +53,11 @@
 
     <definition name=".common.*" template="/WEB-INF/jspx/common/{1}.jspx"/>
 
+    <definition name=".registration.index" extends=".base.template">
+        <put-attribute name="body" type="template" value="/WEB-INF/jspx/registration/index.jspx"/>
+        <put-attribute name="title" type="string" value="fixture.io - Join"/>
+    </definition>
+
     <definition name=".secure.index" extends=".base.template">
         <put-attribute name="body" type="template" value="/WEB-INF/jspx/secure/index.jspx"/>
         <put-attribute name="title" type="string" value="fixture.io - Secure"/>
@@ -76,11 +81,6 @@
     <definition name=".static.index" extends=".base.template">
         <put-attribute name="body" type="template" value="/WEB-INF/jspx/static/index.jspx"/>
         <put-attribute name="title" type="string" value="fixture.io"/>
-    </definition>
-
-    <definition name=".static.join" extends=".base.template">
-        <put-attribute name="body" type="template" value="/WEB-INF/jspx/static/join.jspx"/>
-        <put-attribute name="title" type="string" value="fixture.io - Join"/>
     </definition>
 
     <definition name=".static.login" extends=".base.template">

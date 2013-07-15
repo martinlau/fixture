@@ -193,7 +193,7 @@
                     <executions>
                         <execution>
                             <id>generate</id>
-                            <phase>verify</phase>
+                            <phase>pre-site</phase>
                             <goals>
                                 <goal>generate</goal>
                             </goals>
