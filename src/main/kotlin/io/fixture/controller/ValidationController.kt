@@ -44,7 +44,7 @@ public class ValidationController {
     // To test this:
     //    $.ajax({
     //        type: 'POST',
-    //        url: '/fixture/validate/join.json',
+    //        url: '/fixture/validate/register.json',
     //        contentType: 'application/json',
     //        data: JSON.stringify({
     //            "username":"blah",
