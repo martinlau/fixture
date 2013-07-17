@@ -62,6 +62,9 @@ class StepDefs [Autowired] (
 
     [When(value = """^I log in with the credentials "([^"]*)" and "([^"]*)"$""")]
     fun I_log_in_with_the_credentials(username: String, password: String) {
+        // HACK: drone.io seems to need some time to load the page - this allows that
+        driver.getCurrentUrl()
+
         driver.findElement(By.id("username"))!!.sendKeys(username)
         driver.findElement(By.id("password"))!!.sendKeys(password)
         driver.findElement(By.id("submit"))!!.click()
