@@ -22,10 +22,21 @@ package io.fixture.controller
 
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.ModelAttribute
+import javax.validation.constraints.NotNull
+import org.hibernate.validator.constraints.Length
+import org.hibernate.validator.constraints.NotEmpty
+import org.hibernate.validator.constraints.ScriptAssert
+import javax.validation.constraints.AssertTrue
+import org.hibernate.validator.constraints.Email
+import io.fixture.controller.form.RegistrationForm
 
 [Controller]
-[RequestMapping(value = array("join"))]
+[RequestMapping(value = array("/register"))]
 public class RegistrationController {
+
+    [ModelAttribute]
+    fun registrationForm() = RegistrationForm()
 
     [RequestMapping]
     fun index() = ".registration.index"

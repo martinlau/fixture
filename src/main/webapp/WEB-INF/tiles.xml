@@ -35,7 +35,7 @@
             <add-attribute value="/resources/fixture.css"/>
         </put-list-attribute>
         <put-list-attribute name="bodyScripts" cascade="true" inherit="true">
-            <add-attribute value="/static/jquery/2.0.2/jquery.min.js"/>
+            <add-attribute value="/static/jquery/2.0.3/jquery.min.js"/>
             <add-attribute value="/static/bootswatch/2.3.1/js/bootstrap.min.js"/>
             <add-attribute value="/static/bootswatch/2.3.1/js/bootswatch.js"/>
         </put-list-attribute>
@@ -55,7 +55,7 @@
 
     <definition name=".registration.index" extends=".base.template">
         <put-attribute name="body" type="template" value="/WEB-INF/jspx/registration/index.jspx"/>
-        <put-attribute name="title" type="string" value="fixture.io - Join"/>
+        <put-attribute name="title" type="string" value="fixture.io - Register"/>
     </definition>
 
     <definition name=".secure.index" extends=".base.template">

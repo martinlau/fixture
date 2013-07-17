@@ -49,8 +49,8 @@
                             </navigation:li_a>
                         </security:authorize>
                         <security:authorize access="isAnonymous()">
-                            <navigation:li_a href="/join">
-                                <spring:message code="common.navigation.join" />
+                            <navigation:li_a href="/register">
+                                <spring:message code="common.navigation.register" />
                             </navigation:li_a>
                             <navigation:li_a href="/login">
                                 <spring:message code="common.navigation.login" />
