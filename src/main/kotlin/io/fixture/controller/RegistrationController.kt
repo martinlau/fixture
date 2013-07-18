@@ -30,6 +30,9 @@ import org.hibernate.validator.constraints.ScriptAssert
 import javax.validation.constraints.AssertTrue
 import org.hibernate.validator.constraints.Email
 import io.fixture.controller.form.RegistrationForm
+import org.springframework.validation.Errors
+import javax.validation.Valid
+import org.springframework.web.bind.annotation.RequestMethod
 
 [Controller]
 [RequestMapping(value = array("/register"))]
@@ -38,7 +41,20 @@ public class RegistrationController {
     [ModelAttribute]
     fun registrationForm() = RegistrationForm()
 
-    [RequestMapping]
+    [RequestMapping(method = array(RequestMethod.GET))]
     fun index() = ".registration.index"
+
+    [RequestMapping(method = array(RequestMethod.POST))]
+    fun submit([Valid] form: RegistrationForm, errors: Errors): String {
+        if (errors.hasErrors()) {
+            return ".registration.index"
+        }
+        // TODO persist form
+        // TODO send verification email
+        return "redirect:/register/sent"
+    }
+
+    [RequestMapping(value = array("/sent"))]
+    fun sent() = ".registration.sent"
 
 }

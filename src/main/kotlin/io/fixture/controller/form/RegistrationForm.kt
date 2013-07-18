@@ -40,7 +40,7 @@ class RegistrationForm(
         var familyName: String? = null,
 
         [Email]
-        [NotNull]
+        [NotEmpty]
         var email: String? = null,
 
         [NotEmpty]

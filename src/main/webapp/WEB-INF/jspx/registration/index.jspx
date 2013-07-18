@@ -20,32 +20,62 @@
   -->
 
 <jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:form="http://www.springframework.org/tags/form"
+          xmlns:input="urn:jsptagdir:/WEB-INF/tags/input"
           xmlns:jsp="http://java.sun.com/JSP/Page"
           xmlns:spring="http://www.springframework.org/tags"
           version="2.0">
 
     <h2>
-        <spring:message code="registration.title" />
+        <spring:message code="registration.index.title" />
     </h2>
 
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        In laborum magni molestiae nostrum perspiciatis, quam quis.
-        Earum et laborum sit soluta! Aliquam incidunt labore natus praesentium rem sapiente sint voluptatem.
-    </p>
+    <form:form cssClass="form-horizontal" method="post" modelAttribute="registrationForm">
 
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
+        <spring:hasBindErrors name="registrationForm">
+            <div class="alert alert-error">
+                <button type="button" class="close" data-dismiss="alert">&amp;times;</button>
+                <form:errors path=""/>
+            </div>
+        </spring:hasBindErrors>
 
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
+        <input:input type="text"
+                     path="givenName"
+                     label="registration.index.givenName.label"
+                     placeholder="registration.index.givenName.placeholder" />
+
+        <input:input type="text"
+                     path="familyName"
+                     label="registration.index.familyName.label"
+                     placeholder="registration.index.familyName.placeholder" />
+
+        <input:input type="email"
+                     path="email"
+                     label="registration.index.email.label"
+                     placeholder="registration.index.email.placeholder" />
+
+        <input:input type="text"
+                     path="username"
+                     label="registration.index.username.label"
+                     placeholder="registration.index.username.placeholder" />
+
+        <input:input type="password"
+                     path="password"
+                     label="registration.index.password.label"
+                     placeholder="registration.index.password.placeholder" />
+
+        <input:input type="password"
+                     path="confirm"
+                     label="registration.index.confirm.label"
+                     placeholder="registration.index.confirm.placeholder" />
+
+        <input:checkbox path="accept"
+                        label="registration.index.accept.label" />
+
+        <div class="form-actions">
+            <form:button type="submit" class="btn btn-primary">Register</form:button>
+        </div>
+
+    </form:form>
 
 </jsp:root>

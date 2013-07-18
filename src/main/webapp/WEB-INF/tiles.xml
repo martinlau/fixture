@@ -58,6 +58,10 @@
         <put-attribute name="title" type="string" value="fixture.io - Register"/>
     </definition>
 
+    <definition name=".registration.sent" extends=".registration.index">
+        <put-attribute name="body" type="template" value="/WEB-INF/jspx/registration/sent.jspx"/>
+    </definition>
+
     <definition name=".secure.index" extends=".base.template">
         <put-attribute name="body" type="template" value="/WEB-INF/jspx/secure/index.jspx"/>
         <put-attribute name="title" type="string" value="fixture.io - Secure"/>
