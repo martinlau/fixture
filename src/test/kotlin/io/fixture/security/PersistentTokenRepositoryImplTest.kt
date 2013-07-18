@@ -34,7 +34,7 @@ import org.springframework.test.context.ContextHierarchy
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 import org.springframework.transaction.annotation.Transactional
 
-// TODO Reinstantiate when kotlin > 0.5.748
+// TODO Reinstantiate when kotlin > 0.5.998
 [ContextHierarchy(/*value = array(*/
         ContextConfiguration(value = array("classpath:/META-INF/spring/fixture-domain.xml")),
         ContextConfiguration(value = array("classpath:/META-INF/spring/fixture-repository.xml")),

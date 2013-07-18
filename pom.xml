@@ -1215,7 +1215,7 @@
         <jquery.version>2.0.3</jquery.version>
         <jstl.version>1.2</jstl.version>
         <junit.version>4.11</junit.version>
-        <kotlin.version>0.5.748</kotlin.version>
+        <kotlin.version>0.5.998</kotlin.version>
         <liquibase.version>3.0.2</liquibase.version>
         <liquibase-slf4j.version>1.0.0</liquibase-slf4j.version>
         <logback.version>1.0.13</logback.version>
