@@ -121,7 +121,7 @@ class RegistrationFormIT {
         )!!.getBody()
 
         assertEquals(1, result!!.size)
-        assertEquals(listOf("may not be null"), result.get("email"))
+        assertEquals(listOf("may not be empty"), result.get("email"))
     }
 
     [Test]
