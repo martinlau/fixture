@@ -35,7 +35,16 @@
 
     <bean id="messageSource"
           class="org.springframework.context.support.ResourceBundleMessageSource"
-          p:basename="META-INF.spring.messages.fixture"
-          p:defaultEncoding="UTF-8"/>
+          p:defaultEncoding="UTF-8">
+        <property name="basenames">
+            <array>
+                <value>META-INF.spring.messages.administration</value>
+                <value>META-INF.spring.messages.common</value>
+                <value>META-INF.spring.messages.registration</value>
+                <value>META-INF.spring.messages.secure</value>
+                <value>META-INF.spring.messages.static</value>
+            </array>
+        </property>
+    </bean>
 
 </beans>
