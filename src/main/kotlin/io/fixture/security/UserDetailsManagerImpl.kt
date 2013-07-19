@@ -37,8 +37,10 @@ import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
 
 [Component]
-public class UserDetailsManagerImpl [Autowired] (
+class UserDetailsManagerImpl [Autowired] (
+
         val userRepository: UserRepository
+
 ): UserDetailsManager {
 
     [Autowired(required = false)]
