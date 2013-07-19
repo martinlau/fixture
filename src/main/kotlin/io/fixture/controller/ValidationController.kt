@@ -37,7 +37,7 @@ import java.util.Collections
 
 [Controller]
 [RequestMapping(value = array("/validate"))]
-public class ValidationController {
+class ValidationController {
 
     val valid = Collections.emptyMap<String, List<String?>>()
 

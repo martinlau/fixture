@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 
 [Controller]
 [RequestMapping(value = array("/administration"))]
-public class AdministrationController {
+class AdministrationController {
 
     [RequestMapping]
     fun index() = ".administration.index"

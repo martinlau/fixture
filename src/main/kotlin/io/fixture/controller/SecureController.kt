@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 
 [Controller]
 [RequestMapping(value = array("/secure"))]
-public class SecureController {
+class SecureController {
 
     [RequestMapping]
     fun index() = ".secure.index"
