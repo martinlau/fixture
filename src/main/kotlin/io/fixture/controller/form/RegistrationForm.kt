@@ -31,6 +31,7 @@ import javax.validation.constraints.AssertTrue
         lang = "javascript",
         script = "_this.password == _this.confirm"
 )]
+[data]
 class RegistrationForm(
 
         [NotEmpty]
