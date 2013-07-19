@@ -35,40 +35,40 @@ import org.hibernate.validator.constraints.Length
 
 [Entity]
 [Table(name = "groups")]
-public class Group: BasePersistable() {
+class Group(
 
-    [Column(
-            name = "authority",
-            nullable = false
-    )]
-    [CollectionTable(
-            name = "group_authorities",
-            joinColumns = array(JoinColumn(name = "group_uuid"))
-    )]
-    [ElementCollection(targetClass = javaClass<String>())]
-    var authorities: MutableSet<String> = HashSet()
+        [Column(
+                name = "authority",
+                nullable = false
+        )]
+        [CollectionTable(
+                name = "group_authorities",
+                joinColumns = array(JoinColumn(name = "group_uuid"))
+        )]
+        [ElementCollection(targetClass = javaClass<String>())]
+        var authorities: MutableSet<String> = HashSet(),
 
-    [Column(
-            name = "name",
-            nullable = false,
-            unique = true
-    )]
-    [Length(
-            min = 3,
-            max = 64
-    )]
-    [NotEmpty]
-    var name: String = ""
+        [Column(
+                name = "name",
+                nullable = false,
+                unique = true
+        )]
+        [Length(
+                min = 3,
+                max = 64
+        )]
+        [NotEmpty]
+        var name: String = "",
 
-    [JoinTable(
-            name = "group_members",
-            joinColumns = array(JoinColumn(name = "group_uuid")),
-            inverseJoinColumns = array(JoinColumn(name = "user_uuid"))
-    )]
-    [ManyToMany(
-            cascade = array(CascadeType.ALL),
-            targetEntity = javaClass<User>()
-    )]
-    var users: MutableSet<User> = HashSet()
+        [JoinTable(
+                name = "group_members",
+                joinColumns = array(JoinColumn(name = "group_uuid")),
+                inverseJoinColumns = array(JoinColumn(name = "user_uuid"))
+        )]
+        [ManyToMany(
+                cascade = array(CascadeType.ALL),
+                targetEntity = javaClass<User>()
+        )]
+        var users: MutableSet<User> = HashSet()
 
-}
+): BasePersistable()

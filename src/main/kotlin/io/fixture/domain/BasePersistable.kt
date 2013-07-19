@@ -33,21 +33,23 @@ import org.springframework.data.domain.Persistable
 
 [Cacheable]
 [MappedSuperclass]
-open class BasePersistable: Persistable<UUID> {
+open class BasePersistable(
 
-    [Column(name = "uuid")]
-    [GeneratedValue(generator = "uuid2")]
-    [GenericGenerator(
-            name = "uuid2",
-            strategy = "uuid2"
-    )]
-    [Id]
-    [Type(`type` = "uuid-char")]
-    var uuid: UUID? = null
+        [Column(name = "uuid")]
+        [GeneratedValue(generator = "uuid2")]
+        [GenericGenerator(
+                name = "uuid2",
+                strategy = "uuid2"
+        )]
+        [Id]
+        [Type(`type` = "uuid-char")]
+        var uuid: UUID? = null,
 
-    [Column(name = "version")]
-    [Version]
-    var version: Int? = null
+        [Column(name = "version")]
+        [Version]
+        var version: Int? = null
+
+): Persistable<UUID> {
 
     override fun getId() = uuid
 
