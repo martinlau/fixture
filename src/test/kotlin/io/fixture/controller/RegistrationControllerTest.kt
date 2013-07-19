@@ -22,15 +22,100 @@ package io.fixture.controller
 
 import kotlin.test.assertEquals
 import org.junit.Test
+import io.fixture.service.RegistrationService
+import org.junit.runner.RunWith
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.test.context.ContextHierarchy
+import org.springframework.test.context.ContextConfiguration
+import org.springframework.validation.MapBindingResult
+import java.util.HashMap
+import io.fixture.controller.form.RegistrationForm
+import org.springframework.transaction.annotation.Transactional
+import org.springframework.validation.ObjectError
+import io.fixture.repository.UserRepository
+import org.subethamail.wiser.Wiser
+import org.junit.After
+import org.junit.Before
 
+// TODO Reinstantiate when kotlin > 0.5.998
+[ContextHierarchy(/*value = array(*/
+        ContextConfiguration(value = array("classpath:/META-INF/spring/fixture-domain.xml")),
+        ContextConfiguration(value = array("classpath:/META-INF/spring/fixture-repository.xml")),
+        ContextConfiguration(value = array("classpath:/META-INF/spring/fixture-domain-test.xml")),
+        ContextConfiguration(value = array("classpath:/META-INF/spring/fixture-security.xml")),
+        ContextConfiguration(value = array("classpath:/META-INF/spring/fixture-service.xml")),
+        ContextConfiguration(value = array("classpath:/META-INF/spring/fixture-service-test.xml"))
+        /*)*/)]
+[RunWith(value = javaClass<SpringJUnit4ClassRunner>())]
+[Transactional]
 class RegistrationControllerTest {
 
-    val subject = RegistrationController()
+    [Autowired]
+    var registrationService: RegistrationService? = null
+
+    [Autowired]
+    var userRepository: UserRepository? = null
+
+    [Autowired]
+    var wiser: Wiser? = null
+
+    [Before]
+    fun before() {
+        wiser!!.getMessages().clear()
+    }
+
+    [After]
+    fun after() {
+        wiser!!.getMessages().clear()
+    }
 
     [Test]
     fun testIndex() {
+        val subject = RegistrationController(registrationService!!)
 
         assertEquals(".registration.index", subject.index())
     }
+
+    [Test]
+    fun testSubmitWithValidForm() {
+        val subject = RegistrationController(registrationService!!)
+        val errors = MapBindingResult(HashMap(), "form")
+        val form = RegistrationForm(
+                givenName = "given name",
+                familyName = "family name",
+                email = "email@example.com",
+                username = "username",
+                password = "password",
+                confirm = "password",
+                accept = true
+        )
+
+        val result = subject.submit(form, errors)
+
+        assertEquals("redirect:/register/sent", result)
+        assertEquals(7.toLong(), userRepository!!.count())
+        assertEquals(1, wiser!!.getMessages().size)
+    }
+
+    [Test]
+    fun testSubmitWithInvalidForm() {
+        val subject = RegistrationController(registrationService!!)
+        val errors = MapBindingResult(HashMap(), "form")
+        errors.addError(ObjectError("field", "message"))
+        val form = RegistrationForm()
+
+        val result = subject.submit(form, errors)
+
+        assertEquals(".registration.index", result)
+    }
+
+    [Test]
+    fun testSent() {
+        val subject = RegistrationController(registrationService!!)
+
+        assertEquals(".registration.sent", subject.sent())
+    }
+
 
 }

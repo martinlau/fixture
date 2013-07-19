@@ -34,15 +34,17 @@ import java.util.concurrent.TimeUnit
 import kotlin.test.assertNotNull
 
 class StepDefs [Autowired] (
+
         val driver: WebDriver
+
 ) {
 
-    [Value(value = "#{systemProperties['fixture.base.url']}")]
-    var baseUri: String? = null
+    [Value(value = "#{systemProperties['tomcat.http.port']}")]
+    var tomcatPort: Int? = null
 
     [Given(value = """^I open any page""")]
     fun I_open_any_page() {
-        driver.get("${baseUri}")
+        driver.get("http://localhost:${tomcatPort}/fixture")
     }
 
     [Given(value = """^I select the theme "([^"]*)"$""")]
@@ -52,7 +54,7 @@ class StepDefs [Autowired] (
 
     [When(value = """^I go to the page "([^"]*)"$""")]
     fun I_go_to_the_page(page: String) {
-        driver.get("${baseUri}${page}")
+        driver.get("http://localhost:${tomcatPort}/fixture${page}")
     }
 
     [When(value = """^I click on the link "([^"]*)"$""")]

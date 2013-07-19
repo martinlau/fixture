@@ -356,7 +356,8 @@
                             </goals>
                             <configuration>
                                 <systemProperties>
-                                    <fixture.base.url>http://localhost:${tomcat.http.port}/fixture</fixture.base.url>
+                                    <tomcat.http.port>${tomcat.http.port}</tomcat.http.port>
+                                    <subethamail.smtp.port>${subethamail.smtp.port}</subethamail.smtp.port>
                                 </systemProperties>
                             </configuration>
                         </execution>
@@ -409,6 +410,11 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire-plugin.version}</version>
+                        <configuration>
+                            <systemProperties>
+                                <subethamail.smtp.port>${subethamail.smtp.port}</subethamail.smtp.port>
+                            </systemProperties>
+                        </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -429,6 +435,10 @@
                             <configuration>
                                 <fork>true</fork>
                                 <port>${tomcat.http.port}</port>
+                                <systemProperties>
+                                    <tomcat.http.port>${tomcat.http.port}</tomcat.http.port>
+                                    <subethamail.smtp.port>${subethamail.smtp.port}</subethamail.smtp.port>
+                                </systemProperties>
                             </configuration>
                         </execution>
                         <execution>
@@ -456,6 +466,7 @@
                             <configuration>
                                 <portNames>
                                     <portName>tomcat.http.port</portName>
+                                    <portName>subethamail.smtp.port</portName>
                                 </portNames>
                             </configuration>
                         </execution>
@@ -464,13 +475,14 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>license-maven-plugin</artifactId>
+                    <version>${license-maven-plugin.version}</version>
                     <executions>
                         <execution>
                             <id>check-file-header</id>
                             <goals>
                                 <goal>check-file-header</goal>
                             </goals>
-                            <phase>verify</phase>
+                            <phase>validate</phase>
                             <configuration>
                                 <failOnMissingHeader>true</failOnMissingHeader>
                             </configuration>
@@ -500,9 +512,6 @@
                                 <goal>compile</goal>
                             </goals>
                             <configuration>
-                                <annotationPaths>
-                                    <annotationPath>${project.basedir}/src/main/annotation</annotationPath>
-                                </annotationPaths>
                                 <sourceDirs>
                                     <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
                                 </sourceDirs>
@@ -515,16 +524,17 @@
                                 <goal>test-compile</goal>
                             </goals>
                             <configuration>
-                                <annotationPaths>
-                                    <annotationPath>${project.basedir}/src/main/annotation</annotationPath>
-                                    <annotationPath>${project.basedir}/src/test/annotation</annotationPath>
-                                </annotationPaths>
                                 <sourceDirs>
                                     <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>
                                 </sourceDirs>
                             </configuration>
                         </execution>
                     </executions>
+                    <configuration>
+                        <annotationPaths>
+                            <annotationPath>${project.basedir}/src/main/annotation</annotationPath>
+                        </annotationPaths>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -657,6 +667,16 @@
                 <scope>test</scope>
             </dependency>
             <dependency>
+                <groupId>javax.activation</groupId>
+                <artifactId>activation</artifactId>
+                <version>${activation.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.mail</groupId>
+                <artifactId>mail</artifactId>
+                <version>${mail.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>javax.servlet</groupId>
                 <artifactId>jstl</artifactId>
                 <version>${jstl.version}</version>
@@ -693,6 +713,11 @@
                 <artifactId>tiles-jsp</artifactId>
                 <version>${tiles.version}</version>
                 <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity</artifactId>
+                <version>${velocity.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.hibernate</groupId>
@@ -803,6 +828,11 @@
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
                 <artifactId>spring-core</artifactId>
                 <version>${spring.version}</version>
                 <exclusions>
@@ -896,6 +926,12 @@
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-web</artifactId>
                 <version>${spring-security.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.subethamail</groupId>
+                <artifactId>subethasmtp</artifactId>
+                <version>${subethasmtp.version}</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.webjars</groupId>
@@ -997,6 +1033,10 @@
             <artifactId>cucumber-spring</artifactId>
         </dependency>
         <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+        </dependency>
+        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
         </dependency>
@@ -1011,6 +1051,10 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -1074,6 +1118,10 @@
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
         </dependency>
         <dependency>
@@ -1119,6 +1167,10 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.subethamail</groupId>
+            <artifactId>subethasmtp</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.tiles</groupId>
@@ -1188,9 +1240,9 @@
 
         <!-- Site dependency versions -->
         <reflow-velocity-tools.version>1.0.0</reflow-velocity-tools.version>
-        <velocity.version>1.7</velocity.version>
 
         <!-- Dependency versions -->
+        <activation.version>1.1.1</activation.version>
         <ant.version>1.9.2</ant.version>
         <antlr-runtime.version>3.5</antlr-runtime.version>
         <bootswatch.version>2.3.1</bootswatch.version>
@@ -1219,6 +1271,7 @@
         <liquibase.version>3.0.2</liquibase.version>
         <liquibase-slf4j.version>1.0.0</liquibase-slf4j.version>
         <logback.version>1.0.13</logback.version>
+        <mail.version>1.4.7</mail.version>
         <selenium.version>2.33.0</selenium.version>
         <servlet-api.version>3.1.0</servlet-api.version>
         <slf4j.version>1.7.5</slf4j.version>
@@ -1229,8 +1282,10 @@
         <spring-data-jpa.version>1.3.2.RELEASE</spring-data-jpa.version>
         <spring-data-rest.version>1.0.0.RELEASE</spring-data-rest.version>
         <spring-security.version>3.1.4.RELEASE</spring-security.version>
+        <subethasmtp.version>3.1.7</subethasmtp.version>
         <tiles.version>3.0.1</tiles.version>
         <validation-api.version>1.1.0.Final</validation-api.version>
+        <velocity.version>1.7</velocity.version>
         <wro4j.version>1.7.0</wro4j.version>
     </properties>
 

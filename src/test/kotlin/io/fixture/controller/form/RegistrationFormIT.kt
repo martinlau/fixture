@@ -40,7 +40,7 @@ import org.junit.After
 
 class RegistrationFormIT {
 
-    val baseUri = System.getProperty("fixture.base.url")
+    val baseUri = "http://localhost:" + System.getProperty("tomcat.http.port") + "/fixture"
 
     val restTemplate = RestTemplate()
 

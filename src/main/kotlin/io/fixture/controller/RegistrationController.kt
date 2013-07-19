@@ -33,10 +33,18 @@ import io.fixture.controller.form.RegistrationForm
 import org.springframework.validation.Errors
 import javax.validation.Valid
 import org.springframework.web.bind.annotation.RequestMethod
+import io.fixture.service.RegistrationService
+import org.springframework.beans.factory.annotation.Autowired
 
 [Controller]
 [RequestMapping(value = array("/register"))]
-public class RegistrationController {
+class RegistrationController [Autowired](
+
+        val service: RegistrationService
+
+) {
+
+    // TODO Register or Registration - pick one
 
     [ModelAttribute]
     fun registrationForm() = RegistrationForm()
@@ -49,8 +57,7 @@ public class RegistrationController {
         if (errors.hasErrors()) {
             return ".registration.index"
         }
-        // TODO persist form
-        // TODO send verification email
+        service.register(form)
         return "redirect:/register/sent"
     }
 
