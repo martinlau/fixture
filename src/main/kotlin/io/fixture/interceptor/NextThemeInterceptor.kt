@@ -32,7 +32,7 @@ import org.springframework.core.io.support.ResourcePatternUtils
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver
 import java.util.Collections
 
-public class NextThemeInterceptor: HandlerInterceptorAdapter() {
+class NextThemeInterceptor: HandlerInterceptorAdapter() {
 
     val themes: List<String>
 
