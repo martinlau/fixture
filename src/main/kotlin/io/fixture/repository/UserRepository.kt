@@ -29,7 +29,7 @@ import org.springframework.data.repository.query.Param
 import javax.persistence.QueryHint
 import org.springframework.data.jpa.repository.QueryHints
 
-public trait UserRepository : JpaRepository<User, UUID> {
+trait UserRepository : JpaRepository<User, UUID> {
 
     [Modifying]
     [Query(value = "DELETE FROM User u WHERE u.username = :username")]

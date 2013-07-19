@@ -29,7 +29,7 @@ import org.springframework.data.repository.query.Param
 import javax.persistence.QueryHint
 import org.springframework.data.jpa.repository.QueryHints
 
-public trait PersistentLoginRepository: JpaRepository<PersistentLogin, UUID> {
+trait PersistentLoginRepository: JpaRepository<PersistentLogin, UUID> {
 
     [Modifying]
     [Query(value = "DELETE FROM PersistentLogin pl WHERE pl.user = (SELECT u FROM User u WHERE u.username = :username)")]

@@ -29,7 +29,7 @@ import org.springframework.data.repository.query.Param
 import javax.persistence.QueryHint
 import org.springframework.data.jpa.repository.QueryHints
 
-public trait GroupRepository: JpaRepository<Group, UUID> {
+trait GroupRepository: JpaRepository<Group, UUID> {
 
     [Modifying]
     [Query(value = "DELETE FROM Group g WHERE g.name = :name")]
