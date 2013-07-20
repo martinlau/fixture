@@ -484,6 +484,7 @@
                             </goals>
                             <phase>validate</phase>
                             <configuration>
+                                <failOnNotUptodateHeader>true</failOnNotUptodateHeader>
                                 <failOnMissingHeader>true</failOnMissingHeader>
                             </configuration>
                         </execution>
