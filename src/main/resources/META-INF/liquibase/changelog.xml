@@ -316,4 +316,33 @@
 
     </changeSet>
 
+    <changeSet id="20130722-01 [ACTIVATIONS]"
+               author="martinlau">
+
+        <comment>Create 'ACTIVATIONS' table</comment>
+
+        <createTable tableName="ACTIVATIONS">
+            <column name="UUID"
+                    type="VARCHAR">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="USER_UUID"
+                    type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VERSION"
+                    type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="ACTIVATIONS"
+                                 baseColumnNames="USER_UUID"
+                                 constraintName="FK_ACTIVATIONS_USER_UUID"
+                                 referencedTableName="USERS"
+                                 referencedColumnNames="UUID"
+                                 onDelete="CASCADE"/>
+
+    </changeSet>
+
 </databaseChangeLog>
