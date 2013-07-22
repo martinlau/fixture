@@ -111,31 +111,13 @@ class GroupManagerImpl [Autowired] (
         return LinkedList()
     }
 
-    [Transactional]
-    override fun addGroupAuthority(groupName: String, authority: () -> String) {
-
-        val group = groupRepository.findOne(groupName)
-
-        if (group != null) {
-            group.authorities.add(authority())
-            groupRepository.save(group)
-        }
-    }
 
     [Transactional]
     override fun addGroupAuthority(groupName: String, grantedAuthority: GrantedAuthority) {
-
-        addGroupAuthority(groupName) { grantedAuthority.getAuthority() }
-
-    }
-
-    [Transactional]
-    override fun removeGroupAuthority(groupName: String, authority: () -> String) {
-
         val group = groupRepository.findOne(groupName)
 
         if (group != null) {
-            group.authorities.remove(authority())
+            group.authorities.add(grantedAuthority.getAuthority())
             groupRepository.save(group)
         }
     }
@@ -143,7 +125,12 @@ class GroupManagerImpl [Autowired] (
     [Transactional]
     override fun removeGroupAuthority(groupName: String, grantedAuthority: GrantedAuthority) {
 
-        removeGroupAuthority(groupName) { grantedAuthority.getAuthority() }
+        val group = groupRepository.findOne(groupName)
+
+        if (group != null) {
+            group.authorities.remove(grantedAuthority.getAuthority())
+            groupRepository.save(group)
+        }
     }
 
 }
