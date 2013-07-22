@@ -412,7 +412,8 @@
                     <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <systemProperties>
-                                <subethamail.smtp.port>${subethamail.smtp.port}</subethamail.smtp.port>
+                                <fixture.service.smtp.port>${subethamail.smtp.port}</fixture.service.smtp.port>
+                                <fixture.service.registration.baseUrl>http://localhost:${tomcat.http.port}/fixture</fixture.service.registration.baseUrl>
                             </systemProperties>
                         </configuration>
                 </plugin>
@@ -437,7 +438,8 @@
                                 <port>${tomcat.http.port}</port>
                                 <systemProperties>
                                     <tomcat.http.port>${tomcat.http.port}</tomcat.http.port>
-                                    <subethamail.smtp.port>${subethamail.smtp.port}</subethamail.smtp.port>
+                                    <fixture.service.smtp.port>${subethamail.smtp.port}</fixture.service.smtp.port>
+                                    <fixture.service.registration.baseUrl>http://localhost:${tomcat.http.port}/fixture</fixture.service.registration.baseUrl>
                                 </systemProperties>
                             </configuration>
                         </execution>

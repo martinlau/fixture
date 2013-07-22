@@ -20,11 +20,17 @@
   -->
 
 <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:fixture.properties"
+                                  system-properties-mode="OVERRIDE"/>
 
     <bean class="org.subethamail.wiser.Wiser" init-method="start" destroy-method="stop">
-        <property name="port" value="#{systemProperties['subethamail.smtp.port']}"/>
+        <property name="hostname" value="${fixture.service.smtp.host}"/>
+        <property name="port" value="${fixture.service.smtp.port}"/>
     </bean>
 
 </beans>

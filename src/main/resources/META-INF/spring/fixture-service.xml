@@ -26,14 +26,19 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="io.fixture.service" />
+    <context:property-placeholder location="classpath:fixture.properties"
+                                  system-properties-mode="OVERRIDE"/>
+
+    <context:component-scan base-package="io.fixture.service"/>
 
     <bean class="org.springframework.ui.velocity.VelocityEngineFactoryBean"
           p:resourceLoaderPath="classpath:/META-INF/velocity"/>
 
     <bean class="org.springframework.mail.javamail.JavaMailSenderImpl">
-        <!-- TODO get these from properties, but also make them work with unit tests -->
-        <property name="port" value="#{systemProperties['subethamail.smtp.port']}" />
+        <property name="host" value="${fixture.service.smtp.host}"/>
+        <property name="port" value="${fixture.service.smtp.port}"/>
+        <property name="username" value="${fixture.service.smtp.username}"/>
+        <property name="password" value="${fixture.service.smtp.password}"/>
     </bean>
 
 </beans>
