@@ -72,13 +72,6 @@ class User(
         [Type(`type` = "uuid-char")]
         var accountTokens: MutableMap<User.TokenType, UUID> = HashMap(),
 
-        [OneToOne(
-                cascade = array(CascadeType.ALL),
-                mappedBy = "user",
-                targetEntity = javaClass<Activation>()
-        )]
-        var activation: Activation? = null,
-
         [CollectionTable(
                 name = "user_authorities",
                 joinColumns = array(JoinColumn(name = "user_uuid"))

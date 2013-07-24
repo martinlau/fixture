@@ -37,8 +37,8 @@ import io.fixture.repository.UserRepository
 import org.subethamail.wiser.Wiser
 import org.junit.After
 import org.junit.Before
-import io.fixture.repository.ActivationRepository
 import org.springframework.web.servlet.LocaleResolver
+import kotlin.test.fail
 
 // TODO Reinstantiate when kotlin > 0.5.998
 [ContextHierarchy(/*value = array(*/
@@ -53,9 +53,6 @@ import org.springframework.web.servlet.LocaleResolver
 [RunWith(value = javaClass<SpringJUnit4ClassRunner>())]
 [Transactional]
 class RegistrationControllerTest {
-
-    [Autowired]
-    var activationRepository: ActivationRepository? = null
 
     [Autowired]
     var registrationService: RegistrationService? = null
@@ -101,7 +98,6 @@ class RegistrationControllerTest {
 
         assertEquals("redirect:/register/sent", result)
         assertEquals(7.toLong(), userRepository!!.count())
-        assertEquals(1.toLong(), activationRepository!!.count())
         assertEquals(1, wiser!!.getMessages().size)
     }
 
@@ -123,6 +119,5 @@ class RegistrationControllerTest {
 
         assertEquals(".registration.sent", subject.sent())
     }
-
 
 }

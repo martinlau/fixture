@@ -29,8 +29,6 @@ import io.fixture.domain.User
 import io.fixture.domain.UserProfile
 import io.fixture.repository.UserProfileRepository
 import org.springframework.security.crypto.password.PasswordEncoder
-import io.fixture.repository.ActivationRepository
-import io.fixture.domain.Activation
 import java.util.UUID
 import org.springframework.beans.factory.annotation.Value
 import java.util.Locale
@@ -39,8 +37,6 @@ import org.springframework.context.i18n.LocaleContextHolder
 
 [Service]
 class RegistrationServiceImpl [Autowired] (
-
-        val activationRepository: ActivationRepository,
 
         val mailService: MailService,
 
@@ -54,6 +50,8 @@ class RegistrationServiceImpl [Autowired] (
 
 ): RegistrationService {
 
+    // TODO Test
+
     [Value(value = "\${fixture.service.registration.baseUrl}")]
     var baseUrl: String? = null
 
@@ -62,6 +60,7 @@ class RegistrationServiceImpl [Autowired] (
 
         val user = userRepository.save(User(
                 accountNonExpired = true,
+                accountNonLocked = true,
                 credentialsNonExpired = true,
                 enabled = false,
                 password = passwordEncoder.encode(form.password!!),
@@ -75,8 +74,6 @@ class RegistrationServiceImpl [Autowired] (
                 user = user
         ))
 
-        val activation = activationRepository.save(Activation(user))
-
         val subject = messageSource.getMessage("registration.email.subject", array<Any>(), LocaleContextHolder.getLocale())!!
 
         mailService.sendMail(
@@ -85,7 +82,6 @@ class RegistrationServiceImpl [Autowired] (
                 "${profile.givenName} ${profile.familyName}",
                 subject,
                 mapOf(
-                        Pair("activation", activation!!),
                         Pair("baseUrl", baseUrl!!),
                         Pair("user", user!!),
                         Pair("profile", profile!!)
@@ -96,17 +92,12 @@ class RegistrationServiceImpl [Autowired] (
     [Transactional]
     override fun activate(token: UUID): Boolean {
 
-        val activation = activationRepository.findOne(token)
-        if (activation == null) return false
-
-        val user = activation.user
+        val user = userRepository.findOne(token)
         if (user == null) return false
 
         user.enabled = true
-        user.accountNonLocked = true
 
         userRepository.save(user)
-        activationRepository.delete(activation)
 
         return true
     }

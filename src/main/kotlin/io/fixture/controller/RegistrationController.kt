@@ -62,9 +62,9 @@ class RegistrationController [Autowired](
     [RequestMapping(value = array("/sent"))]
     fun sent() = ".registration.sent"
 
-    [RequestMapping(value = array("/activate/{activation}"))]
-    fun activate([PathVariable(value = "activation")] activation: UUID) =
-            if (registrationService.activate(activation)) ".registration.activated"
+    [RequestMapping(value = array("/activate/{token}"))]
+    fun activate([PathVariable(value = "token")] token: UUID) =
+            if (registrationService.activate(token)) ".registration.activated"
             else throw ActivationNotFoundException()
 
     [ResponseStatus(value = HttpStatus.NOT_FOUND)]
