@@ -84,7 +84,7 @@ class RegistrationServiceImpl [Autowired] (
                 mapOf(
                         Pair("baseUrl", baseUrl!!),
                         Pair("user", user!!),
-                        Pair("profile", profile!!)
+                        Pair("profile", profile)
                 )
         )
     }
