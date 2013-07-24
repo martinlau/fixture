@@ -39,6 +39,8 @@ import org.junit.After
 import org.junit.Before
 import org.springframework.web.servlet.LocaleResolver
 import kotlin.test.fail
+import java.util.UUID
+import kotlin.test.assertFalse
 
 // TODO Reinstantiate when kotlin > 0.5.998
 [ContextHierarchy(/*value = array(*/
@@ -118,6 +120,24 @@ class RegistrationControllerTest {
         val subject = RegistrationController(registrationService!!)
 
         assertEquals(".registration.sent", subject.sent())
+    }
+
+    [Test]
+    fun testActivateWithValidToken() {
+        val subject = RegistrationController(registrationService!!)
+        val token = UUID.fromString("33333333-3333-3333-3333-333333333333")
+
+        val result = subject.activate(token)
+
+        assertEquals(".registration.activated", result)
+    }
+
+    [Test(expected = javaClass<RegistrationController.ActivationNotFoundException>())]
+    fun testActivateWithInvalidToken() {
+        val subject = RegistrationController(registrationService!!)
+        val token = UUID.randomUUID()
+
+        subject.activate(token)
     }
 
 }
