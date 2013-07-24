@@ -28,11 +28,16 @@ import javax.mail.internet.InternetAddress
 import org.apache.velocity.app.VelocityEngine
 import org.springframework.mail.javamail.JavaMailSender
 import org.springframework.ui.velocity.VelocityEngineUtils
+import java.util.HashMap
+import org.springframework.context.i18n.LocaleContextHolder
+import org.springframework.context.MessageSource
 
 [Service]
 class MailServiceImpl [Autowired](
 
         val mailSender: JavaMailSender,
+
+        val messageSource: MessageSource,
 
         val velocityEngine: VelocityEngine
 
@@ -48,13 +53,21 @@ class MailServiceImpl [Autowired](
                           to: String,
                           name: String,
                           subject: String,
-                          model: Map<String, Any>) {
+                          model: Map<String, Any?>) {
+
+        val updatedModel = HashMap<String, Any?>(model)
+
+        if (!updatedModel.containsKey("locale"))
+            updatedModel.put("locale", LocaleContextHolder.getLocale())
+
+        if (!updatedModel.containsKey("messages"))
+            updatedModel.put("messages", messageSource)
 
         val text = VelocityEngineUtils.mergeTemplateIntoString(
                 velocityEngine,
                 template,
                 "UTF-8",
-                model
+                updatedModel
         )
 
         mailSender.send {

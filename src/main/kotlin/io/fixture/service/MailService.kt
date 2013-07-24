@@ -28,6 +28,6 @@ trait MailService {
                  to: String,
                  name: String,
                  subject: String,
-                 model: Map<String, Any>)
+                 model: Map<String, Any?>)
 
 }

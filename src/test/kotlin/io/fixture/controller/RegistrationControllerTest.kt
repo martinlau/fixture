@@ -37,12 +37,15 @@ import io.fixture.repository.UserRepository
 import org.subethamail.wiser.Wiser
 import org.junit.After
 import org.junit.Before
+import io.fixture.repository.ActivationRepository
+import org.springframework.web.servlet.LocaleResolver
 
 // TODO Reinstantiate when kotlin > 0.5.998
 [ContextHierarchy(/*value = array(*/
         ContextConfiguration(value = array("classpath:/META-INF/spring/fixture-domain.xml")),
         ContextConfiguration(value = array("classpath:/META-INF/spring/fixture-repository.xml")),
         ContextConfiguration(value = array("classpath:/META-INF/spring/fixture-domain-test.xml")),
+        ContextConfiguration(value = array("classpath:/META-INF/spring/fixture-messages.xml")),
         ContextConfiguration(value = array("classpath:/META-INF/spring/fixture-security.xml")),
         ContextConfiguration(value = array("classpath:/META-INF/spring/fixture-service.xml")),
         ContextConfiguration(value = array("classpath:/META-INF/spring/fixture-service-test.xml"))
@@ -50,6 +53,9 @@ import org.junit.Before
 [RunWith(value = javaClass<SpringJUnit4ClassRunner>())]
 [Transactional]
 class RegistrationControllerTest {
+
+    [Autowired]
+    var activationRepository: ActivationRepository? = null
 
     [Autowired]
     var registrationService: RegistrationService? = null
@@ -80,7 +86,6 @@ class RegistrationControllerTest {
     [Test]
     fun testSubmitWithValidForm() {
         val subject = RegistrationController(registrationService!!)
-        val errors = MapBindingResult(HashMap(), "form")
         val form = RegistrationForm(
                 givenName = "given name",
                 familyName = "family name",
@@ -90,20 +95,22 @@ class RegistrationControllerTest {
                 confirm = "password",
                 accept = true
         )
+        val errors = MapBindingResult(HashMap(), "form")
 
         val result = subject.submit(form, errors)
 
         assertEquals("redirect:/register/sent", result)
         assertEquals(7.toLong(), userRepository!!.count())
+        assertEquals(1.toLong(), activationRepository!!.count())
         assertEquals(1, wiser!!.getMessages().size)
     }
 
     [Test]
     fun testSubmitWithInvalidForm() {
         val subject = RegistrationController(registrationService!!)
+        val form = RegistrationForm()
         val errors = MapBindingResult(HashMap(), "form")
         errors.addError(ObjectError("field", "message"))
-        val form = RegistrationForm()
 
         val result = subject.submit(form, errors)
 

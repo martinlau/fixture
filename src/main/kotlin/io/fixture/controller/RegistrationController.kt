@@ -23,24 +23,22 @@ package io.fixture.controller
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.ModelAttribute
-import javax.validation.constraints.NotNull
-import org.hibernate.validator.constraints.Length
-import org.hibernate.validator.constraints.NotEmpty
-import org.hibernate.validator.constraints.ScriptAssert
-import javax.validation.constraints.AssertTrue
-import org.hibernate.validator.constraints.Email
 import io.fixture.controller.form.RegistrationForm
 import org.springframework.validation.Errors
 import javax.validation.Valid
 import org.springframework.web.bind.annotation.RequestMethod
 import io.fixture.service.RegistrationService
 import org.springframework.beans.factory.annotation.Autowired
+import java.util.UUID
+import org.springframework.web.bind.annotation.ResponseStatus
+import org.springframework.http.HttpStatus
+import org.springframework.web.bind.annotation.PathVariable
 
 [Controller]
 [RequestMapping(value = array("/register"))]
 class RegistrationController [Autowired](
 
-        val service: RegistrationService
+        val registrationService: RegistrationService
 
 ) {
 
@@ -57,11 +55,19 @@ class RegistrationController [Autowired](
         if (errors.hasErrors()) {
             return ".registration.index"
         }
-        service.register(form)
+        registrationService.register(form)
         return "redirect:/register/sent"
     }
 
     [RequestMapping(value = array("/sent"))]
     fun sent() = ".registration.sent"
+
+    [RequestMapping(value = array("/activate/{activation}"))]
+    fun activate([PathVariable(value = "activation")] activation: UUID) =
+            if (registrationService.activate(activation)) ".registration.activated"
+            else throw ActivationNotFoundException()
+
+    [ResponseStatus(value = HttpStatus.NOT_FOUND)]
+    class ActivationNotFoundException: Exception()
 
 }

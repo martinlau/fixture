@@ -29,58 +29,86 @@ import io.fixture.domain.User
 import io.fixture.domain.UserProfile
 import io.fixture.repository.UserProfileRepository
 import org.springframework.security.crypto.password.PasswordEncoder
+import io.fixture.repository.ActivationRepository
+import io.fixture.domain.Activation
+import java.util.UUID
+import org.springframework.beans.factory.annotation.Value
+import java.util.Locale
+import org.springframework.context.MessageSource
+import org.springframework.context.i18n.LocaleContextHolder
 
 [Service]
 class RegistrationServiceImpl [Autowired] (
+
+        val activationRepository: ActivationRepository,
+
         val mailService: MailService,
+
+        val messageSource: MessageSource,
+
         val passwordEncoder: PasswordEncoder,
+
         val userProfileRepository: UserProfileRepository,
+
         val userRepository: UserRepository
+
 ): RegistrationService {
 
-    // TODO @Value
-    val subject = "Account activation"
-
-    // TODO @Value
-    val template = "registration-activation.vm"
+    [Value(value = "\${fixture.service.registration.baseUrl}")]
+    var baseUrl: String? = null
 
     [Transactional]
     override fun register(form: RegistrationForm) {
 
-        val user = User(
+        val user = userRepository.save(User(
                 accountNonExpired = true,
                 credentialsNonExpired = true,
                 enabled = false,
                 password = passwordEncoder.encode(form.password!!),
                 username = form.username!!
-        )
+        ))
 
-        userRepository.save(user)
-
-        val profile = UserProfile(
+        val profile = userProfileRepository.save(UserProfile(
                 givenName = form.givenName!!,
                 familyName = form.familyName!!,
                 email = form.email!!,
                 user = user
-        )
-        user.profile = profile
+        ))
 
-        userProfileRepository.save(profile)
+        val activation = activationRepository.save(Activation(user))
 
-        // TODO Generate token
-        val token = ""
+        val subject = messageSource.getMessage("registration.email.subject", array<Any>(), LocaleContextHolder.getLocale())!!
 
         mailService.sendMail(
-                template,
-                profile.email,
+                "registration-activation.vm",
+                profile!!.email,
                 "${profile.givenName} ${profile.familyName}",
                 subject,
                 mapOf(
-                        Pair("user", user),
-                        Pair("profile", profile),
-                        Pair("token", token)
+                        Pair("activation", activation!!),
+                        Pair("baseUrl", baseUrl!!),
+                        Pair("user", user!!),
+                        Pair("profile", profile!!)
                 )
         )
+    }
+
+    [Transactional]
+    override fun activate(token: UUID): Boolean {
+
+        val activation = activationRepository.findOne(token)
+        if (activation == null) return false
+
+        val user = activation.user
+        if (user == null) return false
+
+        user.enabled = true
+        user.accountNonLocked = true
+
+        userRepository.save(user)
+        activationRepository.delete(activation)
+
+        return true
     }
 
 }

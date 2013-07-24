@@ -28,4 +28,7 @@
     <item name='org.springframework.web.servlet.HandlerInterceptor boolean preHandle(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, java.lang.Object) 2'>
         <annotation name='org.jetbrains.annotations.NotNull'/>
     </item>
+    <item name='org.springframework.web.servlet.LocaleResolver java.util.Locale resolveLocale(javax.servlet.http.HttpServletRequest)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
 </root>

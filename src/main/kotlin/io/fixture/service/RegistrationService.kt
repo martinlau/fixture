@@ -21,9 +21,12 @@
 package io.fixture.service
 
 import io.fixture.controller.form.RegistrationForm
+import java.util.UUID
 
 trait RegistrationService {
 
     fun register(form: RegistrationForm)
+
+    fun activate(token: UUID): Boolean
 
 }

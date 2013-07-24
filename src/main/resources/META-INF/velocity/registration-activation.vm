@@ -1,0 +1,8 @@
+Hi ${user.givenName},
+
+Go here to activate your account:
+
+    ${baseUrl}/register/activate/${activation.uuid}
+
+Thanks
+The fixture team
