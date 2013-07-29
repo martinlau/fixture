@@ -23,7 +23,7 @@ package io.fixture.controller
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.RequestMapping
 
-[Controller]
+[Controller(value = "secureController")]
 [RequestMapping(value = array("/secure"))]
 class SecureController {
 

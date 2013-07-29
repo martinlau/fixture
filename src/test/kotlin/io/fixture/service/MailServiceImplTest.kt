@@ -86,9 +86,6 @@ class MailServiceImplTest {
 
         assertEquals(1, wiser!!.getMessages().size)
         val message = wiser!!.getMessages()[0].toString()!!
-
-        System.err.println(message)
-
         assertTrue(message.contains("""Sender: "fixture.io" <us@fixture.io>"""))
         assertTrue(message.contains("""To: Test User <user@example.com>"""))
         assertTrue(message.contains("A link to http://www.example.com."))

@@ -30,7 +30,7 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
 
-[Component]
+[Component(value = "persistentTokenRepository")]
 class PersistentTokenRepositoryImpl [Autowired] (
 
         val persistentLoginRepository: PersistentLoginRepository,

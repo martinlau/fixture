@@ -35,7 +35,7 @@ import org.springframework.validation.FieldError
 import java.util.LinkedList
 import java.util.Collections
 
-[Controller]
+[Controller(value = "validationController")]
 [RequestMapping(value = array("/validate"))]
 class ValidationController {
 

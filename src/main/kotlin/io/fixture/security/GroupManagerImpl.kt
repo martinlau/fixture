@@ -31,7 +31,7 @@ import org.springframework.security.provisioning.GroupManager
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
 
-[Component]
+[Component(value = "groupManager")]
 class GroupManagerImpl [Autowired] (
         val groupRepository: GroupRepository,
         val userRepository: UserRepository

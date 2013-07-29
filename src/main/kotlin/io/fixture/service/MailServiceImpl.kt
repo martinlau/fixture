@@ -31,25 +31,24 @@ import org.springframework.ui.velocity.VelocityEngineUtils
 import java.util.HashMap
 import org.springframework.context.i18n.LocaleContextHolder
 import org.springframework.context.MessageSource
+import org.springframework.beans.factory.annotation.Value
 
-[Service]
+[Service(value = "mailService")]
 class MailServiceImpl [Autowired](
 
         val mailSender: JavaMailSender,
 
         val messageSource: MessageSource,
 
-        val velocityEngine: VelocityEngine
+        val velocityEngine: VelocityEngine,
+
+        [Value("\${fixture.service.smtp.sender.address}")]
+        var from: String,
+
+        [Value("\${fixture.service.smtp.sender.name}")]
+        val fromName: String
 
 ): MailService {
-
-    // TODO Test
-
-    // TODO @Value
-    val from: String = "us@fixture.io"
-
-    // TODO @Value
-    val fromName: String = "fixture.io"
 
     override fun sendMail(template: String,
                           to: String,

@@ -36,7 +36,7 @@ import org.springframework.security.provisioning.UserDetailsManager
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
 
-[Component]
+[Component(value = "userDetailsManager")]
 class UserDetailsManagerImpl [Autowired] (
 
         val userRepository: UserRepository

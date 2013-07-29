@@ -34,7 +34,7 @@ import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.PathVariable
 
-[Controller]
+[Controller(value = "registrationController")]
 [RequestMapping(value = array("/register"))]
 class RegistrationController [Autowired](
 
