@@ -39,20 +39,6 @@
         <name>Martin Lau</name>
     </organization>
 
-    <repositories>
-        <repository>
-            <id>kotlin</id>
-            <url>http://repository.jetbrains.com/kotlin</url>
-        </repository>
-    </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>kotlin</id>
-            <url>http://repository.jetbrains.com/kotlin</url>
-        </pluginRepository>
-    </pluginRepositories>
-
     <prerequisites>
         <maven>3.0.4</maven>
     </prerequisites>
