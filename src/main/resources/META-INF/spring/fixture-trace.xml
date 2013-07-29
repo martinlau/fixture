@@ -37,9 +37,12 @@
           p:useDynamicLogger="false"/>
 
     <aop:config>
-        <aop:pointcut id="fixture" expression="execution(* io.fixture..*(..))"/>
-        <aop:advisor advice-ref="customizableTraceInterceptor" pointcut-ref="fixture" />
-        <aop:advisor advice-ref="jamonPerformanceMonitorInterceptor" pointcut-ref="fixture" />
+        <aop:pointcut id="fixture"
+                      expression="execution(* io.fixture..*(..))"/>
+        <aop:advisor advice-ref="customizableTraceInterceptor"
+                     pointcut-ref="fixture" />
+        <aop:advisor advice-ref="jamonPerformanceMonitorInterceptor"
+                     pointcut-ref="fixture" />
     </aop:config>
 
 </beans>

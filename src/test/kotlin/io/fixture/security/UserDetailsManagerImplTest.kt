@@ -43,92 +43,39 @@ import org.springframework.test.context.ContextHierarchy
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 import org.springframework.test.util.ReflectionTestUtils
 import org.springframework.transaction.annotation.Transactional
+import org.springframework.security.provisioning.UserDetailsManager
 
 // TODO Reinstantiate when kotlin > 0.5.998
 [ContextHierarchy(/*value = array(*/
-        ContextConfiguration(value = array("classpath:/META-INF/spring/fixture-domain.xml")),
-        ContextConfiguration(value = array("classpath:/META-INF/spring/fixture-repository.xml")),
-        ContextConfiguration(value = array("classpath:/META-INF/spring/fixture-domain-test.xml")),
-        ContextConfiguration(value = array("classpath:/META-INF/spring/fixture-security.xml"))
+        ContextConfiguration(value = array("classpath*:/META-INF/spring/*.xml")),
+        ContextConfiguration(value = array("classpath*:/META-INF/spring/test/*.xml"))
 /*)*/)]
 [RunWith(value = javaClass<SpringJUnit4ClassRunner>())]
 [Transactional]
 class UserDetailsManagerImplTest {
 
-    val authenticationManager = MockAuthenticationManager()
-
-    var originalAuthenticationManager: Any? = null
+    [Autowired]
+    var authenticationManager: MockAuthenticationManager? = null
 
     [Autowired]
-    var subject: UserDetailsManagerImpl? = null
+    var subject: UserDetailsManager? = null
 
     [Autowired]
     var userRepository: UserRepository? = null
 
     [Before]
     fun setUp() {
-        authenticationManager.callCount = 0
-        originalAuthenticationManager = ReflectionTestUtils.getField(subject, "authenticationManager")
+        authenticationManager!!.callCount = 0
     }
 
     [After]
     fun tearDown() {
-        SecurityContextHolder.getContext().setAuthentication(null)
-        ReflectionTestUtils.setField(subject, "authenticationManager", originalAuthenticationManager)
-    }
-
-    [Test]
-    fun testChangePasswordWithAuthenticationManagerChangesPassword() {
-        SecurityContextHolder.getContext().setAuthentication(UsernamePasswordAuthenticationToken("username-1", "password-1"))
-        ReflectionTestUtils.setField(subject, "authenticationManager", authenticationManager)
-
-        subject!!.changePassword("password-1", "test-password")
-
-        var result = userRepository!!.findOne("username-1")
-        assertEquals("test-password", result!!.password)
-        assertTrue(authenticationManager.callCount > 0)
-    }
-
-    [Test]
-    fun testChangePasswordWithAuthenticationManagerSetsAuthentication() {
-        SecurityContextHolder.getContext().setAuthentication(UsernamePasswordAuthenticationToken("username-1", "password-1"))
-        ReflectionTestUtils.setField(subject, "authenticationManager", authenticationManager)
-
-        subject!!.changePassword("password-1", "test-password")
-
-        val result = SecurityContextHolder.getContext().getAuthentication() as UsernamePasswordAuthenticationToken
-
-        assertEquals("username-1", (result.getPrincipal() as UserDetails).getUsername())
-        assertEquals("test-password", result.getCredentials())
-        assertTrue(authenticationManager.callCount > 0)
+        authenticationManager!!.callCount = 0
     }
 
     [Test(expected = javaClass<AccessDeniedException>())]
     fun testChangePasswordWithoutAuthentication() {
         subject!!.changePassword("password-1", "test-password")
-    }
-
-    [Test]
-    fun testChangePasswordWithoutAuthenticationManagerChangesPassword() {
-        SecurityContextHolder.getContext().setAuthentication(UsernamePasswordAuthenticationToken("username-1", "password-1"))
-        ReflectionTestUtils.setField(subject, "authenticationManager", null)
-
-        subject!!.changePassword("password-1", "test-password")
-
-        val result = userRepository!!.findOne("username-1")
-        assertEquals("test-password", result!!.password)
-    }
-
-    [Test]
-    fun testChangePasswordWithoutAuthenticationManagerSetsAuthentication() {
-        SecurityContextHolder.getContext().setAuthentication(UsernamePasswordAuthenticationToken("username-1", "password-1"))
-        ReflectionTestUtils.setField(subject, "authenticationManager", null)
-
-        subject!!.changePassword("password-1", "test-password")
-
-        val result = SecurityContextHolder.getContext().getAuthentication() as UsernamePasswordAuthenticationToken
-        assertEquals("username-1", (result.getPrincipal() as UserDetails).getUsername())
-        assertEquals("test-password", result.getCredentials())
     }
 
     [Test]

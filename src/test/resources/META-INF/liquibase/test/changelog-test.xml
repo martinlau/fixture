@@ -29,7 +29,7 @@
         <comment>Insert 'USERS' test data</comment>
 
         <loadData tableName="USERS"
-                  file="/META-INF/liquibase/data/users-test.csv"/>
+                  file="/META-INF/liquibase/test/data/users-test.csv"/>
 
     </changeSet>
 
@@ -39,7 +39,7 @@
         <comment>Insert 'USER_AUTHORITIES' test data</comment>
 
         <loadData tableName="USER_AUTHORITIES"
-                  file="/META-INF/liquibase/data/user-authorities-test.csv"/>
+                  file="/META-INF/liquibase/test/data/user-authorities-test.csv"/>
 
     </changeSet>
 
@@ -49,7 +49,7 @@
         <comment>Insert 'USER_ACCOUNT_TOKENS' test data</comment>
 
         <loadData tableName="USER_ACCOUNT_TOKENS"
-                  file="/META-INF/liquibase/data/user-account-tokens-test.csv"/>
+                  file="/META-INF/liquibase/test/data/user-account-tokens-test.csv"/>
 
     </changeSet>
 
@@ -59,7 +59,7 @@
         <comment>Insert 'USER_PROFILES' test data</comment>
 
         <loadData tableName="USER_PROFILES"
-                  file="/META-INF/liquibase/data/user-profiles-test.csv"/>
+                  file="/META-INF/liquibase/test/data/user-profiles-test.csv"/>
 
     </changeSet>
 
@@ -69,7 +69,7 @@
         <comment>Insert 'PERSISTENT_LOGINS' test data</comment>
 
         <loadData tableName="PERSISTENT_LOGINS"
-                  file="/META-INF/liquibase/data/persistent-logins-test.csv"/>
+                  file="/META-INF/liquibase/test/data/persistent-logins-test.csv"/>
 
     </changeSet>
 
@@ -79,7 +79,7 @@
         <comment>Insert 'GROUPS' test data</comment>
 
         <loadData tableName="GROUPS"
-                  file="/META-INF/liquibase/data/groups-test.csv"/>
+                  file="/META-INF/liquibase/test/data/groups-test.csv"/>
 
     </changeSet>
 
@@ -89,7 +89,7 @@
         <comment>Insert 'GROUP_AUTHORITIES' test data</comment>
 
         <loadData tableName="GROUP_AUTHORITIES"
-                  file="/META-INF/liquibase/data/group-authorities-test.csv"/>
+                  file="/META-INF/liquibase/test/data/group-authorities-test.csv"/>
 
     </changeSet>
 
@@ -99,7 +99,7 @@
         <comment>Insert 'GROUP_MEMBERS' test data</comment>
 
         <loadData tableName="GROUP_MEMBERS"
-                  file="/META-INF/liquibase/data/group-members-test.csv"/>
+                  file="/META-INF/liquibase/test/data/group-members-test.csv"/>
 
     </changeSet>
 

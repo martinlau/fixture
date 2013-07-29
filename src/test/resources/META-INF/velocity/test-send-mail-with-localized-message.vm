@@ -1,0 +1,2 @@
+A link to ${link}.
+registration.email.subject=${messages.getMessage("registration.email.subject", null, $locale)}

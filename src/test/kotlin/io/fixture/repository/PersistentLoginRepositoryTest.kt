@@ -33,9 +33,8 @@ import org.springframework.transaction.annotation.Transactional
 
 // TODO Reinstantiate when kotlin > 0.5.998
 [ContextHierarchy(/*value = array(*/
-        ContextConfiguration(value = array("classpath:/META-INF/spring/fixture-domain.xml")),
-        ContextConfiguration(value = array("classpath:/META-INF/spring/fixture-repository.xml")),
-        ContextConfiguration(value = array("classpath:/META-INF/spring/fixture-domain-test.xml"))
+        ContextConfiguration(value = array("classpath*:/META-INF/spring/*.xml")),
+        ContextConfiguration(value = array("classpath*:/META-INF/spring/test/*.xml"))
 /*)*/)]
 [RunWith(value = javaClass<SpringJUnit4ClassRunner>())]
 [Transactional]
