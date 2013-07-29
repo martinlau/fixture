@@ -46,33 +46,36 @@ class RegistrationServiceImpl [Autowired] (
 
         val userProfileRepository: UserProfileRepository,
 
-        val userRepository: UserRepository
+        val userRepository: UserRepository,
+
+        [Value(value = "\${fixture.service.registration.baseUrl}")]
+        val baseUrl: String
 
 ): RegistrationService {
-
-    // TODO Test
-
-    [Value(value = "\${fixture.service.registration.baseUrl}")]
-    var baseUrl: String? = null
 
     [Transactional]
     override fun register(form: RegistrationForm) {
 
-        val user = userRepository.save(User(
+        val user = User(
                 accountNonExpired = true,
                 accountNonLocked = true,
                 credentialsNonExpired = true,
                 enabled = false,
                 password = passwordEncoder.encode(form.password!!),
                 username = form.username!!
-        ))
+        )
 
-        val profile = userProfileRepository.save(UserProfile(
+        val profile = UserProfile(
                 givenName = form.givenName!!,
                 familyName = form.familyName!!,
-                email = form.email!!,
-                user = user
-        ))
+                email = form.email!!
+        )
+
+        user.profile = profile
+        profile.user = user
+
+        userRepository.save(user)
+        userProfileRepository.save(profile)
 
         val subject = messageSource.getMessage("registration.email.subject", array<Any>(), LocaleContextHolder.getLocale())!!
 
@@ -82,7 +85,7 @@ class RegistrationServiceImpl [Autowired] (
                 "${profile.givenName} ${profile.familyName}",
                 subject,
                 mapOf(
-                        Pair("baseUrl", baseUrl!!),
+                        Pair("baseUrl", baseUrl),
                         Pair("user", user!!),
                         Pair("profile", profile)
                 )
