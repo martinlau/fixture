@@ -29,13 +29,17 @@ import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
-import java.net.URI
-import java.util.concurrent.TimeUnit
 import kotlin.test.assertNotNull
+import cucumber.api.PendingException
+import cucumber.api.DataTable
+import org.subethamail.wiser.Wiser
+import java.util.regex.Pattern
 
 class StepDefs [Autowired] (
 
-        val driver: WebDriver
+        val driver: WebDriver,
+
+        val wiser: Wiser
 
 ) {
 
@@ -72,6 +76,39 @@ class StepDefs [Autowired] (
         driver.findElement(By.id("submit"))!!.click()
     }
 
+    [When("""^I fill in the form "([^\"]*)" with:$""")]
+    fun I_fill_in_the_form_with(form: String, data: DataTable) {
+        val form = driver.findElement(By.id(form))!!
+
+        data.asMaps()!!.forEach {
+            val name = it.get("field")
+            val value = it.get("value")
+
+            val field = form.findElement(By.name(name))!!
+
+            if (field.getAttribute("type") == "checkbox") {
+                if ("true" == value) field.click()
+            }
+            else {
+                field.sendKeys(value)
+            }
+        }
+
+        form.submit()
+    }
+
+    [When("^I click the link in the activation email$")]
+    fun I_click_the_link_in_the_activation_email() {
+        val message = wiser.getMessages().last!!
+        val pattern = Pattern.compile(""".*(https?://[\da-z\.-]+(:\d+)?[^\s]*).*""", Pattern.DOTALL)
+        val matcher = pattern.matcher(message.toString()!!)
+
+        if (matcher.matches()) {
+            val url = matcher.group(1)
+            driver.get(url)
+        }
+    }
+
     [Then(value = """^the theme should change to "([^"]*)"$""")]
     fun the_theme_should_change_to(theme: String) {
         // HACK: drone.io seems to need some time to load the page - this allows that
@@ -102,6 +139,11 @@ class StepDefs [Autowired] (
         driver.getCurrentUrl()
 
         assertTrue(driver.findElement(By.className("alert"))!!.getText()!!.contains(message))
+    }
+
+    [Then("^my account should activated$")]
+    fun my_account_should_activated() {
+        throw PendingException()
     }
 
 }

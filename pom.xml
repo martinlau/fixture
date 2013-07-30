@@ -344,6 +344,7 @@
                                 <systemProperties>
                                     <tomcat.http.port>${tomcat.http.port}</tomcat.http.port>
                                     <subethamail.smtp.port>${subethamail.smtp.port}</subethamail.smtp.port>
+                                    <fixture.service.smtp.port>${subethamail.smtp.port}</fixture.service.smtp.port>
                                 </systemProperties>
                             </configuration>
                         </execution>

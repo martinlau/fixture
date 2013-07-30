@@ -30,11 +30,16 @@
         <spring:message code="registration.index.title" />
     </h2>
 
-    <form:form cssClass="form-horizontal" method="post" modelAttribute="registrationForm">
+    <form:form id="registration"
+               cssClass="form-horizontal"
+               method="post"
+               modelAttribute="registrationForm">
 
         <spring:hasBindErrors name="registrationForm">
             <div class="alert alert-error">
-                <button type="button" class="close" data-dismiss="alert">&amp;times;</button>
+                <button type="button"
+                        class="close"
+                        data-dismiss="alert">&amp;times;</button>
                 <form:errors path=""/>
             </div>
         </spring:hasBindErrors>
@@ -73,7 +78,8 @@
                         label="registration.index.accept.label" />
 
         <div class="form-actions">
-            <form:button type="submit" class="btn btn-primary">Register</form:button>
+            <form:button type="submit"
+                         class="btn btn-primary">Register</form:button>
         </div>
 
     </form:form>
