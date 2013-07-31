@@ -78,9 +78,10 @@
                         label="registration.index.accept.label" />
 
         <div class="form-actions">
-            <!-- TODO Message -->
             <form:button type="submit"
-                         class="btn btn-primary">Register</form:button>
+                         class="btn btn-primary">
+                <spring:message code="registration.index.submit"/>
+            </form:button>
         </div>
 
     </form:form>
