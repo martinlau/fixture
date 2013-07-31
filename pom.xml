@@ -699,6 +699,18 @@
                 <version>${ant.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpcomponents.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpcore</artifactId>
+                <version>${httpcomponents.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.tiles</groupId>
                 <artifactId>tiles-jsp</artifactId>
                 <version>${tiles.version}</version>
@@ -1043,6 +1055,14 @@
             <artifactId>junit</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity</artifactId>
         </dependency>
@@ -1252,6 +1272,7 @@
         <!-- TODO Bump this when spring supports hibernate-validator:5.0+ -->
         <hibernate-validator.version>4.3.1.Final</hibernate-validator.version>
         <html5shiv.version>3.6.2</html5shiv.version>
+        <httpcomponents.version>4.2.5</httpcomponents.version>
         <jamon.version>2.7</jamon.version>
         <jboss-logging.version>3.1.3.GA</jboss-logging.version>
         <jquery.version>2.0.3</jquery.version>

@@ -34,10 +34,18 @@ import cucumber.api.PendingException
 import cucumber.api.DataTable
 import org.subethamail.wiser.Wiser
 import java.util.regex.Pattern
+import java.net.URI
+import java.net.URL
+import org.apache.http.impl.client.DefaultHttpClient
+import org.apache.http.client.methods.HttpGet
+import org.apache.http.client.HttpClient
+import org.apache.http.client.methods.HttpHead
 
 class StepDefs [Autowired] (
 
         val driver: WebDriver,
+
+        val httpClient: HttpClient,
 
         val wiser: Wiser
 
@@ -76,9 +84,9 @@ class StepDefs [Autowired] (
         driver.findElement(By.id("submit"))!!.click()
     }
 
-    [When("""^I fill in the form "([^\"]*)" with:$""")]
-    fun I_fill_in_the_form_with(form: String, data: DataTable) {
-        val form = driver.findElement(By.id(form))!!
+    [When(value = """^I fill in the form "([^\"]*)" with:$""")]
+    fun I_fill_in_the_form_with(formId: String, data: DataTable) {
+        val form = driver.findElement(By.id(formId))!!
 
         data.asMaps()!!.forEach {
             val name = it.get("field")
@@ -97,7 +105,7 @@ class StepDefs [Autowired] (
         form.submit()
     }
 
-    [When("^I click the link in the activation email$")]
+    [When(value = """^I click the link in the activation email$""")]
     fun I_click_the_link_in_the_activation_email() {
         val message = wiser.getMessages().last!!
         val pattern = Pattern.compile(""".*(https?://[\da-z\.-]+(:\d+)?[^\s]*).*""", Pattern.DOTALL)
@@ -117,7 +125,7 @@ class StepDefs [Autowired] (
         assertTrue(driver.getPageSource().contains("href=\"/fixture/static/bootswatch/2.3.1/${theme}/bootstrap.min.css\""))
     }
 
-    [Then("""^I should see the "([^"]*)" link$""")]
+    [Then(value = """^I should see the "([^"]*)" link$""")]
     fun I_should_see_the_link(link: String) {
         // HACK: drone.io seems to need some time to load the page - this allows that
         driver.getCurrentUrl()
@@ -141,9 +149,22 @@ class StepDefs [Autowired] (
         assertTrue(driver.findElement(By.className("alert"))!!.getText()!!.contains(message))
     }
 
-    [Then("^my account should activated$")]
-    fun my_account_should_activated() {
-        throw PendingException()
+    [Then(value = """^all "([^"]*)" tags should have valid "([^"]*)" attributes$""")]
+    fun all_tags_should_have_valid_attributes(tag: String, attribute: String) {
+        val base = driver.getCurrentUrl()
+
+        driver.findElements(By.tagName(tag))?.forEach {
+            val path = it.getAttribute(attribute)!!
+            val uri = URI.create(base).resolve(path)
+            val request = HttpHead(uri)
+            try {
+                val response = httpClient.execute(request)!!
+                assertEquals(200, response.getStatusLine()!!.getStatusCode())
+            }
+            finally {
+                request.releaseConnection()
+            }
+        }
     }
 
 }

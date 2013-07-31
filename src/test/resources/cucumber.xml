@@ -25,7 +25,17 @@
 
     <import resource="classpath:META-INF/spring/test/fixture-service-test.xml"/>
 
-    <bean class="org.openqa.selenium.firefox.FirefoxDriver" destroy-method="quit"/>
+    <bean id="httpClient"
+          class="org.apache.http.impl.client.DefaultHttpClient">
+        <constructor-arg index="0"
+                         name="conman">
+            <bean class="org.apache.http.impl.conn.PoolingClientConnectionManager"/>
+        </constructor-arg>
+    </bean>
+
+    <bean id="driver"
+          class="org.openqa.selenium.firefox.FirefoxDriver"
+          destroy-method="quit"/>
 
     <!--<bean class="org.openqa.selenium.safari.SafariDriver" destroy-method="quit"/>-->
 
