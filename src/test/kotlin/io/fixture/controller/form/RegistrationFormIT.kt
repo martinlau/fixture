@@ -70,7 +70,7 @@ class RegistrationFormIT {
     [Test]
     fun testValidateRegistrationForm() {
         val result = restTemplate.exchange(
-                "${baseUri}/validate/register",
+                "${baseUri}/validate/registration",
                 HttpMethod.POST,
                 HttpEntity<RegistrationForm>(form, headers),
                 javaClass<Map<Any?, Any?>>()
@@ -84,7 +84,7 @@ class RegistrationFormIT {
         form.givenName = null
 
         val result = restTemplate.exchange(
-                "${baseUri}/validate/register",
+                "${baseUri}/validate/registration",
                 HttpMethod.POST,
                 HttpEntity<RegistrationForm>(form, headers),
                 javaClass<Map<Any?, Any?>>()
@@ -99,7 +99,7 @@ class RegistrationFormIT {
         form.familyName = null
 
         val result = restTemplate.exchange(
-                "${baseUri}/validate/register",
+                "${baseUri}/validate/registration",
                 HttpMethod.POST,
                 HttpEntity<RegistrationForm>(form, headers),
                 javaClass<Map<Any?, Any?>>()
@@ -114,7 +114,7 @@ class RegistrationFormIT {
         form.email = null
 
         val result = restTemplate.exchange(
-                "${baseUri}/validate/register",
+                "${baseUri}/validate/registration",
                 HttpMethod.POST,
                 HttpEntity<RegistrationForm>(form, headers),
                 javaClass<Map<Any?, Any?>>()
@@ -129,7 +129,7 @@ class RegistrationFormIT {
         form.email = "invalid"
 
         val result = restTemplate.exchange(
-                "${baseUri}/validate/register",
+                "${baseUri}/validate/registration",
                 HttpMethod.POST,
                 HttpEntity<RegistrationForm>(form, headers),
                 javaClass<Map<Any?, Any?>>()
@@ -144,7 +144,7 @@ class RegistrationFormIT {
         form.username = null
 
         val result = restTemplate.exchange(
-                "${baseUri}/validate/register",
+                "${baseUri}/validate/registration",
                 HttpMethod.POST,
                 HttpEntity<RegistrationForm>(form, headers),
                 javaClass<Map<Any?, Any?>>()
@@ -159,7 +159,7 @@ class RegistrationFormIT {
         form.password = null
 
         val result = restTemplate.exchange(
-                "${baseUri}/validate/register",
+                "${baseUri}/validate/registration",
                 HttpMethod.POST,
                 HttpEntity<RegistrationForm>(form, headers),
                 javaClass<Map<Any?, Any?>>()
@@ -175,7 +175,7 @@ class RegistrationFormIT {
         form.confirm = null
 
         val result = restTemplate.exchange(
-                "${baseUri}/validate/register",
+                "${baseUri}/validate/registration",
                 HttpMethod.POST,
                 HttpEntity<RegistrationForm>(form, headers),
                 javaClass<Map<Any?, Any?>>()
@@ -192,7 +192,7 @@ class RegistrationFormIT {
         form.confirm = "different"
 
         val result = restTemplate.exchange(
-                "${baseUri}/validate/register",
+                "${baseUri}/validate/registration",
                 HttpMethod.POST,
                 HttpEntity<RegistrationForm>(form, headers),
                 javaClass<Map<Any?, Any?>>()
@@ -207,7 +207,7 @@ class RegistrationFormIT {
         form.accept = null
 
         val result = restTemplate.exchange(
-                "${baseUri}/validate/register",
+                "${baseUri}/validate/registration",
                 HttpMethod.POST,
                 HttpEntity<RegistrationForm>(form, headers),
                 javaClass<Map<Any?, Any?>>()
@@ -222,7 +222,7 @@ class RegistrationFormIT {
         form.accept = false
 
         val result = restTemplate.exchange(
-                "${baseUri}/validate/register",
+                "${baseUri}/validate/registration",
                 HttpMethod.POST,
                 HttpEntity<RegistrationForm>(form, headers),
                 javaClass<Map<Any?, Any?>>()

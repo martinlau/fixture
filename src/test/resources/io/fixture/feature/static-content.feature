@@ -30,7 +30,7 @@ Feature: Static Content
         | fixture.io   | fixture.io                |
         | About        | fixture.io - About        |
         | Contact      | fixture.io - Contact      |
-        | Register     | fixture.io - Register     |
+        | Register     | fixture.io - Registration |
         | Log in       | fixture.io - Login        |
         | Privacy      | fixture.io - Privacy      |
         | Terms of use | fixture.io - Terms of use |

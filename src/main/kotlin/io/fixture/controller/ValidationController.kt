@@ -44,7 +44,7 @@ class ValidationController {
     // To test this:
     //    $.ajax({
     //        type: 'POST',
-    //        url: '/fixture/validate/register.json',
+    //        url: '/fixture/validate/registration.json',
     //        contentType: 'application/json',
     //        data: JSON.stringify({
     //            "username":"blah",
@@ -62,7 +62,7 @@ class ValidationController {
 
     [RequestMapping(
             method = array(RequestMethod.POST),
-            value = array("/register")
+            value = array("/registration")
     )]
     [ResponseBody]
     fun validateRegistrationForm([Valid] [RequestBody] form: RegistrationForm) = valid

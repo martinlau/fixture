@@ -22,7 +22,7 @@ Feature: User Registration
 
     Scenario: User Activation
         Given I open any page
-        When I go to the page "/register"
+        When I go to the page "/registration"
         And I fill in the form "registration" with:
             | field      | value             |
             | givenName  | given name        |
@@ -33,6 +33,9 @@ Feature: User Registration
             | confirm    | password          |
             | accept     | true              |
         And I click the link in the activation email
+        # TODO this should read more like (following):
+        # Then my account should be activated
+        # And I should be able to log in
         And I go to the page "/secure"
         And I log in with the credentials "username" and "password"
         Then I should see the page "fixture.io - Secure"

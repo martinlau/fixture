@@ -89,7 +89,7 @@ class RegistrationServiceImplTest {
         assertTrue(message.contains("""To: given name family name <email@example.com>"""))
         assertTrue(message.contains("""Subject: Fixture Account Registration"""))
         assertTrue(message.contains("""Hi given name,"""))
-        assertTrue(message.contains("""/fixture/register/activate/${user.uuid}"""))
+        assertTrue(message.contains("""/fixture/registration/activate/${user.uuid}"""))
     }
 
     [Test]

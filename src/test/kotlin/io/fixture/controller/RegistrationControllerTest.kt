@@ -93,7 +93,7 @@ class RegistrationControllerTest {
 
         val result = subject.submit(form, errors)
 
-        assertEquals("redirect:/register/sent", result)
+        assertEquals("redirect:/registration/sent", result)
         assertEquals(7.toLong(), userRepository!!.count())
         assertEquals(1, wiser!!.getMessages().size)
     }

@@ -35,14 +35,12 @@ import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.PathVariable
 
 [Controller(value = "registrationController")]
-[RequestMapping(value = array("/register"))]
+[RequestMapping(value = array("/registration"))]
 class RegistrationController [Autowired](
 
         val registrationService: RegistrationService
 
 ) {
-
-    // TODO Register or Registration - pick one
 
     [ModelAttribute]
     fun registrationForm() = RegistrationForm()
@@ -56,7 +54,7 @@ class RegistrationController [Autowired](
             return ".registration.index"
         }
         registrationService.register(form)
-        return "redirect:/register/sent"
+        return "redirect:/registration/sent"
     }
 
     [RequestMapping(value = array("/sent"))]

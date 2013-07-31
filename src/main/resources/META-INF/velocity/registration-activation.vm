@@ -2,7 +2,7 @@ Hi ${profile.givenName},
 
 Go here to activate your account:
 
-    ${baseUrl}/register/activate/${user.uuid}
+    ${baseUrl}/registration/activate/${user.uuid}
 
 Thanks
 The fixture team
