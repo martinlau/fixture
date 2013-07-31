@@ -23,17 +23,17 @@ Feature: Site Security
     Scenario: Anonymous Access to Secure Pages
         Given I open any page
         When I go to the page "/secure"
-        Then I should see the page "fixture.io - Login"
+        Then I should see the page "fixture.io - Log in"
 
     Scenario: Anonymous Access to Administration Pages
         Given I open any page
         When I go to the page "/administration"
-        Then I should see the page "fixture.io - Login"
+        Then I should see the page "fixture.io - Log in"
 
     Scenario: Anonymous Access to Administration Pages
         Given I open any page
         When I go to the page "/administration"
-        Then I should see the page "fixture.io - Login"
+        Then I should see the page "fixture.io - Log in"
 
     Scenario: Authenticated Access to Secure Pages
         Given I open any page
@@ -63,7 +63,7 @@ Feature: Site Security
         Given I open any page
         When I go to the page "/login"
         And I log in with the credentials "invalid" and "invalid"
-        Then I should see the page "fixture.io - Login"
+        Then I should see the page "fixture.io - Log in"
         And I should see the alert "Log in failed"
 
     Scenario: Logged in navigation

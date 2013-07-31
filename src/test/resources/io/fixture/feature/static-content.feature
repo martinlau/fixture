@@ -31,7 +31,7 @@ Feature: Static Content
         | About        | fixture.io - About        |
         | Contact      | fixture.io - Contact      |
         | Register     | fixture.io - Registration |
-        | Log in       | fixture.io - Login        |
+        | Log in       | fixture.io - Log in       |
         | Privacy      | fixture.io - Privacy      |
         | Terms of use | fixture.io - Terms of use |
 

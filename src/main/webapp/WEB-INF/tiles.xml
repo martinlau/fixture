@@ -24,7 +24,8 @@
 <tiles-definitions>
 
     <definition name=".base.template" template="/WEB-INF/jspx/base/template.jspx">
-        <put-attribute name="title" type="string" value="fixture.io"/>
+        <put-attribute name="title" type="string" value="base.title"/>
+        <put-attribute name="subTitle" type="string" value=""/>
         <put-attribute name="body" type="template"/>
         <put-list-attribute name="headScripts" cascade="true" inherit="true">
             <add-attribute value="/static/html5shiv/3.6.2/html5shiv.min.js" />
@@ -43,19 +44,19 @@
 
     <definition name=".administration.index" extends=".base.template">
         <put-attribute name="body" type="template" value="/WEB-INF/jspx/administration/index.jspx"/>
-        <put-attribute name="title" type="string" value="fixture.io - Administration"/>
+        <put-attribute name="subTitle" type="string" value="administration.index.title"/>
     </definition>
 
     <definition name=".administration.users" extends=".base.template">
         <put-attribute name="body" type="template" value="/WEB-INF/jspx/administration/users.jspx"/>
-        <put-attribute name="title" type="string" value="fixture.io - User administration"/>
+        <put-attribute name="subTitle" type="string" value="administration.users.title"/>
     </definition>
 
     <definition name=".common.*" template="/WEB-INF/jspx/common/{1}.jspx"/>
 
     <definition name=".registration.index" extends=".base.template">
         <put-attribute name="body" type="template" value="/WEB-INF/jspx/registration/index.jspx"/>
-        <put-attribute name="title" type="string" value="fixture.io - Registration"/>
+        <put-attribute name="subTitle" type="string" value="registration.index.title"/>
     </definition>
 
     <definition name=".registration.sent" extends=".registration.index">
@@ -68,42 +69,41 @@
 
     <definition name=".secure.index" extends=".base.template">
         <put-attribute name="body" type="template" value="/WEB-INF/jspx/secure/index.jspx"/>
-        <put-attribute name="title" type="string" value="fixture.io - Secure"/>
+        <put-attribute name="subTitle" type="string" value="secure.index.title"/>
     </definition>
 
     <definition name=".static.about" extends=".base.template">
         <put-attribute name="body" type="template" value="/WEB-INF/jspx/static/about.jspx"/>
-        <put-attribute name="title" type="string" value="fixture.io - About"/>
+        <put-attribute name="subTitle" type="string" value="static.about.title"/>
     </definition>
 
     <definition name=".static.access-denied" extends=".base.template">
         <put-attribute name="body" type="template" value="/WEB-INF/jspx/static/access-denied.jspx"/>
-        <put-attribute name="title" type="string" value="fixture.io - Access denied"/>
+        <put-attribute name="subTitle" type="string" value="static.access-denied.title"/>
     </definition>
 
     <definition name=".static.contact" extends=".base.template">
         <put-attribute name="body" type="template" value="/WEB-INF/jspx/static/contact.jspx"/>
-        <put-attribute name="title" type="string" value="fixture.io - Contact"/>
+        <put-attribute name="subTitle" type="string" value="static.contact.title"/>
     </definition>
 
     <definition name=".static.index" extends=".base.template">
         <put-attribute name="body" type="template" value="/WEB-INF/jspx/static/index.jspx"/>
-        <put-attribute name="title" type="string" value="fixture.io"/>
     </definition>
 
     <definition name=".static.login" extends=".base.template">
         <put-attribute name="body" type="template" value="/WEB-INF/jspx/static/login.jspx"/>
-        <put-attribute name="title" type="string" value="fixture.io - Login"/>
+        <put-attribute name="subTitle" type="string" value="static.login.title"/>
     </definition>
 
     <definition name=".static.privacy" extends=".base.template">
         <put-attribute name="body" type="template" value="/WEB-INF/jspx/static/privacy.jspx"/>
-        <put-attribute name="title" type="string" value="fixture.io - Privacy"/>
+        <put-attribute name="subTitle" type="string" value="static.privacy.title"/>
     </definition>
 
     <definition name=".static.terms" extends=".base.template">
         <put-attribute name="body" type="template" value="/WEB-INF/jspx/static/terms.jspx"/>
-        <put-attribute name="title" type="string" value="fixture.io - Terms of use"/>
+        <put-attribute name="subTitle" type="string" value="static.terms.title"/>
     </definition>
 
 </tiles-definitions>
