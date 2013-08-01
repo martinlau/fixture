@@ -30,7 +30,7 @@ import org.springframework.test.context.ContextHierarchy
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.validation.MapBindingResult
 import java.util.HashMap
-import io.fixture.controller.form.RegistrationForm
+import io.fixture.form.RegistrationForm
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.validation.ObjectError
 import io.fixture.repository.UserRepository

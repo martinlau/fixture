@@ -18,7 +18,7 @@
  * #L%
  */
 
-package io.fixture.controller.form
+package io.fixture.form
 
 import org.junit.Test
 import org.springframework.web.client.RestTemplate

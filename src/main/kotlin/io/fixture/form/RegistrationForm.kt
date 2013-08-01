@@ -18,7 +18,7 @@
  * #L%
  */
 
-package io.fixture.controller.form
+package io.fixture.form
 
 import org.hibernate.validator.constraints.ScriptAssert
 import org.hibernate.validator.constraints.NotEmpty

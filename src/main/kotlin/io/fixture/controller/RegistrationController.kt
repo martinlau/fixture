@@ -23,7 +23,7 @@ package io.fixture.controller
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.ModelAttribute
-import io.fixture.controller.form.RegistrationForm
+import io.fixture.form.RegistrationForm
 import org.springframework.validation.Errors
 import javax.validation.Valid
 import org.springframework.web.bind.annotation.RequestMethod
