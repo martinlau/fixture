@@ -28,7 +28,7 @@ import java.util.HashMap
 import org.springframework.web.bind.annotation.RequestBody
 import javax.validation.Valid
 import org.springframework.web.bind.annotation.ResponseBody
-import io.fixture.controller.form.RegistrationForm
+import io.fixture.form.RegistrationForm
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.http.MediaType
 import org.springframework.validation.FieldError

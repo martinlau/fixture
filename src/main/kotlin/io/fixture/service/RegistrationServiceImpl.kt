@@ -20,7 +20,7 @@
 
 package io.fixture.service
 
-import io.fixture.controller.form.RegistrationForm
+import io.fixture.form.RegistrationForm
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.stereotype.Service
 import org.springframework.beans.factory.annotation.Autowired

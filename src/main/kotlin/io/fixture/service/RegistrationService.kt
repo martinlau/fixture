@@ -20,7 +20,7 @@
 
 package io.fixture.service
 
-import io.fixture.controller.form.RegistrationForm
+import io.fixture.form.RegistrationForm
 import java.util.UUID
 
 trait RegistrationService {

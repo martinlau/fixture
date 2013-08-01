@@ -32,7 +32,7 @@ import java.util.UUID
 import kotlin.test.assertFalse
 import io.fixture.repository.UserRepository
 import kotlin.test.assertTrue
-import io.fixture.controller.form.RegistrationForm
+import io.fixture.form.RegistrationForm
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 import org.subethamail.wiser.Wiser

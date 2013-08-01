@@ -22,7 +22,7 @@ package io.fixture.form
 
 import org.junit.Test
 import org.springframework.web.client.RestTemplate
-import io.fixture.controller.form.RegistrationForm
+import io.fixture.form.RegistrationForm
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 import org.junit.runner.RunWith
