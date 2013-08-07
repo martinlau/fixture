@@ -151,7 +151,7 @@ class StepDefs [Autowired] (
 
     [Then(value = """^all "([^"]*)" tags should have valid "([^"]*)" attributes$""")]
     fun all_tags_should_have_valid_attributes(tag: String, attribute: String) {
-        val base = driver.getCurrentUrl()
+        val base = driver.getCurrentUrl()!!
 
         driver.findElements(By.tagName(tag))?.forEach {
             val path = it.getAttribute(attribute)!!
