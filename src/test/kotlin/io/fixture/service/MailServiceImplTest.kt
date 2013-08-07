@@ -33,7 +33,7 @@ import kotlin.test.assertTrue
 import org.junit.After
 import org.junit.Before
 
-// TODO Reinstantiate when kotlin > 0.5.998
+// TODO Reinstantiate when kotlin > 0.5.1131
 [ContextHierarchy(/*value = array(*/
         ContextConfiguration(value = array("classpath*:/META-INF/spring/*.xml")),
         ContextConfiguration(value = array("classpath*:/META-INF/spring/test/*.xml"))
