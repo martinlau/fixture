@@ -38,7 +38,7 @@ class NextThemeInterceptor: HandlerInterceptorAdapter() {
 
     {
         val resourcePatternResolver = ResourcePatternUtils.getResourcePatternResolver(PathMatchingResourcePatternResolver())
-        val resources = resourcePatternResolver.getResources("classpath*:/META-INF/resources/webjars/bootswatch/2.3.1/**/bootstrap.min.css")
+        val resources = resourcePatternResolver.getResources("classpath*:/META-INF/resources/webjars/bootswatch/3.0.0/*/bootstrap.min.css")
         val unsorted: MutableList<String> = resources.mapTo(LinkedList()) { it.createRelative(".").getFilename()!! }
 
         themes = unsorted.sort()

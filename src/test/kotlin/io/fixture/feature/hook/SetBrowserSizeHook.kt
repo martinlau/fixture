@@ -29,12 +29,12 @@ import cucumber.api.java.Before
 import org.openqa.selenium.Dimension
 
 public class SetBrowserSizeHook [Autowired] (
-        val driver: WebDriver
+        val driver: WebDriver? = null
 ) {
 
     [Before]
     fun setBrowserSize() {
-        driver.manage().window().setSize(Dimension(960, 720))
+        driver?.manage()?.window()?.setSize(Dimension(960, 720))
     }
 
 }

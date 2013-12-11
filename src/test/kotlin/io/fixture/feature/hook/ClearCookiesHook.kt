@@ -29,12 +29,12 @@ import cucumber.api.java.Before
 import org.openqa.selenium.Dimension
 
 public class ClearCookiesHook [Autowired] (
-        val driver: WebDriver
+        val driver: WebDriver? = null
 ) {
 
     [Before]
     fun setBrowserSize() {
-        driver.manage().deleteAllCookies()
+        driver?.manage()?.deleteAllCookies()
     }
 
 }

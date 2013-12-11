@@ -28,7 +28,7 @@ import org.openqa.selenium.OutputType
 import org.springframework.beans.factory.annotation.Autowired
 
 public class EmbedScreenshotHook [Autowired(required = false)] (
-        val takesScreenshot: TakesScreenshot?
+        val takesScreenshot: TakesScreenshot? = null
 ) {
 
     [After]
